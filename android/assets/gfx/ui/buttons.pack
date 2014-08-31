@@ -1,0 +1,45 @@
+
+buttons.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+MainMenu-normal
+  rotate: false
+  xy: 0, 109
+  size: 169, 32
+  split: 15, 15, 2, 2
+  orig: 169, 32
+  offset: 0, 0
+  index: -1
+MainMenu-down
+  rotate: false
+  xy: 0, 75
+  size: 169, 32
+  split: 15, 15, 0, 32
+  orig: 169, 32
+  offset: 0, 0
+  index: -1
+MainMenu-hover
+  rotate: false
+  xy: 0, 41
+  size: 169, 32
+  split: 15, 15, 2, 2
+  orig: 169, 32
+  offset: 0, 0
+  index: -1
+Switch-off
+  rotate: false
+  xy: 0, 1
+  size: 78, 38
+  split: 40, 17, 3, 3
+  orig: 78, 38
+  offset: 0, 0
+  index: -1
+Switch-on
+  rotate: false
+  xy: 78, 1
+  size: 78, 38
+  split: 41, 17, 3, 3
+  orig: 78, 38
+  offset: 0, 0
+  index: -1
