@@ -1,0 +1,6 @@
+The following files were created by MillionthVector and are licensed
+with a CC-BY license:
+
+sprites.png
+	[Changes: images have been rotated, reduced of size, and put into
+	one file.]

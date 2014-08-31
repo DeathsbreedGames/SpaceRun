@@ -1,7 +1,7 @@
 package io.github.deathsbreedgames.spacerun.screens;
 
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 
 import io.github.deathsbreedgames.spacerun.entities.*;
 
@@ -16,6 +16,8 @@ import io.github.deathsbreedgames.spacerun.entities.*;
  */
 public class GameScreen extends BaseScreen {
 	private SpriteBatch batch;
+	private TextureAtlas spriteAtlas;
+	
 	private Player player;
 	
 	// Constructor:
@@ -23,7 +25,8 @@ public class GameScreen extends BaseScreen {
 		super("Splash");
 		
 		batch = new SpriteBatch();
-		player = new Player(new Texture("gfx/sprites/bluedestroyer.png"), 160, 50);
+		spriteAtlas = new TextureAtlas("gfx/sprites/sprites.pack");
+		player = new Player(spriteAtlas.findRegion("bluedestroyer"), 160, 50);
 	}
 	
 	// Update:
@@ -40,5 +43,6 @@ public class GameScreen extends BaseScreen {
 	@Override
 	public void dispose() {
 		batch.dispose();
+		spriteAtlas.dispose();
 	}
 }

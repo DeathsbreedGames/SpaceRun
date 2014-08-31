@@ -1,0 +1,47 @@
+
+sprites.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+bluedestroyer_normal
+  rotate: false
+  xy: 0, 0
+  size: 45, 62
+  orig: 45, 62
+  offset: 0, 0
+  index: -1
+bluecarrier_normal
+  rotate: false
+  xy: 45, 0
+  size: 45, 62
+  orig: 45, 62
+  offset: 0, 0
+  index: -1
+bluecarrier
+  rotate: false
+  xy: 90, 0
+  size: 45, 62
+  orig: 45, 62
+  offset: 0, 0
+  index: -1
+bluedestroyer
+  rotate: false
+  xy: 135, 0
+  size: 45, 62
+  orig: 45, 62
+  offset: 0, 0
+  index: -1
+bluecruiser
+  rotate: false
+  xy: 180, 0
+  size: 24, 62
+  orig: 24, 62
+  offset: 0, 0
+  index: -1
+bluecruiser_normal
+  rotate: false
+  xy: 204, 0
+  size: 24, 62
+  orig: 24, 62
+  offset: 0, 0
+  index: -1

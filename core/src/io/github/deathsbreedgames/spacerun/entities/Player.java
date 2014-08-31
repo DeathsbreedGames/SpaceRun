@@ -1,8 +1,8 @@
 package io.github.deathsbreedgames.spacerun.entities;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 /**
  * @author Nicolás A. Ortega
@@ -17,7 +17,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class Player extends Entity {
 	private final float MAX_VEL = 350f;
 	
-	public Player(Texture img, float x, float y) {
+	public Player(TextureRegion img, float x, float y) {
 		super(img, x, y);
 	}
 	
