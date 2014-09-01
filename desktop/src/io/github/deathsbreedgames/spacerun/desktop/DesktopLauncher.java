@@ -13,7 +13,7 @@ public class DesktopLauncher {
 		config.width = 320;
 		config.foregroundFPS = 45;
 		config.backgroundFPS = 20;
-		config.addIcon("gfx/space-run.png", Files.FileType.Internal);
+		//config.addIcon("gfx/space-run.png", Files.FileType.Internal);
 		new LwjglApplication(new SpaceRun(), config);
 	}
 }
