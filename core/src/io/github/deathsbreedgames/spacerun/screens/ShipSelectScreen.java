@@ -20,7 +20,7 @@ public class ShipSelectScreen extends BaseScreen {
 	// Update:
 	@Override
 	public void render(float delta) {
-		super.render(float delta);
+		super.render(delta);
 	}
 	
 	// Dispose:

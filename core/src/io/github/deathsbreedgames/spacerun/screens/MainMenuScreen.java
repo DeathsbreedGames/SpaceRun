@@ -1,7 +1,6 @@
 package io.github.deathsbreedgames.spacerun.screens;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -55,7 +54,6 @@ public class MainMenuScreen extends BaseScreen {
 		buttonStyle.down = buttonSkin.getDrawable("MainMenu-down");
 		buttonStyle.over = buttonSkin.getDrawable("MainMenu-hover");
 		buttonStyle.font = buttonFont;
-		buttonStyle.fontColor = Color.WHITE;
 		
 		// Create the TextButtons
 		TextButton playButton = new TextButton("PLAY", buttonStyle);
@@ -63,17 +61,29 @@ public class MainMenuScreen extends BaseScreen {
 		mainStage.addActor(playButton);
 		playButton.addListener(new ChangeListener() {
 			public void changed(ChangeEvent e, Actor a) {
-				// Change to the game
+				// Change to the Game
 				setNextScreen("Game");
 				setDone(true);
 			}
 		});
 		
+		TextButton creditsButton = new TextButton("CREDITS", buttonStyle);
+		creditsButton.setPosition(Gdx.graphics.getWidth() / 2 - creditsButton.getWidth() / 2, 200);
+		mainStage.addActor(creditsButton);
+		creditsButton.addListener(new ChangeListener() {
+			public void changed(ChangeEvent e, Actor a) {
+				// Change to the Credits Menu
+				setNextScreen("CreditsMenu");
+				setDone(true);
+			}
+		});
+		
 		TextButton quitButton = new TextButton("EXIT", buttonStyle);
-		quitButton.setPosition(Gdx.graphics.getWidth() / 2 - quitButton.getWidth() / 2, 200);
+		quitButton.setPosition(Gdx.graphics.getWidth() / 2 - quitButton.getWidth() / 2, 150);
 		mainStage.addActor(quitButton);
 		quitButton.addListener(new ChangeListener() {
 			public void changed(ChangeEvent e, Actor a) {
+				// Quit
 				Gdx.app.exit();
 			}
 		});
@@ -97,6 +107,9 @@ public class MainMenuScreen extends BaseScreen {
 	// Dispose:
 	@Override
 	public void dispose() {
+		batch.dispose();
+		logo.dispose();
+		
 		mainStage.dispose();
 		buttonAtlas.dispose();
 		buttonSkin.dispose();
