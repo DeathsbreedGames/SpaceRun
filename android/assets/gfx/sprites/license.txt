@@ -1,6 +1,11 @@
+The following files were created by DeathsbreedGames and are licensed
+with Public Domain (were too insignificant to put license on):
+
+bullets.png
+
 The following files were created by MillionthVector and are licensed
 with a CC-BY license:
 
-sprites.png
+spaceships.png
 	[Changes: images have been rotated, reduced of size, and put into
 	one file.]
