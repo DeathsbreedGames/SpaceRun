@@ -47,7 +47,7 @@ public class MainMenuScreen extends BaseScreen {
 		Gdx.input.setInputProcessor(mainStage);
 		
 		buttonFont = new BitmapFont();
-		buttonFont.scale(0.5f);
+		buttonFont.scale(Gdx.graphics.getHeight() / 960f);
 		
 		TextButtonStyle buttonStyle = new TextButtonStyle();
 		buttonStyle.up = buttonSkin.getDrawable("MainMenu-normal");
@@ -57,7 +57,8 @@ public class MainMenuScreen extends BaseScreen {
 		
 		// Create the TextButtons
 		TextButton playButton = new TextButton("PLAY", buttonStyle);
-		playButton.setPosition(Gdx.graphics.getWidth() / 2 - playButton.getWidth() / 2, 250);
+		playButton.setPosition(Gdx.graphics.getWidth() / 2 - playButton.getWidth() / 2,
+			Gdx.graphics.getHeight() / 2f);
 		mainStage.addActor(playButton);
 		playButton.addListener(new ChangeListener() {
 			public void changed(ChangeEvent e, Actor a) {
@@ -68,7 +69,8 @@ public class MainMenuScreen extends BaseScreen {
 		});
 		
 		TextButton creditsButton = new TextButton("CREDITS", buttonStyle);
-		creditsButton.setPosition(Gdx.graphics.getWidth() / 2 - creditsButton.getWidth() / 2, 200);
+		creditsButton.setPosition(Gdx.graphics.getWidth() / 2 - creditsButton.getWidth() / 2,
+			playButton.getY() - (creditsButton.getHeight() + Gdx.graphics.getHeight() / 48f));
 		mainStage.addActor(creditsButton);
 		creditsButton.addListener(new ChangeListener() {
 			public void changed(ChangeEvent e, Actor a) {
@@ -79,7 +81,8 @@ public class MainMenuScreen extends BaseScreen {
 		});
 		
 		TextButton quitButton = new TextButton("EXIT", buttonStyle);
-		quitButton.setPosition(Gdx.graphics.getWidth() / 2 - quitButton.getWidth() / 2, 150);
+		quitButton.setPosition(Gdx.graphics.getWidth() / 2 - quitButton.getWidth() / 2,
+			creditsButton.getY() - (quitButton.getHeight() + Gdx.graphics.getHeight() / 48f));
 		mainStage.addActor(quitButton);
 		quitButton.addListener(new ChangeListener() {
 			public void changed(ChangeEvent e, Actor a) {
@@ -96,7 +99,9 @@ public class MainMenuScreen extends BaseScreen {
 		
 		// Draw logo
 		batch.begin();
-		batch.draw(logo, Gdx.graphics.getWidth() / 2 - 80, 310, 160, 160);
+		float logoSize = Gdx.graphics.getHeight() / 3f;
+		batch.draw(logo, Gdx.graphics.getWidth() / 2 - logoSize / 2,
+			Gdx.graphics.getHeight() - (logoSize + logoSize / 16), logoSize, logoSize);
 		batch.end();
 		
 		// Update the stage

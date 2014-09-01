@@ -42,9 +42,9 @@ public class CreditsMenuScreen extends BaseScreen {
 		// Setup the credits variables
 		batch = new SpriteBatch();
 		titleFont = new BitmapFont();
-		titleFont.scale(0.75f);
+		titleFont.scale(Gdx.graphics.getHeight() / 640f);
 		textFont = new BitmapFont();
-		textFont.scale(0.1f);
+		textFont.scale(Gdx.graphics.getHeight() / 4800f);
 		
 		// Setup the button variables
 		mainStage = new Stage();
@@ -53,7 +53,7 @@ public class CreditsMenuScreen extends BaseScreen {
 		Gdx.input.setInputProcessor(mainStage);
 		
 		buttonFont = new BitmapFont();
-		buttonFont.scale(0.3f);
+		buttonFont.scale(Gdx.graphics.getHeight() / 1600f);
 		
 		TextButtonStyle buttonStyle = new TextButtonStyle();
 		buttonStyle.up = buttonSkin.getDrawable("MainMenu-normal");
@@ -63,7 +63,8 @@ public class CreditsMenuScreen extends BaseScreen {
 		
 		// Create the fonts
 		TextButton backButton = new TextButton("BACK", buttonStyle);
-		backButton.setPosition(Gdx.graphics.getWidth() / 2 - backButton.getWidth() / 2, 10);
+		backButton.setPosition(Gdx.graphics.getWidth() / 2 - backButton.getWidth() / 2,
+			Gdx.graphics.getHeight() / 48f);
 		mainStage.addActor(backButton);
 		backButton.addListener(new ChangeListener() {
 			public void changed(ChangeEvent e, Actor a) {
@@ -84,28 +85,28 @@ public class CreditsMenuScreen extends BaseScreen {
 		// Draw the credits
 		batch.begin();
 		titleFont.setColor(1f, 0f, 0f, 1f);
-		titleFont.draw(batch, "Credits", 10, 450);
+		titleFont.draw(batch, "Credits", getRelPos(10f), getRelPos(450f));
 		textFont.setColor(1f, 1f, 1f, 1f);
-		textFont.draw(batch, "Programming:", 10, 400);
-		if(mouseCollides(textFont, "DeathsbreedGames", 20f, 380f)) {
+		textFont.draw(batch, "Programming:", getRelPos(10f), getRelPos(400f));
+		if(mouseCollides(textFont, "DeathsbreedGames", getRelPos(20f), getRelPos(380f))) {
 			textFont.setColor(1f, 1f, 0f, 1f);
 			if(mousePressed && !oldMousePressed) Gdx.net.openURI("http://deathsbreedgames.github.io/");
 		} else { textFont.setColor(0f, 0f, 1f, 1f); }
-		textFont.draw(batch, "DeathsbreedGames", 20, 380);
+		textFont.draw(batch, "DeathsbreedGames", getRelPos(20f), getRelPos(380f));
 		textFont.setColor(1f, 1f, 1f, 1f);
-		textFont.draw(batch, "Graphics:", 10, 350);
-		if(mouseCollides(textFont, "MillionthVector", 20f, 330f)) {
+		textFont.draw(batch, "Graphics:", getRelPos(10f), getRelPos(350f));
+		if(mouseCollides(textFont, "MillionthVector", getRelPos(20f), getRelPos(330f))) {
 			textFont.setColor(1f, 1f, 0f, 1f);
 			if(mousePressed && !oldMousePressed) Gdx.net.openURI("http://millionthvector.blogspot.de");
 		} else { textFont.setColor(0f, 0f, 1f, 1f); }
-		textFont.draw(batch, "MillionthVector", 20, 330);
+		textFont.draw(batch, "MillionthVector", getRelPos(20f), getRelPos(330f));
 		textFont.setColor(1f, 1f, 1f, 1f);
-		textFont.draw(batch, "This game is Free Software", 10, 200);
-		if(mouseCollides(textFont, "Fork me on Github!", 10f, 180f)) {
+		textFont.draw(batch, "This game is Free Software", getRelPos(10f), getRelPos(200f));
+		if(mouseCollides(textFont, "Fork me on Github!", getRelPos(10f), getRelPos(180f))) {
 			textFont.setColor(1f, 1f, 0f, 1f);
 			if(mousePressed && !oldMousePressed) Gdx.net.openURI("https://github.com/DeathsbreedGames/SpaceRun");
 		} else { textFont.setColor(0f, 0f, 1f, 1f); }
-		textFont.draw(batch, "Fork me on Github!", 10, 180);
+		textFont.draw(batch, "Fork me on Github!", getRelPos(10f), getRelPos(180f));
 		batch.end();
 		
 		// Draw the button

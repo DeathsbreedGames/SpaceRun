@@ -18,6 +18,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class SplashScreen extends BaseScreen {
 	private SpriteBatch batch;
 	private Texture splash;
+	private float splashWidth;
+	private float splashHeight;
 	
 	private float a;
 	private float timer;
@@ -30,6 +32,8 @@ public class SplashScreen extends BaseScreen {
 		
 		batch = new SpriteBatch();
 		splash = new Texture("gfx/deathsbreedgames/logo.png");
+		splashWidth = (float)Gdx.graphics.getWidth();
+		splashHeight = splashWidth * 2f / 9.5f;
 		
 		a = 0f;
 		timer = 0f;
@@ -58,7 +62,7 @@ public class SplashScreen extends BaseScreen {
 		
 		batch.begin();
 		batch.setColor(1f, 1f, 1f, a);
-		batch.draw(splash, 0f, 204f, 320f, 72f);
+		batch.draw(splash, 0f, Gdx.graphics.getHeight() / 2 - splashHeight / 2, splashWidth, splashHeight);
 		batch.end();
 		
 		boolean mousePressed = Gdx.input.isButtonPressed(Input.Buttons.LEFT);
