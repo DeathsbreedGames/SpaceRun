@@ -99,6 +99,13 @@ public class CreditsMenuScreen extends BaseScreen {
 			if(mousePressed && !oldMousePressed) Gdx.net.openURI("http://millionthvector.blogspot.de");
 		} else { textFont.setColor(0f, 0f, 1f, 1f); }
 		textFont.draw(batch, "MillionthVector", 20, 330);
+		textFont.setColor(1f, 1f, 1f, 1f);
+		textFont.draw(batch, "This game is Free Software", 10, 200);
+		if(mouseCollides(textFont, "Fork me on Github!", 10f, 180f)) {
+			textFont.setColor(1f, 1f, 0f, 1f);
+			if(mousePressed && !oldMousePressed) Gdx.net.openURI("https://github.com/DeathsbreedGames/SpaceRun");
+		} else { textFont.setColor(0f, 0f, 1f, 1f); }
+		textFont.draw(batch, "Fork me on Github!", 10, 180);
 		batch.end();
 		
 		// Draw the button
