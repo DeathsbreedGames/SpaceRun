@@ -1,6 +1,7 @@
 package io.github.deathsbreedgames.spacerun.screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -31,6 +32,8 @@ public class CreditsMenuScreen extends BaseScreen {
 	private TextureAtlas buttonAtlas;
 	private Skin buttonSkin;
 	private BitmapFont buttonFont;
+	
+	private boolean oldMousePressed = false;
 	
 	// Constructor:
 	public CreditsMenuScreen() {
@@ -76,20 +79,46 @@ public class CreditsMenuScreen extends BaseScreen {
 	public void render(float delta) {
 		super.render(delta);
 		
+		boolean mousePressed = Gdx.input.isButtonPressed(Input.Buttons.LEFT);
+		
 		// Draw the credits
 		batch.begin();
 		titleFont.setColor(1f, 0f, 0f, 1f);
 		titleFont.draw(batch, "Credits", 10, 450);
 		textFont.setColor(1f, 1f, 1f, 1f);
 		textFont.draw(batch, "Programming:", 10, 400);
+		if(mouseCollides(textFont, "DeathsbreedGames", 20f, 380f)) {
+			textFont.setColor(1f, 1f, 0f, 1f);
+			if(mousePressed && !oldMousePressed) Gdx.net.openURI("http://deathsbreedgames.github.io/");
+		} else { textFont.setColor(0f, 0f, 1f, 1f); }
 		textFont.draw(batch, "DeathsbreedGames", 20, 380);
+		textFont.setColor(1f, 1f, 1f, 1f);
 		textFont.draw(batch, "Graphics:", 10, 350);
-		textFont.draw(batch, "MillionthVector (spaceships)", 20, 330);
+		if(mouseCollides(textFont, "MillionthVector", 20f, 330f)) {
+			textFont.setColor(1f, 1f, 0f, 1f);
+			if(mousePressed && !oldMousePressed) Gdx.net.openURI("http://millionthvector.blogspot.de");
+		} else { textFont.setColor(0f, 0f, 1f, 1f); }
+		textFont.draw(batch, "MillionthVector", 20, 330);
 		batch.end();
 		
 		// Draw the button
 		mainStage.act();
 		mainStage.draw();
+		
+		oldMousePressed = mousePressed;
+	}
+	
+	private boolean mouseCollides(BitmapFont font, String text, float posX, float posY) {
+		float mouseX = (float)Gdx.input.getX();
+		float mouseY = (float)(Gdx.graphics.getHeight() - Gdx.input.getY());
+		
+		if(mouseX > posX && mouseX < font.getBounds(text).width + posX &&
+			mouseY > posY - font.getBounds(text).height && mouseY < posY) {
+
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 	// Dispose:
