@@ -22,7 +22,7 @@ public class GameScreen extends BaseScreen {
 	
 	private Player player;
 	private Entity[] bullets;
-	private final int NUM_BULLETS = 200;
+	private final int NUM_BULLETS = 100;
 	
 	// Constructor:
 	public GameScreen() {
@@ -58,11 +58,9 @@ public class GameScreen extends BaseScreen {
 		player.render(batch, delta);
 		for(int i = 0; i < NUM_BULLETS; i++) {
 			if(bullets[i] != null) {
-				if(bullets[i].getY() > Gdx.graphics.getHeight() + 50f ||
-				  bullets[i].getY() < -50f) {
+				bullets[i].render(batch, delta);
+				if(bullets[i].getPosY() >= Gdx.graphics.getHeight() || bullets[i].getPosY() <= 0) {
 					bullets[i] = null;
-				} else {
-					bullets[i].render(batch, delta);
 				}
 			}
 		}

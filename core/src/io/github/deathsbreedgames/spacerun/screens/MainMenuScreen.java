@@ -2,7 +2,9 @@ package io.github.deathsbreedgames.spacerun.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -21,6 +23,10 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
  * 
  */
 public class MainMenuScreen extends BaseScreen {
+	// SpaceRun logo variables:
+	private SpriteBatch batch;
+	private Texture logo;
+	
 	// TextButton variables
 	private Stage mainStage;
 	private TextureAtlas buttonAtlas;
@@ -30,6 +36,10 @@ public class MainMenuScreen extends BaseScreen {
 	// Constructor:
 	public MainMenuScreen() {
 		super("Splash");
+		
+		// Setup logo
+		batch = new SpriteBatch();
+		logo = new Texture("gfx/space-run.png");
 		
 		// Setup TextButtonStyle
 		mainStage = new Stage();
@@ -73,6 +83,11 @@ public class MainMenuScreen extends BaseScreen {
 	@Override
 	public void render(float delta) {
 		super.render(delta);
+		
+		// Draw logo
+		batch.begin();
+		batch.draw(logo, Gdx.graphics.getWidth() / 2 - 80, 310, 160, 160);
+		batch.end();
 		
 		// Update the stage
 		mainStage.act();
