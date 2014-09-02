@@ -58,10 +58,4 @@ public class BaseScreen implements Screen {
 	// Setter methods:
 	public void setDone(boolean done) { this.done = done; }
 	public void setNextScreen(String nextScreen) { this.nextScreen = nextScreen; }
-	
-	// normPos is the position on 320x480 screen
-	public float getRelPos(float normPos) {
-		float relPos = Gdx.graphics.getHeight() / (480f / normPos);
-		return relPos;
-	}
 }

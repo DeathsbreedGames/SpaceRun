@@ -12,6 +12,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 
+import io.github.deathsbreedgames.spacerun.ResConv;
+
 /**
  * @author Nicolás A. Ortega
  * @copyright DeathsbreedGames
@@ -42,9 +44,9 @@ public class CreditsMenuScreen extends BaseScreen {
 		// Setup the credits variables
 		batch = new SpriteBatch();
 		titleFont = new BitmapFont();
-		titleFont.scale(Gdx.graphics.getHeight() / 640f);
+		titleFont.scale(ResConv.getRelX(0.75f));
 		textFont = new BitmapFont();
-		textFont.scale(Gdx.graphics.getHeight() / 4800f);
+		textFont.scale(ResConv.getRelX(0.1f));
 		
 		// Setup the button variables
 		mainStage = new Stage();
@@ -53,7 +55,7 @@ public class CreditsMenuScreen extends BaseScreen {
 		Gdx.input.setInputProcessor(mainStage);
 		
 		buttonFont = new BitmapFont();
-		buttonFont.scale(Gdx.graphics.getHeight() / 1600f);
+		buttonFont.scale(ResConv.getRelX(0.3f));
 		
 		TextButtonStyle buttonStyle = new TextButtonStyle();
 		buttonStyle.up = buttonSkin.getDrawable("MainMenu-normal");
@@ -64,7 +66,7 @@ public class CreditsMenuScreen extends BaseScreen {
 		// Create the fonts
 		TextButton backButton = new TextButton("BACK", buttonStyle);
 		backButton.setPosition(Gdx.graphics.getWidth() / 2 - backButton.getWidth() / 2,
-			Gdx.graphics.getHeight() / 48f);
+			ResConv.getRelY(10f));
 		mainStage.addActor(backButton);
 		backButton.addListener(new ChangeListener() {
 			public void changed(ChangeEvent e, Actor a) {
@@ -85,28 +87,28 @@ public class CreditsMenuScreen extends BaseScreen {
 		// Draw the credits
 		batch.begin();
 		titleFont.setColor(1f, 0f, 0f, 1f);
-		titleFont.draw(batch, "Credits", getRelPos(10f), getRelPos(450f));
+		titleFont.draw(batch, "Credits", ResConv.getRelX(10f), ResConv.getRelY(450f));
 		textFont.setColor(1f, 1f, 1f, 1f);
-		textFont.draw(batch, "Programming:", getRelPos(10f), getRelPos(400f));
-		if(mouseCollides(textFont, "DeathsbreedGames", getRelPos(20f), getRelPos(380f))) {
+		textFont.draw(batch, "Programming:", ResConv.getRelX(10f), ResConv.getRelY(400f));
+		if(mouseCollides(textFont, "DeathsbreedGames", ResConv.getRelX(20f), ResConv.getRelY(380f))) {
 			textFont.setColor(1f, 1f, 0f, 1f);
 			if(mousePressed && !oldMousePressed) Gdx.net.openURI("http://deathsbreedgames.github.io/");
 		} else { textFont.setColor(0f, 0f, 1f, 1f); }
-		textFont.draw(batch, "DeathsbreedGames", getRelPos(20f), getRelPos(380f));
+		textFont.draw(batch, "DeathsbreedGames", ResConv.getRelX(20f), ResConv.getRelY(380f));
 		textFont.setColor(1f, 1f, 1f, 1f);
-		textFont.draw(batch, "Graphics:", getRelPos(10f), getRelPos(350f));
-		if(mouseCollides(textFont, "MillionthVector", getRelPos(20f), getRelPos(330f))) {
+		textFont.draw(batch, "Graphics:", ResConv.getRelX(10f), ResConv.getRelY(350f));
+		if(mouseCollides(textFont, "MillionthVector", ResConv.getRelX(20f), ResConv.getRelY(330f))) {
 			textFont.setColor(1f, 1f, 0f, 1f);
 			if(mousePressed && !oldMousePressed) Gdx.net.openURI("http://millionthvector.blogspot.de");
 		} else { textFont.setColor(0f, 0f, 1f, 1f); }
-		textFont.draw(batch, "MillionthVector", getRelPos(20f), getRelPos(330f));
+		textFont.draw(batch, "MillionthVector", ResConv.getRelX(20f), ResConv.getRelY(330f));
 		textFont.setColor(1f, 1f, 1f, 1f);
-		textFont.draw(batch, "This game is Free Software", getRelPos(10f), getRelPos(200f));
-		if(mouseCollides(textFont, "Fork me on Github!", getRelPos(10f), getRelPos(180f))) {
+		textFont.draw(batch, "This game is Free Software", ResConv.getRelX(10f), ResConv.getRelY(200f));
+		if(mouseCollides(textFont, "Fork me on Github!", ResConv.getRelX(10f), ResConv.getRelY(180f))) {
 			textFont.setColor(1f, 1f, 0f, 1f);
 			if(mousePressed && !oldMousePressed) Gdx.net.openURI("https://github.com/DeathsbreedGames/SpaceRun");
 		} else { textFont.setColor(0f, 0f, 1f, 1f); }
-		textFont.draw(batch, "Fork me on Github!", getRelPos(10f), getRelPos(180f));
+		textFont.draw(batch, "Fork me on Github!", ResConv.getRelX(10f), ResConv.getRelY(180f));
 		batch.end();
 		
 		// Draw the button

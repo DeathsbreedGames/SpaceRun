@@ -12,6 +12,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 
+import io.github.deathsbreedgames.spacerun.ResConv;
+
 /**
  * @author Nicolás A. Ortega
  * @copyright DeathsbreedGames
@@ -47,7 +49,7 @@ public class MainMenuScreen extends BaseScreen {
 		Gdx.input.setInputProcessor(mainStage);
 		
 		buttonFont = new BitmapFont();
-		buttonFont.scale(Gdx.graphics.getHeight() / 960f);
+		buttonFont.scale(ResConv.getRelX(0.5f));
 		
 		TextButtonStyle buttonStyle = new TextButtonStyle();
 		buttonStyle.up = buttonSkin.getDrawable("MainMenu-normal");
@@ -58,7 +60,7 @@ public class MainMenuScreen extends BaseScreen {
 		// Create the TextButtons
 		TextButton playButton = new TextButton("PLAY", buttonStyle);
 		playButton.setPosition(Gdx.graphics.getWidth() / 2 - playButton.getWidth() / 2,
-			Gdx.graphics.getHeight() / 2f);
+			ResConv.getRelY(250f));
 		mainStage.addActor(playButton);
 		playButton.addListener(new ChangeListener() {
 			public void changed(ChangeEvent e, Actor a) {
@@ -70,7 +72,7 @@ public class MainMenuScreen extends BaseScreen {
 		
 		TextButton creditsButton = new TextButton("CREDITS", buttonStyle);
 		creditsButton.setPosition(Gdx.graphics.getWidth() / 2 - creditsButton.getWidth() / 2,
-			playButton.getY() - (creditsButton.getHeight() + Gdx.graphics.getHeight() / 48f));
+			ResConv.getRelY(210f));
 		mainStage.addActor(creditsButton);
 		creditsButton.addListener(new ChangeListener() {
 			public void changed(ChangeEvent e, Actor a) {
@@ -82,7 +84,7 @@ public class MainMenuScreen extends BaseScreen {
 		
 		TextButton quitButton = new TextButton("EXIT", buttonStyle);
 		quitButton.setPosition(Gdx.graphics.getWidth() / 2 - quitButton.getWidth() / 2,
-			creditsButton.getY() - (quitButton.getHeight() + Gdx.graphics.getHeight() / 48f));
+			ResConv.getRelY(170f));
 		mainStage.addActor(quitButton);
 		quitButton.addListener(new ChangeListener() {
 			public void changed(ChangeEvent e, Actor a) {
@@ -99,9 +101,9 @@ public class MainMenuScreen extends BaseScreen {
 		
 		// Draw logo
 		batch.begin();
-		float logoSize = Gdx.graphics.getHeight() / 3f;
+		float logoSize = ResConv.getRelX(160f);
 		batch.draw(logo, Gdx.graphics.getWidth() / 2 - logoSize / 2,
-			Gdx.graphics.getHeight() - (logoSize + logoSize / 16), logoSize, logoSize);
+			ResConv.getRelY(310f), logoSize, logoSize);
 		batch.end();
 		
 		// Update the stage
