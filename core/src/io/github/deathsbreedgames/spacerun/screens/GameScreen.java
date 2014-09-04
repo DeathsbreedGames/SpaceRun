@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 
+import io.github.deathsbreedgames.spacerun.GlobalVars;
 import io.github.deathsbreedgames.spacerun.entities.*;
 
 /**
@@ -31,8 +32,9 @@ public class GameScreen extends BaseScreen {
 	public GameScreen() {
 		super("Splash");
 		
-		camera = new OrthographicCamera();
-		camera.setToOrtho(160f, 240f);
+		camera = new OrthographicCamera(GlobalVars.width, GlobalVars.height);
+		camera.position.set(GlobalVars.width / 2, GlobalVars.height / 2, 0f);
+		camera.update();
 		
 		batch = new SpriteBatch();
 		spaceshipAtlas = new TextureAtlas("gfx/sprites/spaceships.pack");
@@ -60,6 +62,8 @@ public class GameScreen extends BaseScreen {
 			}
 		}
 		
+		camera.update();
+		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
 		player.render(batch, delta);
 		for(int i = 0; i < NUM_BULLETS; i++) {

@@ -1,6 +1,7 @@
 package io.github.deathsbreedgames.spacerun.screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -11,8 +12,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.badlogic.gdx.utils.viewport.StretchViewport;
 
-import io.github.deathsbreedgames.spacerun.ResConv;
+import io.github.deathsbreedgames.spacerun.GlobalVars;
 
 /**
  * @author Nicolás A. Ortega
@@ -25,6 +27,7 @@ import io.github.deathsbreedgames.spacerun.ResConv;
  */
 public class MainMenuScreen extends BaseScreen {
 	// SpaceRun logo variables:
+	private OrthographicCamera camera;
 	private SpriteBatch batch;
 	private Texture logo;
 	
@@ -39,17 +42,20 @@ public class MainMenuScreen extends BaseScreen {
 		super("Splash");
 		
 		// Setup logo
+		camera = new OrthographicCamera(GlobalVars.width, GlobalVars.height);
+		camera.position.set(GlobalVars.width / 2, GlobalVars.height / 2, 0f);
+		camera.update();
 		batch = new SpriteBatch();
 		logo = new Texture("gfx/space-run.png");
 		
 		// Setup TextButtonStyle
-		mainStage = new Stage();
+		mainStage = new Stage(new StretchViewport(GlobalVars.width, GlobalVars.height));
 		buttonAtlas = new TextureAtlas("gfx/ui/buttons.pack");
 		buttonSkin = new Skin(buttonAtlas);
 		Gdx.input.setInputProcessor(mainStage);
 		
 		buttonFont = new BitmapFont();
-		buttonFont.scale(ResConv.getRelX(0.5f));
+		buttonFont.scale(0.5f);
 		
 		TextButtonStyle buttonStyle = new TextButtonStyle();
 		buttonStyle.up = buttonSkin.getDrawable("MainMenu-normal");
@@ -59,8 +65,7 @@ public class MainMenuScreen extends BaseScreen {
 		
 		// Create the TextButtons
 		TextButton playButton = new TextButton("PLAY", buttonStyle);
-		playButton.setPosition(Gdx.graphics.getWidth() / 2 - playButton.getWidth() / 2,
-			ResConv.getRelY(250f));
+		playButton.setPosition(GlobalVars.width / 2 - playButton.getWidth() / 2, 250f);
 		mainStage.addActor(playButton);
 		playButton.addListener(new ChangeListener() {
 			public void changed(ChangeEvent e, Actor a) {
@@ -71,8 +76,7 @@ public class MainMenuScreen extends BaseScreen {
 		});
 		
 		TextButton creditsButton = new TextButton("CREDITS", buttonStyle);
-		creditsButton.setPosition(Gdx.graphics.getWidth() / 2 - creditsButton.getWidth() / 2,
-			ResConv.getRelY(210f));
+		creditsButton.setPosition(GlobalVars.width / 2 - creditsButton.getWidth() / 2, 210f);
 		mainStage.addActor(creditsButton);
 		creditsButton.addListener(new ChangeListener() {
 			public void changed(ChangeEvent e, Actor a) {
@@ -83,8 +87,7 @@ public class MainMenuScreen extends BaseScreen {
 		});
 		
 		TextButton quitButton = new TextButton("EXIT", buttonStyle);
-		quitButton.setPosition(Gdx.graphics.getWidth() / 2 - quitButton.getWidth() / 2,
-			ResConv.getRelY(170f));
+		quitButton.setPosition(GlobalVars.width / 2 - quitButton.getWidth() / 2, 170f);
 		mainStage.addActor(quitButton);
 		quitButton.addListener(new ChangeListener() {
 			public void changed(ChangeEvent e, Actor a) {
@@ -100,10 +103,10 @@ public class MainMenuScreen extends BaseScreen {
 		super.render(delta);
 		
 		// Draw logo
+		camera.update();
+		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
-		float logoSize = ResConv.getRelX(160f);
-		batch.draw(logo, Gdx.graphics.getWidth() / 2 - logoSize / 2,
-			ResConv.getRelY(310f), logoSize, logoSize);
+		batch.draw(logo, GlobalVars.width / 2 - 80, 310f, 160f, 160f);
 		batch.end();
 		
 		// Update the stage

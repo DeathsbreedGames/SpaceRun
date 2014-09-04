@@ -4,6 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
+import io.github.deathsbreedgames.spacerun.GlobalVars;
+
 /**
  * @author Nicolás A. Ortega
  * @copyright DeathsbreedGames
@@ -29,10 +31,10 @@ public class Player extends Entity {
 	public void render(SpriteBatch batch, float delta) {
 		this.setVelocity(0f, 0f);
 		
-		if(this.getPosX() != Gdx.input.getX()) {
-			if(this.getPosX() - Gdx.input.getX() > maxVel * delta) this.setVelX(-maxVel);
-			else if(this.getPosX() - Gdx.input.getX() < -maxVel * delta) this.setVelX(maxVel);
-			else this.setPosX(Gdx.input.getX());
+		if(this.getPosX() != GlobalVars.getTouchX()) {
+			if(this.getPosX() - GlobalVars.getTouchX() > maxVel * delta) this.setVelX(-maxVel);
+			else if(this.getPosX() - GlobalVars.getTouchX() < -maxVel * delta) this.setVelX(maxVel);
+			else this.setPosX(GlobalVars.getTouchX());
 		}
 		super.render(batch, delta);
 		
