@@ -31,10 +31,10 @@ public class Player extends Entity {
 	public void render(SpriteBatch batch, float delta) {
 		this.setVelocity(0f, 0f);
 		
-		if(this.getPosX() != getTouchX()) {
-			if(this.getPosX() - getTouchX() > maxVel * delta) this.setVelX(-maxVel);
-			else if(this.getPosX() - getTouchX() < -maxVel * delta) this.setVelX(maxVel);
-			else this.setPosX(getTouchX());
+		if(this.getPosX() != GlobalVars.getTouchX()) {
+			if(this.getPosX() - GlobalVars.getTouchX() > maxVel * delta) this.setVelX(-maxVel);
+			else if(this.getPosX() - GlobalVars.getTouchX() < -maxVel * delta) this.setVelX(maxVel);
+			else this.setPosX(GlobalVars.getTouchX());
 		}
 		super.render(batch, delta);
 		
@@ -45,11 +45,6 @@ public class Player extends Entity {
 		} else if(shoot) {
 			shoot = false;
 		}
-	}
-	
-	public float getTouchX() {
-		float tX = (float)GlobalVars.width / (float)Gdx.graphics.getWidth() * (float)Gdx.input.getX();
-		return tX;
 	}
 	
 	public float getMaxVel() { return maxVel; }

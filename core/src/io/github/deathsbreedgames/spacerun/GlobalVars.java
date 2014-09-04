@@ -1,5 +1,9 @@
 package io.github.deathsbreedgames.spacerun;
 
+import com.badlogic.gdx.Gdx;
+
+import io.github.deathsbreedgames.spacerun.GlobalVars;
+
 /**
  * @author Nicolás A. Ortega
  * @copyright DeathsbreedGames
@@ -13,4 +17,14 @@ package io.github.deathsbreedgames.spacerun;
 public class GlobalVars {
 	public static final int width = 320;
 	public static final int height = 480;
+	
+	public static float getTouchX() {
+		float tX = (float)GlobalVars.width / (float)Gdx.graphics.getWidth() * (float)Gdx.input.getX();
+		return tX;
+	}
+	
+	public static float getTouchY() {
+		float tY = (float)GlobalVars.height / (float)Gdx.graphics.getHeight() * (float)Gdx.input.getY();
+		return tY;
+	}
 }

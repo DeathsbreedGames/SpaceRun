@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 
+import io.github.deathsbreedgames.spacerun.GlobalVars;
 import io.github.deathsbreedgames.spacerun.entities.*;
 
 /**
@@ -31,8 +32,8 @@ public class GameScreen extends BaseScreen {
 	public GameScreen() {
 		super("Splash");
 		
-		camera = new OrthographicCamera(320, 480);
-		camera.position.set(160f, 240f, 0f);
+		camera = new OrthographicCamera(GlobalVars.width, GlobalVars.height);
+		camera.position.set(GlobalVars.width / 2, GlobalVars.height / 2, 0f);
 		camera.update();
 		
 		batch = new SpriteBatch();

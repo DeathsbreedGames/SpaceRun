@@ -2,6 +2,7 @@ package io.github.deathsbreedgames.spacerun.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -11,6 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.badlogic.gdx.utils.viewport.StretchViewport;
 
 import io.github.deathsbreedgames.spacerun.GlobalVars;
 
@@ -25,6 +27,7 @@ import io.github.deathsbreedgames.spacerun.GlobalVars;
  */
 public class CreditsMenuScreen extends BaseScreen {
 	// Credits variables
+	private OrthographicCamera camera;
 	private SpriteBatch batch;
 	private BitmapFont titleFont;
 	private BitmapFont textFont;
@@ -42,6 +45,9 @@ public class CreditsMenuScreen extends BaseScreen {
 		super("MainMenu");
 		
 		// Setup the credits variables
+		camera = new OrthographicCamera(GlobalVars.width, GlobalVars.height);
+		camera.position.set(GlobalVars.width / 2, GlobalVars.height / 2, 0f);
+		camera.update();
 		batch = new SpriteBatch();
 		titleFont = new BitmapFont();
 		titleFont.scale(0.75f);
@@ -49,7 +55,7 @@ public class CreditsMenuScreen extends BaseScreen {
 		textFont.scale(0.1f);
 		
 		// Setup the button variables
-		mainStage = new Stage();
+		mainStage = new Stage(new StretchViewport(GlobalVars.width, GlobalVars.height));
 		buttonAtlas = new TextureAtlas("gfx/ui/buttons.pack");
 		buttonSkin = new Skin(buttonAtlas);
 		Gdx.input.setInputProcessor(mainStage);
@@ -84,6 +90,8 @@ public class CreditsMenuScreen extends BaseScreen {
 		boolean mousePressed = Gdx.input.isButtonPressed(Input.Buttons.LEFT);
 		
 		// Draw the credits
+		camera.update();
+		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
 		titleFont.setColor(1f, 0f, 0f, 1f);
 		titleFont.draw(batch, "Credits", 10f, 450f);
@@ -118,8 +126,8 @@ public class CreditsMenuScreen extends BaseScreen {
 	}
 	
 	private boolean mouseCollides(BitmapFont font, String text, float posX, float posY) {
-		float mouseX = (float)Gdx.input.getX();
-		float mouseY = (float)(Gdx.graphics.getHeight() - Gdx.input.getY());
+		float mouseX = GlobalVars.getTouchX();
+		float mouseY = (float)GlobalVars.height - GlobalVars.getTouchY();
 		
 		if(mouseX > posX && mouseX < font.getBounds(text).width + posX &&
 			mouseY > posY - font.getBounds(text).height && mouseY < posY) {

@@ -1,6 +1,7 @@
 package io.github.deathsbreedgames.spacerun.screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -11,6 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.badlogic.gdx.utils.viewport.StretchViewport;
 
 import io.github.deathsbreedgames.spacerun.GlobalVars;
 
@@ -25,6 +27,7 @@ import io.github.deathsbreedgames.spacerun.GlobalVars;
  */
 public class MainMenuScreen extends BaseScreen {
 	// SpaceRun logo variables:
+	private OrthographicCamera camera;
 	private SpriteBatch batch;
 	private Texture logo;
 	
@@ -39,11 +42,14 @@ public class MainMenuScreen extends BaseScreen {
 		super("Splash");
 		
 		// Setup logo
+		camera = new OrthographicCamera(GlobalVars.width, GlobalVars.height);
+		camera.position.set(GlobalVars.width / 2, GlobalVars.height / 2, 0f);
+		camera.update();
 		batch = new SpriteBatch();
 		logo = new Texture("gfx/space-run.png");
 		
 		// Setup TextButtonStyle
-		mainStage = new Stage();
+		mainStage = new Stage(new StretchViewport(GlobalVars.width, GlobalVars.height));
 		buttonAtlas = new TextureAtlas("gfx/ui/buttons.pack");
 		buttonSkin = new Skin(buttonAtlas);
 		Gdx.input.setInputProcessor(mainStage);
@@ -97,6 +103,8 @@ public class MainMenuScreen extends BaseScreen {
 		super.render(delta);
 		
 		// Draw logo
+		camera.update();
+		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
 		batch.draw(logo, GlobalVars.width / 2 - 80, 310f, 160f, 160f);
 		batch.end();
