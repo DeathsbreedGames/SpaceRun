@@ -31,8 +31,8 @@ public class GameScreen extends BaseScreen {
 	public GameScreen() {
 		super("Splash");
 		
-		camera = new OrthographicCamera();
-		camera.setToOrtho(160f, 240f);
+		camera = new OrthographicCamera(320, 480);
+		camera.translate(160f, 240f);
 		
 		batch = new SpriteBatch();
 		spaceshipAtlas = new TextureAtlas("gfx/sprites/spaceships.pack");
