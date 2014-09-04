@@ -32,7 +32,8 @@ public class GameScreen extends BaseScreen {
 		super("Splash");
 		
 		camera = new OrthographicCamera(320, 480);
-		camera.translate(160f, 240f);
+		camera.position.set(160f, 240f, 0f);
+		camera.update();
 		
 		batch = new SpriteBatch();
 		spaceshipAtlas = new TextureAtlas("gfx/sprites/spaceships.pack");
@@ -60,6 +61,8 @@ public class GameScreen extends BaseScreen {
 			}
 		}
 		
+		camera.update();
+		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
 		player.render(batch, delta);
 		for(int i = 0; i < NUM_BULLETS; i++) {

@@ -12,7 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 
-import io.github.deathsbreedgames.spacerun.ResConv;
+import io.github.deathsbreedgames.spacerun.GlobalVars;
 
 /**
  * @author Nicolás A. Ortega
@@ -49,7 +49,8 @@ public class MainMenuScreen extends BaseScreen {
 		Gdx.input.setInputProcessor(mainStage);
 		
 		buttonFont = new BitmapFont();
-		buttonFont.scale(ResConv.getRelX(0.5f));
+		//buttonFont.scale(ResConv.getRelX(0.5f));
+		buttonFont.scale(0.5f);
 		
 		TextButtonStyle buttonStyle = new TextButtonStyle();
 		buttonStyle.up = buttonSkin.getDrawable("MainMenu-normal");
@@ -59,8 +60,8 @@ public class MainMenuScreen extends BaseScreen {
 		
 		// Create the TextButtons
 		TextButton playButton = new TextButton("PLAY", buttonStyle);
-		playButton.setPosition(Gdx.graphics.getWidth() / 2 - playButton.getWidth() / 2,
-			ResConv.getRelY(250f));
+		//playButton.setPosition(Gdx.graphics.getWidth() / 2 - playButton.getWidth() / 2, ResConv.getRelY(250f));
+		playButton.setPosition(GlobalVars.width / 2 - playButton.getWidth() / 2, 250f);
 		mainStage.addActor(playButton);
 		playButton.addListener(new ChangeListener() {
 			public void changed(ChangeEvent e, Actor a) {
@@ -71,8 +72,8 @@ public class MainMenuScreen extends BaseScreen {
 		});
 		
 		TextButton creditsButton = new TextButton("CREDITS", buttonStyle);
-		creditsButton.setPosition(Gdx.graphics.getWidth() / 2 - creditsButton.getWidth() / 2,
-			ResConv.getRelY(210f));
+		//creditsButton.setPosition(Gdx.graphics.getWidth() / 2 - creditsButton.getWidth() / 2, ResConv.getRelY(210f));
+		creditsButton.setPosition(GlobalVars.width / 2 - creditsButton.getWidth() / 2, 210f);
 		mainStage.addActor(creditsButton);
 		creditsButton.addListener(new ChangeListener() {
 			public void changed(ChangeEvent e, Actor a) {
@@ -83,8 +84,8 @@ public class MainMenuScreen extends BaseScreen {
 		});
 		
 		TextButton quitButton = new TextButton("EXIT", buttonStyle);
-		quitButton.setPosition(Gdx.graphics.getWidth() / 2 - quitButton.getWidth() / 2,
-			ResConv.getRelY(170f));
+		//quitButton.setPosition(Gdx.graphics.getWidth() / 2 - quitButton.getWidth() / 2, ResConv.getRelY(170f));
+		quitButton.setPosition(GlobalVars.width / 2 - quitButton.getWidth() / 2, 170f);
 		mainStage.addActor(quitButton);
 		quitButton.addListener(new ChangeListener() {
 			public void changed(ChangeEvent e, Actor a) {
@@ -101,9 +102,9 @@ public class MainMenuScreen extends BaseScreen {
 		
 		// Draw logo
 		batch.begin();
-		float logoSize = ResConv.getRelX(160f);
-		batch.draw(logo, Gdx.graphics.getWidth() / 2 - logoSize / 2,
-			ResConv.getRelY(310f), logoSize, logoSize);
+		//float logoSize = ResConv.getRelX(160f);
+		//batch.draw(logo, Gdx.graphics.getWidth() / 2 - logoSize / 2, ResConv.getRelY(310f), logoSize, logoSize);
+		batch.draw(logo, GlobalVars.width / 2 - 80, 310f, 160f, 160f);
 		batch.end();
 		
 		// Update the stage
