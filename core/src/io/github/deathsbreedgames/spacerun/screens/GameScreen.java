@@ -1,6 +1,7 @@
 package io.github.deathsbreedgames.spacerun.screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 
@@ -16,6 +17,8 @@ import io.github.deathsbreedgames.spacerun.entities.*;
  * 
  */
 public class GameScreen extends BaseScreen {
+	private OrthographicCamera camera;
+	
 	private SpriteBatch batch;
 	private TextureAtlas spaceshipAtlas;
 	private TextureAtlas bulletAtlas;
@@ -27,6 +30,9 @@ public class GameScreen extends BaseScreen {
 	// Constructor:
 	public GameScreen() {
 		super("Splash");
+		
+		camera = new OrthographicCamera();
+		camera.setToOrtho(160f, 240f);
 		
 		batch = new SpriteBatch();
 		spaceshipAtlas = new TextureAtlas("gfx/sprites/spaceships.pack");
