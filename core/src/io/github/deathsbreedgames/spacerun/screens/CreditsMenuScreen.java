@@ -95,6 +95,7 @@ public class CreditsMenuScreen extends BaseScreen {
 		batch.begin();
 		titleFont.setColor(1f, 0f, 0f, 1f);
 		titleFont.draw(batch, "Credits", 10f, 450f);
+		
 		textFont.setColor(1f, 1f, 1f, 1f);
 		textFont.draw(batch, "Programming:", 10f, 400f);
 		if(mouseCollides(textFont, "DeathsbreedGames", 20f, 380f)) {
@@ -102,6 +103,7 @@ public class CreditsMenuScreen extends BaseScreen {
 			if(mousePressed && !oldMousePressed) Gdx.net.openURI("http://deathsbreedgames.github.io/");
 		} else { textFont.setColor(0f, 0f, 1f, 1f); }
 		textFont.draw(batch, "DeathsbreedGames", 20f, 380f);
+		
 		textFont.setColor(1f, 1f, 1f, 1f);
 		textFont.draw(batch, "Graphics:", 10f, 350f);
 		if(mouseCollides(textFont, "MillionthVector", 20f, 330f)) {
@@ -109,6 +111,15 @@ public class CreditsMenuScreen extends BaseScreen {
 			if(mousePressed && !oldMousePressed) Gdx.net.openURI("http://millionthvector.blogspot.de");
 		} else { textFont.setColor(0f, 0f, 1f, 1f); }
 		textFont.draw(batch, "MillionthVector", 20f, 330f);
+		
+		textFont.setColor(1f, 1f, 1f, 1f);
+		textFont.draw(batch, "Sound Effects:", 10f, 300f);
+		if(mouseCollides(textFont, "dklon", 20f, 280f)) {
+			textFont.setColor(1f, 1f, 0f, 1f);
+			if(mousePressed && !oldMousePressed) Gdx.net.openURI("http://opengameart.org/users/dklon");
+		} else {textFont.setColor(0f, 0f, 1f, 1f); }
+		textFont.draw(batch, "dklon", 20f, 280f);
+		
 		textFont.setColor(1f, 1f, 1f, 1f);
 		textFont.draw(batch, "This game is Free Software", 10f, 200f);
 		if(mouseCollides(textFont, "Fork me on Github!", 10f, 180f)) {
