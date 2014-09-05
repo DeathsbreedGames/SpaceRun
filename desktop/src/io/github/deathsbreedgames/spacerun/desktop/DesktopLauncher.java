@@ -9,8 +9,8 @@ public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		config.title = "Space Run";
-		config.width = 600;
-		config.height = 900;
+		config.width = 320;
+		config.height = 480;
 		config.foregroundFPS = 45;
 		config.backgroundFPS = 20;
 		config.addIcon("gfx/icon.png", Files.FileType.Internal);
