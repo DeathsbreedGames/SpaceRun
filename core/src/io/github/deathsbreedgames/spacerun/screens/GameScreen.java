@@ -1,6 +1,7 @@
 package io.github.deathsbreedgames.spacerun.screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -28,6 +29,8 @@ public class GameScreen extends BaseScreen {
 	private Entity[] bullets;
 	private final int NUM_BULLETS = 100;
 	
+	private Sound laserShot;
+	
 	// Constructor:
 	public GameScreen() {
 		super("Splash");
@@ -43,6 +46,8 @@ public class GameScreen extends BaseScreen {
 		player = new Player(spaceshipAtlas.findRegion("bluedestroyer"), 160, 50);
 		bullets = new Entity[NUM_BULLETS];
 		for(int i = 0; i < NUM_BULLETS; i++) { bullets[i] = null; }
+		
+		laserShot = Gdx.audio.newSound(Gdx.files.internal("sfx/laser5.mp3"));
 	}
 	
 	// Update:
@@ -55,8 +60,9 @@ public class GameScreen extends BaseScreen {
 			for(int i = 0; i < NUM_BULLETS; i++) {
 				if(bullets[i] == null) {
 					bullets[i] = new Entity(bulletAtlas.findRegion("NormalBullet-red"),
-					  player.getPosX(), player.getPosY() + 35);
+						player.getPosX(), player.getPosY() + 35);
 					bullets[i].setVelY(600f);
+					laserShot.play();
 					break bulletLoop;
 				}
 			}
