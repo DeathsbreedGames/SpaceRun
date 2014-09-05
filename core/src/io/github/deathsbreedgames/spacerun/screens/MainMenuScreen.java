@@ -70,7 +70,7 @@ public class MainMenuScreen extends BaseScreen {
 		playButton.addListener(new ChangeListener() {
 			public void changed(ChangeEvent e, Actor a) {
 				// Change to the Game
-				setNextScreen("Game");
+				setNextScreen("ShipSelect");
 				setDone(true);
 			}
 		});
