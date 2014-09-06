@@ -57,3 +57,10 @@ CheckedButton
   orig: 36, 36
   offset: 0, 0
   index: -1
+ExitButton
+  rotate: false
+  xy: 169, 46
+  size: 18, 16
+  orig: 18, 16
+  offset: 0, 0
+  index: -1

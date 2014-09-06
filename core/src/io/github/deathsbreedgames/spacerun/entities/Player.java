@@ -21,6 +21,8 @@ public class Player extends Entity {
 	private float maxDef;
 	private float maxVel;
 	
+	private float shields;
+	
 	// Shooting variables
 	private float shootTime = 0.5f;
 	private float shootTimer = 0f;
@@ -32,6 +34,7 @@ public class Player extends Entity {
 		this.maxAtk = maxAtk;
 		this.maxDef = maxDef;
 		this.maxVel = maxVel;
+		this.shields = maxDef;
 	}
 	
 	// Update:
@@ -57,10 +60,13 @@ public class Player extends Entity {
 	public float getMaxAtk() { return maxAtk; }
 	public float getMaxDef() { return maxDef; }
 	public float getMaxVel() { return maxVel; }
+	public float getShields() { return shields; }
 	public float getShootTime() { return shootTime; }
 	
 	public void setMaxAtk(float maxAtk) { this.maxAtk = maxAtk; }
 	public void setMaxDef(float maxDef) { this.maxDef = maxDef; }
 	public void setMaxVel(float maxVel) { this.maxVel = maxVel; }
+	public void setShields(float shields) { this.shields = shields; }
+	public void incShields(float iShields) { this.shields += iShields; }
 	public void setShootTime(float shootTime) { this.shootTime = shootTime; }
 }

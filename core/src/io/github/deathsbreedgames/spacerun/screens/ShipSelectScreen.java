@@ -160,6 +160,7 @@ public class ShipSelectScreen extends BaseScreen {
 	public void dispose() {
 		batch.dispose();
 		shipAtlas.dispose();
+		statFont.dispose();
 		
 		mainStage.dispose();
 		buttonAtlas.dispose();

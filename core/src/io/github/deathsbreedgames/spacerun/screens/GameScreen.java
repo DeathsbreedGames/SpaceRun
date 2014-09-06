@@ -5,6 +5,13 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton.ImageButtonStyle;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.badlogic.gdx.utils.viewport.StretchViewport;
 
 import io.github.deathsbreedgames.spacerun.GlobalVars;
 import io.github.deathsbreedgames.spacerun.entities.*;
@@ -19,8 +26,11 @@ import io.github.deathsbreedgames.spacerun.entities.*;
  * 
  */
 public class GameScreen extends BaseScreen {
-	private OrthographicCamera camera;
+	private Stage mainStage;
+	private TextureAtlas buttonAtlas;
+	private Skin buttonSkin;
 	
+	private OrthographicCamera camera;
 	private SpriteBatch batch;
 	private TextureAtlas spaceshipAtlas;
 	private TextureAtlas bulletAtlas;
@@ -35,6 +45,25 @@ public class GameScreen extends BaseScreen {
 	public GameScreen() {
 		super("Splash");
 		
+		mainStage = new Stage(new StretchViewport(GlobalVars.width, GlobalVars.height));
+		buttonAtlas = new TextureAtlas("gfx/ui/buttons.pack");
+		buttonSkin = new Skin(buttonAtlas);
+		Gdx.input.setInputProcessor(mainStage);
+		
+		ImageButtonStyle imgBtnStyle = new ImageButtonStyle();
+		imgBtnStyle.imageUp = buttonSkin.getDrawable("ExitButton");
+		
+		ImageButton exitButton = new ImageButton(imgBtnStyle);
+		exitButton.setPosition(GlobalVars.width - (exitButton.getWidth() + 5f), GlobalVars.height - (exitButton.getHeight() + 5f));
+		mainStage.addActor(exitButton);
+		exitButton.addListener(new ChangeListener() {
+			public void changed(ChangeEvent e, Actor a) {
+				setNextScreen("MainMenu");
+				setDone(true);
+			}
+		});
+		
+		// Setup entities
 		camera = new OrthographicCamera(GlobalVars.width, GlobalVars.height);
 		camera.position.set(GlobalVars.width / 2, GlobalVars.height / 2, 0f);
 		camera.update();
@@ -87,11 +116,18 @@ public class GameScreen extends BaseScreen {
 			}
 		}
 		batch.end();
+		
+		mainStage.act();
+		mainStage.draw();
 	}
 	
 	// Dispose:
 	@Override
 	public void dispose() {
+		mainStage.dispose();
+		buttonAtlas.dispose();
+		buttonSkin.dispose();
+		
 		batch.dispose();
 		spaceshipAtlas.dispose();
 		bulletAtlas.dispose();
