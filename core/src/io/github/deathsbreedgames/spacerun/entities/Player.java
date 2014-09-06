@@ -17,7 +17,9 @@ import io.github.deathsbreedgames.spacerun.GlobalVars;
  * 
  */
 public class Player extends Entity {
-	private float maxVel = 350f;
+	private float maxAtk;
+	private float maxDef;
+	private float maxVel;
 	
 	// Shooting variables
 	private float shootTime = 0.5f;
@@ -25,7 +27,12 @@ public class Player extends Entity {
 	public boolean shoot = false;
 	
 	// Constructor:
-	public Player(TextureRegion img, float x, float y) { super(img, x, y); }
+	public Player(TextureRegion img, float x, float y, float maxAtk, float maxDef, float maxVel) {
+		super(img, x, y);
+		this.maxAtk = maxAtk;
+		this.maxDef = maxDef;
+		this.maxVel = maxVel;
+	}
 	
 	// Update:
 	public void render(SpriteBatch batch, float delta) {
@@ -47,9 +54,13 @@ public class Player extends Entity {
 		}
 	}
 	
+	public float getMaxAtk() { return maxAtk; }
+	public float getMaxDef() { return maxDef; }
 	public float getMaxVel() { return maxVel; }
 	public float getShootTime() { return shootTime; }
 	
+	public void setMaxAtk(float maxAtk) { this.maxAtk = maxAtk; }
+	public void setMaxDef(float maxDef) { this.maxDef = maxDef; }
 	public void setMaxVel(float maxVel) { this.maxVel = maxVel; }
 	public void setShootTime(float shootTime) { this.shootTime = shootTime; }
 }
