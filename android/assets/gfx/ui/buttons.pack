@@ -5,7 +5,7 @@ filter: Nearest,Nearest
 repeat: none
 MainMenu-normal
   rotate: false
-  xy: 0, 109
+  xy: 0, 102
   size: 169, 32
   split: 15, 15, 2, 2
   orig: 169, 32
@@ -13,7 +13,7 @@ MainMenu-normal
   index: -1
 MainMenu-down
   rotate: false
-  xy: 0, 75
+  xy: 0, 70
   size: 169, 32
   split: 15, 15, 0, 32
   orig: 169, 32
@@ -21,7 +21,7 @@ MainMenu-down
   index: -1
 MainMenu-hover
   rotate: false
-  xy: 0, 41
+  xy: 0, 38
   size: 169, 32
   split: 15, 15, 2, 2
   orig: 169, 32
@@ -29,7 +29,7 @@ MainMenu-hover
   index: -1
 Switch-off
   rotate: false
-  xy: 0, 1
+  xy: 0, 0
   size: 78, 38
   split: 40, 17, 3, 3
   orig: 78, 38
@@ -37,9 +37,23 @@ Switch-off
   index: -1
 Switch-on
   rotate: false
-  xy: 78, 1
+  xy: 78, 0
   size: 78, 38
   split: 41, 17, 3, 3
   orig: 78, 38
+  offset: 0, 0
+  index: -1
+UncheckedButton
+  rotate: false
+  xy: 169, 98
+  size: 36, 36
+  orig: 36, 36
+  offset: 0, 0
+  index: -1
+CheckedButton
+  rotate: false
+  xy: 169, 62
+  size: 36, 36
+  orig: 36, 36
   offset: 0, 0
   index: -1

@@ -18,6 +18,8 @@ public class GlobalVars {
 	public static final int width = 320;
 	public static final int height = 480;
 	
+	public static int ship = 0;
+	
 	public static float getTouchX() {
 		float tX = (float)GlobalVars.width / (float)Gdx.graphics.getWidth() * (float)Gdx.input.getX();
 		return tX;
