@@ -131,5 +131,7 @@ public class GameScreen extends BaseScreen {
 		batch.dispose();
 		spaceshipAtlas.dispose();
 		bulletAtlas.dispose();
+		
+		laserShot.dispose();
 	}
 }
