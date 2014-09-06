@@ -127,6 +127,9 @@ public class CreditsMenuScreen extends BaseScreen {
 			if(mousePressed && !oldMousePressed) Gdx.net.openURI("https://github.com/DeathsbreedGames/SpaceRun");
 		} else { textFont.setColor(0f, 0f, 1f, 1f); }
 		textFont.draw(batch, "Fork me on Github!", 10f, 180f);
+		
+		textFont.setColor(1f, 1f, 1f, 1f);
+		textFont.draw(batch, "v0.1", 285f, 470f);
 		batch.end();
 		
 		// Draw the button
