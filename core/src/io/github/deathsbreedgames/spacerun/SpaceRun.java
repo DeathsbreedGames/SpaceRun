@@ -22,10 +22,6 @@ public class SpaceRun extends Game {
 	public void create () {
 		setScreen(new SplashScreen());
 		Preferences prefs = Gdx.app.getPreferences("SpaceRun");
-		if(prefs.get() == null) {
-			prefs.putInteger("HighScore", 0);
-			prefs.flush();
-		}
 		GlobalVars.highScore = prefs.getInteger("HighScore");
 	}
 	
