@@ -39,6 +39,8 @@ public class GameScreen extends BaseScreen {
 	private BitmapFont font;
 	
 	private Player player;
+	private Enemy[] enemies;
+	private final int NUM_ENEMIES = 30;
 	private Bullet[] bullets;
 	private final int NUM_BULLETS = 100;
 	
@@ -84,6 +86,8 @@ public class GameScreen extends BaseScreen {
 		} else {
 			player = new Player(spaceshipAtlas.findRegion("bluecruiser"), 160, 50, "greenlaser", 200, 500, 0.5f);
 		}
+		enemies = new Enemy[NUM_ENEMIES];
+		for(int i = 0; i < NUM_ENEMIES; i++) { enemies[i] = null; }
 		bullets = new Bullet[NUM_BULLETS];
 		for(int i = 0; i < NUM_BULLETS; i++) { bullets[i] = null; }
 		
