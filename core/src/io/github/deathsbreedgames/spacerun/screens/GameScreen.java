@@ -3,6 +3,7 @@ package io.github.deathsbreedgames.spacerun.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -34,6 +35,7 @@ public class GameScreen extends BaseScreen {
 	private SpriteBatch batch;
 	private TextureAtlas spaceshipAtlas;
 	private TextureAtlas bulletAtlas;
+	private BitmapFont font;
 	
 	private Player player;
 	private Entity[] bullets;
@@ -71,6 +73,8 @@ public class GameScreen extends BaseScreen {
 		batch = new SpriteBatch();
 		spaceshipAtlas = new TextureAtlas("gfx/sprites/spaceships.pack");
 		bulletAtlas = new TextureAtlas("gfx/sprites/bullets.pack");
+		font = new BitmapFont();
+		font.scale(0.01f);
 		
 		if(GlobalVars.ship == 0) {
 			player = new Player(spaceshipAtlas.findRegion("bluedestroyer"), 160, 50, 50, 100, 250);
@@ -115,6 +119,7 @@ public class GameScreen extends BaseScreen {
 				}
 			}
 		}
+		font.draw(batch, "Shields: " + player.getShields(), 10, 470);
 		batch.end();
 		
 		mainStage.act();

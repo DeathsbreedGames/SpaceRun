@@ -17,11 +17,11 @@ import io.github.deathsbreedgames.spacerun.GlobalVars;
  * 
  */
 public class Player extends Entity {
-	private float maxAtk;
-	private float maxDef;
+	private int maxAtk;
+	private int maxDef;
 	private float maxVel;
 	
-	private float shields;
+	private int shields;
 	
 	// Shooting variables
 	private float shootTime = 0.5f;
@@ -29,7 +29,7 @@ public class Player extends Entity {
 	public boolean shoot = false;
 	
 	// Constructor:
-	public Player(TextureRegion img, float x, float y, float maxAtk, float maxDef, float maxVel) {
+	public Player(TextureRegion img, float x, float y, int maxAtk, int maxDef, float maxVel) {
 		super(img, x, y);
 		this.maxAtk = maxAtk;
 		this.maxDef = maxDef;
@@ -57,16 +57,16 @@ public class Player extends Entity {
 		}
 	}
 	
-	public float getMaxAtk() { return maxAtk; }
-	public float getMaxDef() { return maxDef; }
+	public int getMaxAtk() { return maxAtk; }
+	public int getMaxDef() { return maxDef; }
 	public float getMaxVel() { return maxVel; }
-	public float getShields() { return shields; }
+	public int getShields() { return shields; }
 	public float getShootTime() { return shootTime; }
 	
-	public void setMaxAtk(float maxAtk) { this.maxAtk = maxAtk; }
-	public void setMaxDef(float maxDef) { this.maxDef = maxDef; }
+	public void setMaxAtk(int maxAtk) { this.maxAtk = maxAtk; }
+	public void setMaxDef(int maxDef) { this.maxDef = maxDef; }
 	public void setMaxVel(float maxVel) { this.maxVel = maxVel; }
-	public void setShields(float shields) { this.shields = shields; }
-	public void incShields(float iShields) { this.shields += iShields; }
+	public void setShields(int shields) { this.shields = shields; }
+	public void incShields(int iShields) { this.shields += iShields; }
 	public void setShootTime(float shootTime) { this.shootTime = shootTime; }
 }
