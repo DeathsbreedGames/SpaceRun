@@ -17,7 +17,7 @@ import io.github.deathsbreedgames.spacerun.GlobalVars;
  * 
  */
 public class Player extends Entity {
-	private int maxAtk;
+	private int atk;
 	private int maxDef;
 	private float maxVel;
 	
@@ -29,9 +29,9 @@ public class Player extends Entity {
 	public boolean shoot;
 	
 	// Constructor:
-	public Player(TextureRegion img, float x, float y, int maxAtk, int maxDef, float maxVel) {
+	public Player(TextureRegion img, float x, float y, int atk, int maxDef, float maxVel) {
 		super(img, x, y);
-		this.maxAtk = maxAtk;
+		this.atk = atk;
 		this.maxDef = maxDef;
 		this.maxVel = maxVel;
 		this.shields = maxDef;
@@ -62,13 +62,15 @@ public class Player extends Entity {
 		}
 	}
 	
-	public int getMaxAtk() { return maxAtk; }
+	// Getter methods:
+	public int getAtk() { return atk; }
 	public int getMaxDef() { return maxDef; }
 	public float getMaxVel() { return maxVel; }
 	public int getShields() { return shields; }
 	public float getShootTime() { return shootTime; }
 	
-	public void setMaxAtk(int maxAtk) { this.maxAtk = maxAtk; }
+	// Setter methods:
+	public void setAtk(int atk) { this.atk = atk; }
 	public void setMaxDef(int maxDef) { this.maxDef = maxDef; }
 	public void setMaxVel(float maxVel) { this.maxVel = maxVel; }
 	public void setShields(int shields) { this.shields = shields; }

@@ -14,11 +14,12 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
  * 
  */
 public class Bullet extends Entity {
-	private int atk;
+	private int dmg;
 	
 	// Constructor:
-	public Bullet(TextureRegion img, float x, float y, int atk) {
+	public Bullet(TextureRegion img, float x, float y, int dmg) {
 		super(img, x, y);
+		this.dmg = dmg;
 	}
 	
 	// Update:
@@ -28,8 +29,8 @@ public class Bullet extends Entity {
 	}
 	
 	// Getter methods:
-	public int getAtk() { return atk; }
+	public int getDmg() { return dmg; }
 	
 	// Setter methods:
-	public void setAtk(int atk) { this.atk = atk; }
+	public void setDmg(int atk) { this.dmg = dmg; }
 }

@@ -38,7 +38,7 @@ public class GameScreen extends BaseScreen {
 	private BitmapFont font;
 	
 	private Player player;
-	private Entity[] bullets;
+	private Bullet[] bullets;
 	private final int NUM_BULLETS = 100;
 	
 	private Sound laserShot;
@@ -83,7 +83,7 @@ public class GameScreen extends BaseScreen {
 		} else {
 			player = new Player(spaceshipAtlas.findRegion("bluecruiser"), 160, 50, 25, 100, 500);
 		}
-		bullets = new Entity[NUM_BULLETS];
+		bullets = new Bullet[NUM_BULLETS];
 		for(int i = 0; i < NUM_BULLETS; i++) { bullets[i] = null; }
 		
 		laserShot = Gdx.audio.newSound(Gdx.files.internal("sfx/laser5.mp3"));
@@ -98,8 +98,8 @@ public class GameScreen extends BaseScreen {
 			bulletLoop:
 			for(int i = 0; i < NUM_BULLETS; i++) {
 				if(bullets[i] == null) {
-					bullets[i] = new Entity(bulletAtlas.findRegion("NormalBullet-red"),
-						player.getPosX(), player.getPosY() + 35);
+					bullets[i] = new Bullet(bulletAtlas.findRegion("NormalBullet-red"),
+						player.getPosX(), player.getPosY() + 35, player.getAtk());
 					bullets[i].setVelY(600f);
 					laserShot.play();
 					break bulletLoop;
