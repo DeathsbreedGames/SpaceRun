@@ -103,7 +103,6 @@ public class GameScreen extends BaseScreen {
 						player.getPosY() + 35, getDmg());
 					bullets[i].setVelY(600f);
 					laserShot.play();
-					System.out.println("Created a bullet");
 					break bulletLoop;
 				}
 			}
