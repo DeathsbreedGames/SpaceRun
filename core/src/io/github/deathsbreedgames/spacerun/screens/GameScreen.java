@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.RandomXS128;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -118,6 +119,9 @@ public class GameScreen extends BaseScreen {
 			}
 		}
 		
+		currentMaxEnemies = MathUtils.ceil(player.getScore() / 100f);
+		if(currentMaxEnemies > NUM_ENEMIES) currentMaxEnemies = NUM_ENEMIES;
+		else if(currentMaxEnemies == 0) currentMaxEnemies = 1;
 		// Create enemies
 		if(currentEnemies < currentMaxEnemies) {
 			enemyLoop:
