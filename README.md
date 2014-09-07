@@ -6,7 +6,7 @@ This is DeathsbreedGame's first attempt at creating a casual mobile game. It wil
 ### Compiling
 To compile the source-code please refer to the [libGDX build documentation](https://github.com/libgdx/libgdx/wiki/Gradle-on-the-Commandline).
 
-### Contribution
+### Contributing
 To contribute to the project simply create a pull request with your contribution to the code, and (if you wish) add your name/alias to __@author__ tag at the beginning of the Java file. Just remember that your code will be licensed with the GNU Affero GPLv3 license like the rest of the project's source-code.
 
 ### License
