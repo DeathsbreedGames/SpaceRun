@@ -1,0 +1,70 @@
+package io.github.deathsbreedgames.spacerun.entities;
+
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+
+/**
+ * @author Nicolás A. Ortega
+ * @copyright DeathsbreedGames
+ * @license GNU Affero GPLv3
+ * @year 2014
+ * 
+ * Description: This class contains the variables used in all ships in
+ * the game.
+ * 
+ */
+public class Ship extends Entity {
+	private String weapon;
+	private int maxShield;
+	private int shields;
+	private float maxVel;
+	
+	private float shootTime;
+	private float shootTimer;
+	public boolean shoot;
+	
+	// Constructor:
+	public Ship(TextureRegion img, float x, float y, String weapon, int maxShield, float maxVel, float shootTime) {
+		super(img, x, y);
+		this.weapon = weapon;
+		this.maxShield = maxShield;
+		this.shields = maxShield;
+		this.maxVel = maxVel;
+		
+		this.shootTime = shootTime;
+		shootTimer = 0f;
+		shoot = false;
+	}
+	
+	// Update:
+	@Override
+	public void render(SpriteBatch batch, float delta) {
+		super.render(batch, delta);
+		
+		shootTimer += delta;
+		if(!shoot && shootTimer >= shootTime) {
+			shoot = true;
+			shootTimer = 0f;
+		} else if(shoot) {
+			shoot = false;
+		}
+	}
+	
+	// Getter methods:
+	public String getWeapon() { return weapon; }
+	public int getMaxShield() { return maxShield; }
+	public int getShields() { return shields; }
+	public float getMaxVel() { return maxVel; }
+	public float getShootTime() { return shootTime; }
+	public float getShootTimer() { return shootTimer; }
+	
+	// Setter methods:
+	public void setWeapon(String weapon) { this.weapon = weapon; }
+	public void setMaxShield(int maxShield) { this.maxShield = maxShield; }
+	public void setShields(int shields) { this.shields = shields; }
+	public void incShields(int iShields) { this.shields += iShields; }
+	public void setMaxVel(float maxVel) { this.maxVel = maxVel; }
+	public void setShootTime(float shootTime) { this.shootTime = shootTime; }
+	public void setShootTimer(float shootTimer) { this.shootTimer = shootTimer; }
+	public void setShoot(boolean shoot) { this.shoot = shoot; }
+}
