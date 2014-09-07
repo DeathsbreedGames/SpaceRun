@@ -41,6 +41,8 @@ public class GameScreen extends BaseScreen {
 	private Player player;
 	private Enemy[] enemies;
 	private final int NUM_ENEMIES = 30;
+	private int currentMaxEnemies;
+	private int currentEnemies;
 	private Bullet[] bullets;
 	private final int NUM_BULLETS = 100;
 	
@@ -88,6 +90,8 @@ public class GameScreen extends BaseScreen {
 		}
 		enemies = new Enemy[NUM_ENEMIES];
 		for(int i = 0; i < NUM_ENEMIES; i++) { enemies[i] = null; }
+		currentMaxEnemies = 1;
+		currentEnemies = 0;
 		bullets = new Bullet[NUM_BULLETS];
 		for(int i = 0; i < NUM_BULLETS; i++) { bullets[i] = null; }
 		
@@ -99,12 +103,13 @@ public class GameScreen extends BaseScreen {
 	public void render(float delta) {
 		super.render(delta);
 		
+		// Player shoot
 		if(player.shoot) {
 			bulletLoop:
 			for(int i = 0; i < NUM_BULLETS; i++) {
 				if(bullets[i] == null) {
-					bullets[i] = new Bullet(getBulletImg(), player.getPosX(),
-						player.getPosY() + 35, getDmg());
+					bullets[i] = new Bullet(getBulletImg((Ship)player), player.getPosX(),
+						player.getPosY() + 35, getDmg((Ship)player));
 					bullets[i].setVelY(600f);
 					laserShot.play();
 					break bulletLoop;
@@ -112,9 +117,36 @@ public class GameScreen extends BaseScreen {
 			}
 		}
 		
+		// Create enemies
+		if(currentEnemies < currentMaxEnemies) {
+			enemyLoop:
+			for(int i = 0; i < currentMaxEnemies; i++) {
+				if(enemies[i] == null) {
+					// Create enemy.
+					break enemyLoop;
+				}
+			}
+		}
+		
+		for(int i = 0; i < NUM_ENEMIES; i++) {
+			if(enemies[i] != null && enemies[i].shoot) {
+				bulletLoop:
+				for(int j = 0; j < NUM_BULLETS; j++) {
+					if(bullets[j] == null) {
+						bullets[j] = new Bullet(getBulletImg((Ship)enemies[i]), enemies[i].getPosX(),
+							enemies[i].getPosY() - 35, getDmg((Ship)enemies[i]));
+						bullets[j].setVelY(-600f);
+						laserShot.play();
+						break bulletLoop;
+					}
+				}
+			}
+		}
+		
 		camera.update();
 		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
+		// Draw
 		player.render(batch, delta);
 		for(int i = 0; i < NUM_BULLETS; i++) {
 			if(bullets[i] != null) {
@@ -131,22 +163,22 @@ public class GameScreen extends BaseScreen {
 		mainStage.draw();
 	}
 	
-	private TextureRegion getBulletImg() {
-		if(player.getWeapon().equals("greenlaser")) {
+	private TextureRegion getBulletImg(Ship ship) {
+		if(ship.getWeapon().equals("greenlaser")) {
 			return bulletAtlas.findRegion("NormalBullet-green");
-		} else if(player.getWeapon().equals("bluelaser")) {
+		} else if(ship.getWeapon().equals("bluelaser")) {
 			return bulletAtlas.findRegion("NormalBullet-blue");
-		} else if(player.getWeapon().equals("redlaser")) {
+		} else if(ship.getWeapon().equals("redlaser")) {
 			return bulletAtlas.findRegion("NormalBullet-red");
 		} else {
 			return bulletAtlas.findRegion("NormalBullet-green");
 		}
 	}
 	
-	private int getDmg() {
-		if(player.getWeapon().equals("greenlaser")) return 25;
-		else if(player.getWeapon().equals("bluelaser")) return 50;
-		else if(player.getWeapon().equals("redlaser")) return 100;
+	private int getDmg(Ship ship) {
+		if(ship.getWeapon().equals("greenlaser")) return 25;
+		else if(ship.getWeapon().equals("bluelaser")) return 50;
+		else if(ship.getWeapon().equals("redlaser")) return 100;
 		else return 25;
 	}
 	

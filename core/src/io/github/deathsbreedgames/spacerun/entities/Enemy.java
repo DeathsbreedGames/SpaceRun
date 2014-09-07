@@ -14,9 +14,12 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
  * 
  */
 public class Enemy extends Ship {
+	private String type;
+	
 	// Constructor:
-	public Enemy(TextureRegion img, float x, float y, String weapon, int maxShield, float maxVel, float shootTime) {
+	public Enemy(TextureRegion img, float x, float y, String weapon, int maxShield, float maxVel, float shootTime, String type) {
 		super(img, x, y, weapon, maxShield, maxVel, shootTime);
+		this.type = type;
 	}
 	
 	// Update:
@@ -24,4 +27,10 @@ public class Enemy extends Ship {
 	public void render(SpriteBatch batch, float delta) {
 		super.render(batch, delta);
 	}
+	
+	// Getter methods:
+	public String getType() { return type; }
+	
+	// Setter methods:
+	public void setType(String type) { this.type = type }
 }

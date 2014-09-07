@@ -3,44 +3,100 @@ spaceships.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-bluedestroyer_normal
+F5S1N
   rotate: false
   xy: 0, 0
   size: 45, 62
   orig: 45, 62
   offset: 0, 0
   index: -1
-bluecarrier_normal
+bluedestroyer_normal
   rotate: false
   xy: 45, 0
   size: 45, 62
   orig: 45, 62
   offset: 0, 0
   index: -1
-bluecarrier
+F5S2N
   rotate: false
   xy: 90, 0
   size: 45, 62
   orig: 45, 62
   offset: 0, 0
   index: -1
-bluedestroyer
+F5S2
   rotate: false
   xy: 135, 0
   size: 45, 62
   orig: 45, 62
   offset: 0, 0
   index: -1
-bluecruiser
+F5S1
   rotate: false
   xy: 180, 0
+  size: 45, 62
+  orig: 45, 62
+  offset: 0, 0
+  index: -1
+bluecarrier_normal
+  rotate: false
+  xy: 225, 0
+  size: 45, 62
+  orig: 45, 62
+  offset: 0, 0
+  index: -1
+bluecarrier
+  rotate: false
+  xy: 270, 0
+  size: 45, 62
+  orig: 45, 62
+  offset: 0, 0
+  index: -1
+bluedestroyer
+  rotate: false
+  xy: 315, 0
+  size: 45, 62
+  orig: 45, 62
+  offset: 0, 0
+  index: -1
+F5S3N
+  rotate: false
+  xy: 360, 0
+  size: 37, 62
+  orig: 37, 62
+  offset: 0, 0
+  index: -1
+F5S3
+  rotate: false
+  xy: 397, 0
+  size: 37, 62
+  orig: 37, 62
+  offset: 0, 0
+  index: -1
+F5S4N
+  rotate: false
+  xy: 434, 0
+  size: 37, 62
+  orig: 37, 62
+  offset: 0, 0
+  index: -1
+F5S4
+  rotate: false
+  xy: 471, 0
+  size: 37, 62
+  orig: 37, 62
+  offset: 0, 0
+  index: -1
+bluecruiser
+  rotate: false
+  xy: 508, 0
   size: 24, 62
   orig: 24, 62
   offset: 0, 0
   index: -1
 bluecruiser_normal
   rotate: false
-  xy: 204, 0
+  xy: 532, 0
   size: 24, 62
   orig: 24, 62
   offset: 0, 0
