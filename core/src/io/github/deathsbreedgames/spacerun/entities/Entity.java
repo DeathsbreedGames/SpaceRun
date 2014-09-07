@@ -26,6 +26,7 @@ public class Entity extends Sprite {
 		position = new Vector2(x, y);
 		velocity = new Vector2(0f, 0f);
 		setCenter(position.x, position.y);
+		setBounds(this.getX(), this.getY(), this.getWidth(), this.getHeight());
 	}
 	
 	// Update:
@@ -36,6 +37,9 @@ public class Entity extends Sprite {
 		if(getPosX() > Gdx.graphics.getWidth()) setPosX(Gdx.graphics.getWidth());
 		if(getPosY() < 0f) setPosY(0f);
 		if(getPosY() > Gdx.graphics.getHeight()) setPosY(Gdx.graphics.getHeight());
+		
+		setBounds(this.getX(), this.getY(), this.getWidth(), this.getHeight());
+		
 		super.draw(batch);
 	}
 	
