@@ -18,8 +18,8 @@ import io.github.deathsbreedgames.spacerun.GlobalVars;
  */
 public class Player extends Ship {
 	// Constructor:
-	public Player(TextureRegion img, float x, float y, String weapon, int maxShield, float maxVel) {
-		super(img, x, y, weapon, maxShield, maxVel, 0.5f);
+	public Player(TextureRegion img, float x, float y, String weapon, int maxShield, float maxVel, float shootTime) {
+		super(img, x, y, weapon, maxShield, maxVel, shootTime);
 	}
 	
 	// Update:

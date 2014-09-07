@@ -78,11 +78,11 @@ public class GameScreen extends BaseScreen {
 		font.scale(0.01f);
 		
 		if(GlobalVars.ship == 0) {
-			player = new Player(spaceshipAtlas.findRegion("bluedestroyer"), 160, 50, "bluelaser", 200, 250);
+			player = new Player(spaceshipAtlas.findRegion("bluedestroyer"), 160, 50, "bluelaser", 200, 250, 0.5f);
 		} else if(GlobalVars.ship == 1) {
-			player = new Player(spaceshipAtlas.findRegion("bluecarrier"), 160, 50, "greenlaser", 400, 250);
+			player = new Player(spaceshipAtlas.findRegion("bluecarrier"), 160, 50, "greenlaser", 400, 250, 0.5f);
 		} else {
-			player = new Player(spaceshipAtlas.findRegion("bluecruiser"), 160, 50, "greenlaser", 200, 500);
+			player = new Player(spaceshipAtlas.findRegion("bluecruiser"), 160, 50, "greenlaser", 200, 500, 0.5f);
 		}
 		bullets = new Bullet[NUM_BULLETS];
 		for(int i = 0; i < NUM_BULLETS; i++) { bullets[i] = null; }
