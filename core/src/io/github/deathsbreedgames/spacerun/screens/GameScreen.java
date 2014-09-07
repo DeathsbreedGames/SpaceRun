@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
@@ -77,11 +78,11 @@ public class GameScreen extends BaseScreen {
 		font.scale(0.01f);
 		
 		if(GlobalVars.ship == 0) {
-			player = new Player(spaceshipAtlas.findRegion("bluedestroyer"), 160, 50, 50, 100, 250);
+			player = new Player(spaceshipAtlas.findRegion("bluedestroyer"), 160, 50, "bluelaser", 100, 250);
 		} else if(GlobalVars.ship == 1) {
-			player = new Player(spaceshipAtlas.findRegion("bluecarrier"), 160, 50, 25, 200, 250);
+			player = new Player(spaceshipAtlas.findRegion("bluecarrier"), 160, 50, "greenlaser", 200, 250);
 		} else {
-			player = new Player(spaceshipAtlas.findRegion("bluecruiser"), 160, 50, 25, 100, 500);
+			player = new Player(spaceshipAtlas.findRegion("bluecruiser"), 160, 50, "greenlaser", 100, 500);
 		}
 		bullets = new Bullet[NUM_BULLETS];
 		for(int i = 0; i < NUM_BULLETS; i++) { bullets[i] = null; }
@@ -98,10 +99,11 @@ public class GameScreen extends BaseScreen {
 			bulletLoop:
 			for(int i = 0; i < NUM_BULLETS; i++) {
 				if(bullets[i] == null) {
-					bullets[i] = new Bullet(bulletAtlas.findRegion("NormalBullet-red"),
-						player.getPosX(), player.getPosY() + 35, player.getAtk());
+					bullets[i] = new Bullet(getBulletImg(), player.getPosX(),
+						player.getPosY() + 35, getDmg());
 					bullets[i].setVelY(600f);
 					laserShot.play();
+					System.out.println("Created a bullet");
 					break bulletLoop;
 				}
 			}
@@ -124,6 +126,25 @@ public class GameScreen extends BaseScreen {
 		
 		mainStage.act();
 		mainStage.draw();
+	}
+	
+	private TextureRegion getBulletImg() {
+		if(player.getWeapon().equals("greenlaser")) {
+			return bulletAtlas.findRegion("NormalBullet-green");
+		} else if(player.getWeapon().equals("bluelaser")) {
+			return bulletAtlas.findRegion("NormalBullet-blue");
+		} else if(player.getWeapon().equals("redlaser")) {
+			return bulletAtlas.findRegion("NormalBullet-red");
+		} else {
+			return bulletAtlas.findRegion("NormalBullet-green");
+		}
+	}
+	
+	private int getDmg() {
+		if(player.getWeapon().equals("greenlaser")) return 25;
+		else if(player.getWeapon().equals("bluelaser")) return 50;
+		else if(player.getWeapon().equals("redlaser")) return 100;
+		else return 25;
 	}
 	
 	// Dispose:
