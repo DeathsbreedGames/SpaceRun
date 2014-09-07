@@ -24,9 +24,9 @@ public class Player extends Entity {
 	private int shields;
 	
 	// Shooting variables
-	private float shootTime = 0.5f;
-	private float shootTimer = 0f;
-	public boolean shoot = false;
+	private float shootTime;
+	private float shootTimer;
+	public boolean shoot;
 	
 	// Constructor:
 	public Player(TextureRegion img, float x, float y, int maxAtk, int maxDef, float maxVel) {
@@ -35,9 +35,14 @@ public class Player extends Entity {
 		this.maxDef = maxDef;
 		this.maxVel = maxVel;
 		this.shields = maxDef;
+		
+		shootTime = 0.5f;
+		shootTimer = 0.0f;
+		shoot = false;
 	}
 	
 	// Update:
+	@Override
 	public void render(SpriteBatch batch, float delta) {
 		this.setVelocity(0f, 0f);
 		
