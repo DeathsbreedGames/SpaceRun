@@ -73,11 +73,11 @@ public class GameScreen extends BaseScreen {
 		bulletAtlas = new TextureAtlas("gfx/sprites/bullets.pack");
 		
 		if(GlobalVars.ship == 0) {
-			player = new Player(spaceshipAtlas.findRegion("bluedestroyer"), 160, 50, 50, 100, 300);
+			player = new Player(spaceshipAtlas.findRegion("bluedestroyer"), 160, 50, 50, 100, 250);
 		} else if(GlobalVars.ship == 1) {
-			player = new Player(spaceshipAtlas.findRegion("bluecarrier"), 160, 50, 25, 200, 300);
+			player = new Player(spaceshipAtlas.findRegion("bluecarrier"), 160, 50, 25, 200, 250);
 		} else {
-			player = new Player(spaceshipAtlas.findRegion("bluecruiser"), 160, 50, 25, 100, 400);
+			player = new Player(spaceshipAtlas.findRegion("bluecruiser"), 160, 50, 25, 100, 500);
 		}
 		bullets = new Entity[NUM_BULLETS];
 		for(int i = 0; i < NUM_BULLETS; i++) { bullets[i] = null; }
