@@ -17,9 +17,12 @@ import io.github.deathsbreedgames.spacerun.GlobalVars;
  * 
  */
 public class Player extends Ship {
+	private int score;
+	
 	// Constructor:
 	public Player(TextureRegion img, float x, float y, String weapon, int maxShield, float maxVel, float shootTime) {
 		super(img, x, y, weapon, maxShield, maxVel, shootTime);
+		this.score = 0;
 	}
 	
 	// Update:
@@ -38,4 +41,10 @@ public class Player extends Ship {
 		}
 		super.render(batch, delta);
 	}
+	
+	// Getter methods:
+	public int getScore() { return score; }
+	
+	// Setter methods:
+	public void setScore(int score) { this.score = score; }
 }

@@ -32,5 +32,5 @@ public class Enemy extends Ship {
 	public String getType() { return type; }
 	
 	// Setter methods:
-	public void setType(String type) { this.type = type }
+	public void setType(String type) { this.type = type; }
 }

@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.RandomXS128;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
@@ -122,7 +123,7 @@ public class GameScreen extends BaseScreen {
 			enemyLoop:
 			for(int i = 0; i < currentMaxEnemies; i++) {
 				if(enemies[i] == null) {
-					// Create enemy.
+					createEnemy(i, "F51");
 					break enemyLoop;
 				}
 			}
@@ -148,6 +149,14 @@ public class GameScreen extends BaseScreen {
 		batch.begin();
 		// Draw
 		player.render(batch, delta);
+		for(int i = 0; i < NUM_ENEMIES; i++) {
+			if(enemies[i] != null) {
+				enemies[i].render(batch, delta);
+				if(enemies[i].getPosY() <= 0) {
+					enemies[i] = null;
+				}
+			}
+		}
 		for(int i = 0; i < NUM_BULLETS; i++) {
 			if(bullets[i] != null) {
 				bullets[i].render(batch, delta);
@@ -180,6 +189,27 @@ public class GameScreen extends BaseScreen {
 		else if(ship.getWeapon().equals("bluelaser")) return 50;
 		else if(ship.getWeapon().equals("redlaser")) return 100;
 		else return 25;
+	}
+	
+	private void createEnemy(int n, String type) {
+		RandomXS128 rand = new RandomXS128();
+		float xPos = rand.nextFloat() * GlobalVars.width;
+		
+		if(type.equals("F51")) {
+			enemies[n] = new Enemy(spaceshipAtlas.findRegion("F5S1"),
+				xPos, 480, "greenlaser", 50, 175, 1.5f, "F51");
+		} else if(type.equals("F52")) {
+			enemies[n] = new Enemy(spaceshipAtlas.findRegion("F5S2"),
+				xPos, 480, "greenlaser", 75, 175, 1.0f, "F52");
+		} else if(type.equals("F53")) {
+			enemies[n] = new Enemy(spaceshipAtlas.findRegion("F5S3"),
+				xPos, 480, "bluelaser", 75, 200, 1.0f, "F53");
+		} else if(type.equals("F54")) {
+			enemies[n] = new Enemy(spaceshipAtlas.findRegion("F5S4"),
+				xPos, 480, "redlaser", 100, 200, 0.75f, "F54");
+		}
+		
+		enemies[n].setVelY(-enemies[n].getMaxVel());
 	}
 	
 	// Dispose:
