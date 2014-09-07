@@ -47,4 +47,5 @@ public class Player extends Ship {
 	
 	// Setter methods:
 	public void setScore(int score) { this.score = score; }
+	public void incScore(int iScore) { this.score += iScore; }
 }

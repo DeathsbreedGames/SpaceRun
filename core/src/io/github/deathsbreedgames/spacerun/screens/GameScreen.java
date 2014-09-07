@@ -158,7 +158,15 @@ public class GameScreen extends BaseScreen {
 		for(int i = 0; i < NUM_ENEMIES; i++) {
 			if(enemies[i] != null) {
 				enemies[i].render(batch, delta);
-				if(enemies[i].getPosY() <= 0 || enemies[i].getShields() <= 0) {
+				
+				// Check for collisions
+				if(enemies[i].getPosY() <= 0) {
+					enemies[i] = null;
+				} else if(enemies[i].getShields() <= 0) {
+					score(enemies[i]);
+					enemies[i] = null;
+				} else if(enemies[i].getBoundingRectangle().overlaps(player.getBoundingRectangle())) {
+					player.incShields(-100);
 					enemies[i] = null;
 				}
 			}
@@ -175,13 +183,13 @@ public class GameScreen extends BaseScreen {
 					player.incShields(-bullets[i].getDmg());
 					bullets[i] = null;
 				} else {
-					collideLoop:
+					enemyCollideLoop:
 					for(int j = 0; j < NUM_ENEMIES; j++) {
 						if(enemies[j] != null) {
 							if(bullets[i].getBoundingRectangle().overlaps(enemies[j].getBoundingRectangle())) {
 								enemies[j].incShields(-bullets[i].getDmg());
 								bullets[i] = null;
-								break collideLoop;
+								break enemyCollideLoop;
 							}
 						}
 					}
@@ -189,6 +197,7 @@ public class GameScreen extends BaseScreen {
 			}
 		}
 		font.draw(batch, "Shields: " + player.getShields(), 10, 470);
+		font.draw(batch, "Score: " + player.getScore(), 10, 450);
 		batch.end();
 		
 		mainStage.act();
@@ -233,6 +242,13 @@ public class GameScreen extends BaseScreen {
 		}
 		
 		enemies[n].setVelY(-enemies[n].getMaxVel());
+	}
+	
+	private void score(Enemy enemy) {
+		if(enemy.getType().equals("F51")) player.incScore(10);
+		else if(enemy.getType().equals("F52")) player.incScore(25);
+		else if(enemy.getType().equals("F53")) player.incScore(50);
+		else if(enemy.getType().equals("F54")) player.incScore(100);
 	}
 	
 	// Dispose:
