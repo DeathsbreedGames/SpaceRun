@@ -19,6 +19,8 @@ public class GlobalVars {
 	public static final int height = 480;
 	
 	public static int ship = 0;
+	public static int score = 0;
+	public static int highScore = 0;
 	
 	public static float getTouchX() {
 		float tX = (float)GlobalVars.width / (float)Gdx.graphics.getWidth() * (float)Gdx.input.getX();

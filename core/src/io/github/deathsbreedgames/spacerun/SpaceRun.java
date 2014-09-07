@@ -2,7 +2,9 @@ package io.github.deathsbreedgames.spacerun;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
 
+import io.github.deathsbreedgames.spacerun.GlobalVars;
 import io.github.deathsbreedgames.spacerun.screens.*;
 
 /**
@@ -17,7 +19,15 @@ import io.github.deathsbreedgames.spacerun.screens.*;
 public class SpaceRun extends Game {
 	// Create:
 	@Override
-	public void create () { setScreen(new SplashScreen()); }
+	public void create () {
+		setScreen(new SplashScreen());
+		Preferences prefs = Gdx.app.getPreferences("SpaceRun");
+		if(prefs.get() == null) {
+			prefs.putInteger("HighScore", 0);
+			prefs.flush();
+		}
+		GlobalVars.highScore = prefs.getInteger("HighScore");
+	}
 	
 	// Update:
 	@Override
@@ -38,6 +48,10 @@ public class SpaceRun extends Game {
 				setScreen(new ShipSelectScreen());
 			} else if(currentScreen.getNextScreen().equals("Game")) {
 				setScreen(new GameScreen());
+			} else if(currentScreen.getNextScreen().equals("GameOver")) {
+				setScreen(new GameOverScreen());
+			} else {
+				setScreen(new SplashScreen());
 			}
 		}
 	}

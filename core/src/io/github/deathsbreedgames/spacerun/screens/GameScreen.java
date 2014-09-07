@@ -151,7 +151,8 @@ public class GameScreen extends BaseScreen {
 		// Update player
 		player.render(batch, delta);
 		if(player.getShields() <= 0) {
-			setNextScreen("MainMenu");
+			GlobalVars.score = player.getScore();
+			setNextScreen("GameOver");
 			setDone(true);
 		}
 		// Update enemies
