@@ -129,6 +129,7 @@ public class GameScreen extends BaseScreen {
 			}
 		}
 		
+		// Enemies shoot
 		for(int i = 0; i < NUM_ENEMIES; i++) {
 			if(enemies[i] != null && enemies[i].shoot) {
 				bulletLoop:
@@ -147,21 +148,43 @@ public class GameScreen extends BaseScreen {
 		camera.update();
 		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
-		// Draw
+		// Update player
 		player.render(batch, delta);
+		if(player.getShields() <= 0) {
+			setNextScreen("MainMenu");
+			setDone(true);
+		}
+		// Update enemies
 		for(int i = 0; i < NUM_ENEMIES; i++) {
 			if(enemies[i] != null) {
 				enemies[i].render(batch, delta);
-				if(enemies[i].getPosY() <= 0) {
+				if(enemies[i].getPosY() <= 0 || enemies[i].getShields() <= 0) {
 					enemies[i] = null;
 				}
 			}
 		}
+		// Update bullets
 		for(int i = 0; i < NUM_BULLETS; i++) {
 			if(bullets[i] != null) {
 				bullets[i].render(batch, delta);
+				
+				// Check for collisions
 				if(bullets[i].getPosY() >= Gdx.graphics.getHeight() || bullets[i].getPosY() <= 0) {
 					bullets[i] = null;
+				} else if(bullets[i].getBoundingRectangle().overlaps(player.getBoundingRectangle())) {
+					player.incShields(-bullets[i].getDmg());
+					bullets[i] = null;
+				} else {
+					collideLoop:
+					for(int j = 0; j < NUM_ENEMIES; j++) {
+						if(enemies[j] != null) {
+							if(bullets[i].getBoundingRectangle().overlaps(enemies[j].getBoundingRectangle())) {
+								enemies[j].incShields(-bullets[i].getDmg());
+								bullets[i] = null;
+								break collideLoop;
+							}
+						}
+					}
 				}
 			}
 		}
