@@ -1,5 +1,6 @@
 package io.github.deathsbreedgames.spacerun.screens;
 
+import com.badlogic.gdx.Application.ApplicationType;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -86,15 +87,17 @@ public class MainMenuScreen extends BaseScreen {
 			}
 		});
 		
-		TextButton quitButton = new TextButton("EXIT", buttonStyle);
-		quitButton.setPosition(GlobalVars.width / 2 - quitButton.getWidth() / 2, 170f);
-		mainStage.addActor(quitButton);
-		quitButton.addListener(new ChangeListener() {
-			public void changed(ChangeEvent e, Actor a) {
-				// Quit
-				Gdx.app.exit();
-			}
-		});
+		if(Gdx.app.getType() != ApplicationType.WebGL) {
+			TextButton quitButton = new TextButton("EXIT", buttonStyle);
+			quitButton.setPosition(GlobalVars.width / 2 - quitButton.getWidth() / 2, 170f);
+			mainStage.addActor(quitButton);
+			quitButton.addListener(new ChangeListener() {
+				public void changed(ChangeEvent e, Actor a) {
+					// Quit
+					Gdx.app.exit();
+				}
+			});
+		}
 	}
 	
 	// Update:
