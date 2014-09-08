@@ -187,7 +187,7 @@ public class GameScreen extends BaseScreen {
 				} else if(bullets[i].getBoundingRectangle().overlaps(player.getBoundingRectangle())) {
 					player.incShields(-bullets[i].getDmg());
 					bullets[i] = null;
-				} else {
+				} else if(bullets[i].getVelY() > 0) {
 					enemyCollideLoop:
 					for(int j = 0; j < NUM_ENEMIES; j++) {
 						if(enemies[j] != null) {
