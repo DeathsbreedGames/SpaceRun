@@ -127,7 +127,7 @@ public class GameScreen extends BaseScreen {
 			enemyLoop:
 			for(int i = 0; i < currentMaxEnemies; i++) {
 				if(enemies[i] == null) {
-					createEnemy(i, "F51");
+					createEnemy(i);
 					break enemyLoop;
 				}
 			}
@@ -228,22 +228,47 @@ public class GameScreen extends BaseScreen {
 		else return 25;
 	}
 	
-	private void createEnemy(int n, String type) {
+	private void createEnemy(int n) {
 		RandomXS128 rand = new RandomXS128();
 		float xPos = rand.nextFloat() * GlobalVars.width;
+		float type = rand.nextFloat();
 		
-		if(type.equals("F51")) {
+		if(player.getScore() < 200) {
 			enemies[n] = new Enemy(spaceshipAtlas.findRegion("F5S1"),
 				xPos, 480, "greenlaser", 50, 175, 1.5f, "F51");
-		} else if(type.equals("F52")) {
-			enemies[n] = new Enemy(spaceshipAtlas.findRegion("F5S2"),
-				xPos, 480, "greenlaser", 75, 175, 1.0f, "F52");
-		} else if(type.equals("F53")) {
-			enemies[n] = new Enemy(spaceshipAtlas.findRegion("F5S3"),
-				xPos, 480, "bluelaser", 75, 200, 1.0f, "F53");
-		} else if(type.equals("F54")) {
-			enemies[n] = new Enemy(spaceshipAtlas.findRegion("F5S4"),
-				xPos, 480, "redlaser", 100, 200, 0.75f, "F54");
+		} else if(player.getScore() < 400) {
+			if(type < 0.8f) {
+				enemies[n] = new Enemy(spaceshipAtlas.findRegion("F5S1"),
+					xPos, 480, "greenlaser", 50, 175, 1.5f, "F51");
+			} else {
+				enemies[n] = new Enemy(spaceshipAtlas.findRegion("F5S2"),
+					xPos, 480, "greenlaser", 75, 175, 1.0f, "F52");
+			}
+		} else if(player.getScore() < 1000) {
+			if(type < 0.5f) {
+				enemies[n] = new Enemy(spaceshipAtlas.findRegion("F5S1"),
+					xPos, 480, "greenlaser", 50, 175, 1.5f, "F51");
+			} else if(type < 0.75f) {
+				enemies[n] = new Enemy(spaceshipAtlas.findRegion("F5S2"),
+					xPos, 480, "greenlaser", 75, 175, 1.0f, "F52");
+			} else {
+				enemies[n] = new Enemy(spaceshipAtlas.findRegion("F5S3"),
+					xPos, 480, "bluelaser", 75, 200, 1.0f, "F53");
+			}
+		} else {
+			if(type < 0.5f) {
+				enemies[n] = new Enemy(spaceshipAtlas.findRegion("F5S1"),
+					xPos, 480, "greenlaser", 50, 175, 1.5f, "F51");
+			} else if(type < 0.7f) {
+				enemies[n] = new Enemy(spaceshipAtlas.findRegion("F5S2"),
+					xPos, 480, "greenlaser", 75, 175, 1.0f, "F52");
+			} else if(type < 0.9f) {
+				enemies[n] = new Enemy(spaceshipAtlas.findRegion("F5S3"),
+					xPos, 480, "bluelaser", 75, 200, 1.0f, "F53");
+			} else {
+				enemies[n] = new Enemy(spaceshipAtlas.findRegion("F5S4"),
+					xPos, 480, "bluelaser", 100, 200, 0.75f, "F54");
+			}
 		}
 		
 		enemies[n].setVelY(-enemies[n].getMaxVel());
