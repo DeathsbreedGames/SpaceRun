@@ -38,6 +38,8 @@ public class SpaceRun extends Game {
 				setScreen(new SplashScreen());
 			} else if(currentScreen.getNextScreen().equals("MainMenu")) {
 				setScreen(new MainMenuScreen());
+			} else if(currentScreen.getNextScreen().equals("Help") {
+				setScreen(new HelpScreen());
 			} else if(currentScreen.getNextScreen().equals("CreditsMenu")) {
 				setScreen(new CreditsMenuScreen());
 			} else if(currentScreen.getNextScreen().equals("ShipSelect")) {
