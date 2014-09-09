@@ -6,7 +6,7 @@
 hs_err_pid*
 
 # Android key
-android/key/
+key/
 
 ## GWT
 war/
