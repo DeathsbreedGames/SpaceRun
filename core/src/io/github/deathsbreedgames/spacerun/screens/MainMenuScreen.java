@@ -76,19 +76,8 @@ public class MainMenuScreen extends BaseScreen {
 			}
 		});
 		
-		TextButton creditsButton = new TextButton("CREDITS", buttonStyle);
-		creditsButton.setPosition(GlobalVars.width / 2 - creditsButton.getWidth() / 2, 210f);
-		mainStage.addActor(creditsButton);
-		creditsButton.addListener(new ChangeListener() {
-			public void changed(ChangeEvent e, Actor a) {
-				// Change to the Credits Menu
-				setNextScreen("CreditsMenu");
-				setDone(true);
-			}
-		});
-		
 		TextButton helpButton = new TextButton("HELP", buttonStyle);
-		helpButton.setPosition(GlobalVars.width / 2 - helpButton.getWidth() / 2, 170f);
+		helpButton.setPosition(GlobalVars.width / 2 - helpButton.getWidth() / 2, 210f);
 		mainStage.addActor(helpButton);
 		helpButton.addListener(new ChangeListener() {
 			public void changed(ChangeEvent e, Actor a) {
@@ -97,12 +86,23 @@ public class MainMenuScreen extends BaseScreen {
 			}
 		});
 		
-		TextButton optionsButton = new TextButton("Options", buttonStyle);
-		optionsButton.setPosition(GlobalVars.width / 2 - optionsButton.getWidth() / 2, 130f);
+		TextButton optionsButton = new TextButton("OPTIONS", buttonStyle);
+		optionsButton.setPosition(GlobalVars.width / 2 - optionsButton.getWidth() / 2, 170f);
 		mainStage.addActor(optionsButton);
 		optionsButton.addListener(new ChangeListener() {
 			public void changed(ChangeEvent e, Actor a) {
 				setNextScreen("Options");
+				setDone(true);
+			}
+		});
+		
+		TextButton creditsButton = new TextButton("CREDITS", buttonStyle);
+		creditsButton.setPosition(GlobalVars.width / 2 - creditsButton.getWidth() / 2, 130f);
+		mainStage.addActor(creditsButton);
+		creditsButton.addListener(new ChangeListener() {
+			public void changed(ChangeEvent e, Actor a) {
+				// Change to the Credits Menu
+				setNextScreen("CreditsMenu");
 				setDone(true);
 			}
 		});
