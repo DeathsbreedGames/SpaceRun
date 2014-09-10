@@ -87,9 +87,29 @@ public class MainMenuScreen extends BaseScreen {
 			}
 		});
 		
+		TextButton helpButton = new TextButton("HELP", buttonStyle);
+		helpButton.setPosition(GlobalVars.width / 2 - helpButton.getWidth() / 2, 170f);
+		mainStage.addActor(helpButton);
+		helpButton.addListener(new ChangeListener() {
+			public void changed(ChangeEvent e, Actor a) {
+				setNextScreen("Help");
+				setDone(true);
+			}
+		});
+		
+		TextButton optionsButton = new TextButton("Options", buttonStyle);
+		optionsButton.setPosition(GlobalVars.width / 2 - optionsButton.getWidth() / 2, 130f);
+		mainStage.addActor(optionsButton);
+		optionsButton.addListener(new ChangeListener() {
+			public void changed(ChangeEvent e, Actor a) {
+				setNextScreen("Options");
+				setDone(true);
+			}
+		});
+		
 		if(Gdx.app.getType() != ApplicationType.WebGL) {
 			TextButton quitButton = new TextButton("EXIT", buttonStyle);
-			quitButton.setPosition(GlobalVars.width / 2 - quitButton.getWidth() / 2, 170f);
+			quitButton.setPosition(GlobalVars.width / 2 - quitButton.getWidth() / 2, 90f);
 			mainStage.addActor(quitButton);
 			quitButton.addListener(new ChangeListener() {
 				public void changed(ChangeEvent e, Actor a) {
