@@ -28,6 +28,8 @@ public class SpaceRun extends Game {
 		setScreen(new SplashScreen());
 		Preferences prefs = Gdx.app.getPreferences("SpaceRun");
 		GlobalVars.highScore = prefs.getInteger("HighScore");
+		GlobalVars.soundOn = !prefs.getBoolean("SoundOff");
+		GlobalVars.musicOn = !prefs.getBoolean("MusicOff");
 		
 		music = Gdx.audio.newMusic(Gdx.files.internal("sfx/Android128_-_Dreamtest.mp3"));
 		music.setLooping(true);

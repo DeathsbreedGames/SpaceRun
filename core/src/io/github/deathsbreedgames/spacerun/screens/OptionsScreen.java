@@ -1,12 +1,15 @@
 package io.github.deathsbreedgames.spacerun.screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton.ImageButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
@@ -26,17 +29,23 @@ import io.github.deathsbreedgames.spacerun.GlobalVars;
  * 
  */
 public class OptionsScreen extends BaseScreen {
+	private Preferences prefs;
+	
 	private OrthographicCamera camera;
 	private SpriteBatch batch;
 	private BitmapFont titleFont;
+	private BitmapFont textFont;
 	
 	private Stage mainStage;
 	private TextureAtlas buttonAtlas;
 	private Skin buttonSkin;
 	private BitmapFont buttonFont;
+	private ImageButton soundControl, musicControl;
 	
 	public OptionsScreen() {
 		super("MainMenu");
+		
+		prefs = Gdx.app.getPreferences("SpaceRun");
 		
 		camera = new OrthographicCamera(GlobalVars.width, GlobalVars.height);
 		camera.position.set(GlobalVars.width / 2, GlobalVars.height / 2, 0);
@@ -44,11 +53,41 @@ public class OptionsScreen extends BaseScreen {
 		batch = new SpriteBatch();
 		titleFont = new BitmapFont();
 		titleFont.scale(0.75f);
+		textFont = new BitmapFont();
+		textFont.scale(0.5f);
 		
 		mainStage = new Stage(new StretchViewport(GlobalVars.width, GlobalVars.height));
 		buttonAtlas = new TextureAtlas("gfx/ui/buttons.pack");
 		buttonSkin = new Skin(buttonAtlas);
 		Gdx.input.setInputProcessor(mainStage);
+		
+		ImageButtonStyle imageButtonStyle = new ImageButtonStyle();
+		imageButtonStyle.imageUp = buttonSkin.getDrawable("Switch-on");
+		imageButtonStyle.imageChecked = buttonSkin.getDrawable("Switch-off");
+		
+		soundControl = new ImageButton(imageButtonStyle);
+		soundControl.setPosition(10f, 350f);
+		mainStage.addActor(soundControl);
+		soundControl.addListener(new ChangeListener() {
+			public void changed(ChangeEvent e, Actor a) {
+				if(GlobalVars.soundOn) GlobalVars.soundOn = false;
+				else GlobalVars.soundOn = true;
+				prefs.putBoolean("SoundOff", !GlobalVars.soundOn);
+			}
+		});
+		if(!GlobalVars.soundOn) soundControl.setChecked(false);
+		
+		musicControl = new ImageButton(imageButtonStyle);
+		musicControl.setPosition(10f, 290f);
+		mainStage.addActor(musicControl);
+		musicControl.addListener(new ChangeListener() {
+			public void changed(ChangeEvent e, Actor a) {
+				if(GlobalVars.musicOn) GlobalVars.musicOn = false;
+				else GlobalVars.musicOn = true;
+				prefs.putBoolean("SoundOff", !GlobalVars.musicOn);
+			}
+		});
+		if(!GlobalVars.musicOn) musicControl.setChecked(false);
 		
 		buttonFont = new BitmapFont();
 		buttonFont.scale(0.3f);
@@ -79,6 +118,8 @@ public class OptionsScreen extends BaseScreen {
 		batch.begin();
 		titleFont.setColor(1f, 0f, 0f, 1f);
 		titleFont.draw(batch, "OPTIONS", 10f, 450f);
+		textFont.draw(batch, "SOUND", 100f, 380f);
+		textFont.draw(batch, "MUSIC", 100f, 320f);
 		batch.end();
 		
 		mainStage.act();
@@ -89,6 +130,7 @@ public class OptionsScreen extends BaseScreen {
 	public void dispose() {
 		batch.dispose();
 		titleFont.dispose();
+		textFont.dispose();
 		
 		mainStage.dispose();
 		buttonAtlas.dispose();
