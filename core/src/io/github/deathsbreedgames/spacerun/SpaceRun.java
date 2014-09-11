@@ -65,8 +65,8 @@ public class SpaceRun extends Game {
 			}
 		}
 		
-		if(currentScreen instanceof SplashScreen && music.isPlaying()) {
-			music.stop();
+		if(currentScreen instanceof SplashScreen) {
+			if(music.isPlaying()) music.stop();
 		} else {
 			if(!music.isPlaying() && GlobalVars.musicOn) music.play();
 			else if(music.isPlaying() && !GlobalVars.musicOn) music.stop();
