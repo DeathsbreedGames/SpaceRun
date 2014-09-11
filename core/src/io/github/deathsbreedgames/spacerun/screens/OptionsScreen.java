@@ -65,31 +65,35 @@ public class OptionsScreen extends BaseScreen {
 		imageButtonStyle.imageUp = buttonSkin.getDrawable("Switch-on");
 		imageButtonStyle.imageChecked = buttonSkin.getDrawable("Switch-off");
 		
-		soundControl = new ImageButton(imageButtonStyle);
+		ImageButtonStyle imageButtonStyleInv = new ImageButtonStyle();
+		imageButtonStyleInv.imageUp = buttonSkin.getDrawable("Switch-off");
+		imageButtonStyleInv.imageChecked = buttonSkin.getDrawable("Switch-on");
+		
+		if(GlobalVars.soundOn) soundControl = new ImageButton(imageButtonStyle);
+		else soundControl = new ImageButton(imageButtonStyleInv);
 		soundControl.setPosition(10f, 350f);
 		mainStage.addActor(soundControl);
 		soundControl.addListener(new ChangeListener() {
 			public void changed(ChangeEvent e, Actor a) {
-				if(GlobalVars.soundOn) GlobalVars.soundOn = false;
-				else GlobalVars.soundOn = true;
+				if(GlobalVars.soundOn) { GlobalVars.soundOn = false; }
+				else { GlobalVars.soundOn = true; }
 				prefs.putBoolean("SoundOff", !GlobalVars.soundOn);
 				prefs.flush();
 			}
 		});
-		if(!GlobalVars.soundOn) soundControl.setChecked(true);
 		
-		musicControl = new ImageButton(imageButtonStyle);
+		if(GlobalVars.musicOn) musicControl = new ImageButton(imageButtonStyle);
+		else musicControl = new ImageButton(imageButtonStyleInv);
 		musicControl.setPosition(10f, 290f);
 		mainStage.addActor(musicControl);
 		musicControl.addListener(new ChangeListener() {
 			public void changed(ChangeEvent e, Actor a) {
-				if(GlobalVars.musicOn) GlobalVars.musicOn = false;
-				else GlobalVars.musicOn = true;
+				if(GlobalVars.musicOn) { GlobalVars.musicOn = false; }
+				else { GlobalVars.musicOn = true; }
 				prefs.putBoolean("MusicOff", !GlobalVars.musicOn);
 				prefs.flush();
 			}
 		});
-		if(!GlobalVars.musicOn) musicControl.setChecked(true);
 		
 		buttonFont = new BitmapFont();
 		buttonFont.scale(0.3f);
