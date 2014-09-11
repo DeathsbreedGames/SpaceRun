@@ -113,12 +113,13 @@ public class GameScreen extends BaseScreen {
 					bullets[i] = new Bullet(getBulletImg((Ship)player), player.getPosX(),
 						player.getPosY() + 35, getDmg((Ship)player));
 					bullets[i].setVelY(600f);
-					laserShot.play();
+					if(GlobalVars.soundOn) laserShot.play();
 					break bulletLoop;
 				}
 			}
 		}
 		
+		// Create the enemies
 		currentMaxEnemies = MathUtils.ceil(player.getScore() / 100f);
 		if(currentMaxEnemies > NUM_ENEMIES) currentMaxEnemies = NUM_ENEMIES;
 		else if(currentMaxEnemies == 0) currentMaxEnemies = 1;
@@ -142,7 +143,7 @@ public class GameScreen extends BaseScreen {
 						bullets[j] = new Bullet(getBulletImg((Ship)enemies[i]), enemies[i].getPosX(),
 							enemies[i].getPosY() - 35, getDmg((Ship)enemies[i]));
 						bullets[j].setVelY(-600f);
-						laserShot.play();
+						if(GlobalVars.soundOn) laserShot.play();
 						break bulletLoop;
 					}
 				}
