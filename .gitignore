@@ -5,9 +5,6 @@
 *.ear
 hs_err_pid*
 
-# Android key
-key/
-
 ## GWT
 war/
 html/war/gwt_bree/
