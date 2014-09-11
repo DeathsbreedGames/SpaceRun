@@ -117,16 +117,24 @@ public class CreditsMenuScreen extends BaseScreen {
 		if(mouseCollides(textFont, "dklon", 20f, 280f)) {
 			textFont.setColor(1f, 1f, 0f, 1f);
 			if(mousePressed && !oldMousePressed) Gdx.net.openURI("http://opengameart.org/users/dklon");
-		} else {textFont.setColor(0f, 0f, 1f, 1f); }
+		} else { textFont.setColor(0f, 0f, 1f, 1f); }
 		textFont.draw(batch, "dklon", 20f, 280f);
 		
 		textFont.setColor(1f, 1f, 1f, 1f);
-		textFont.draw(batch, "This game is Free Software", 10f, 200f);
-		if(mouseCollides(textFont, "Fork me on Github!", 10f, 180f)) {
+		textFont.draw(batch, "Music:", 10f, 250f);
+		if(mouseCollides(textFont, "Android128", 20f, 230f)) {
+			textFont.setColor(1f, 1f, 0f, 1f);
+			if(mousePressed && !oldMousePressed) Gdx.net.openURI("http://opengameart.org/users/android128");
+		} else { textFont.setColor(0f, 0f, 1f, 1f); }
+		textFont.draw(batch, "Android128", 20f, 230f);
+		
+		textFont.setColor(1f, 1f, 1f, 1f);
+		textFont.draw(batch, "This game is Free Software", 10f, 150f);
+		if(mouseCollides(textFont, "Fork me on Github!", 10f, 130f)) {
 			textFont.setColor(1f, 1f, 0f, 1f);
 			if(mousePressed && !oldMousePressed) Gdx.net.openURI("https://github.com/DeathsbreedGames/SpaceRun");
 		} else { textFont.setColor(0f, 0f, 1f, 1f); }
-		textFont.draw(batch, "Fork me on Github!", 10f, 180f);
+		textFont.draw(batch, "Fork me on Github!", 10f, 130f);
 		
 		textFont.setColor(1f, 1f, 1f, 1f);
 		textFont.draw(batch, "v0.2", 285f, 465f);
