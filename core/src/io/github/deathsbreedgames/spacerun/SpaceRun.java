@@ -4,6 +4,9 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
+
 import io.github.deathsbreedgames.spacerun.GlobalVars;
 import io.github.deathsbreedgames.spacerun.screens.*;
 
@@ -17,12 +20,17 @@ import io.github.deathsbreedgames.spacerun.screens.*;
  * 
  */
 public class SpaceRun extends Game {
+	private Music music;
+	
 	// Create:
 	@Override
 	public void create () {
 		setScreen(new SplashScreen());
 		Preferences prefs = Gdx.app.getPreferences("SpaceRun");
 		GlobalVars.highScore = prefs.getInteger("HighScore");
+		
+		music = Gdx.audio.newMusic(Gdx.files.internal("sfx/Android128_-_Dreamtest.mp3"));
+		music.setLooping(true);
 	}
 	
 	// Update:
@@ -53,6 +61,13 @@ public class SpaceRun extends Game {
 			} else {
 				setScreen(new SplashScreen());
 			}
+		}
+		
+		if(currentScreen instanceof SplashScreen && music.isPlaying()) {
+			music.stop();
+		} else {
+			if(!music.isPlaying() && GlobalVars.musicOn) music.play();
+			else if(music.isPlaying() && !GlobalVars.musicOn) music.stop();
 		}
 	}
 	

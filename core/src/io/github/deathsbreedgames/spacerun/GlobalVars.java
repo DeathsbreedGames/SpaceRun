@@ -18,6 +18,9 @@ public class GlobalVars {
 	public static final int width = 320;
 	public static final int height = 480;
 	
+	public static boolean soundOn = true;
+	public static boolean musicOn = true;
+	
 	public static int ship = 0;
 	public static int score = 0;
 	public static int highScore = 0;
