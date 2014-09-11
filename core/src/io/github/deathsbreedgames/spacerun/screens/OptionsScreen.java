@@ -73,9 +73,10 @@ public class OptionsScreen extends BaseScreen {
 				if(GlobalVars.soundOn) GlobalVars.soundOn = false;
 				else GlobalVars.soundOn = true;
 				prefs.putBoolean("SoundOff", !GlobalVars.soundOn);
+				prefs.flush();
 			}
 		});
-		if(!GlobalVars.soundOn) soundControl.setChecked(false);
+		if(!GlobalVars.soundOn) soundControl.setChecked(true);
 		
 		musicControl = new ImageButton(imageButtonStyle);
 		musicControl.setPosition(10f, 290f);
@@ -84,10 +85,11 @@ public class OptionsScreen extends BaseScreen {
 			public void changed(ChangeEvent e, Actor a) {
 				if(GlobalVars.musicOn) GlobalVars.musicOn = false;
 				else GlobalVars.musicOn = true;
-				prefs.putBoolean("SoundOff", !GlobalVars.musicOn);
+				prefs.putBoolean("MusicOff", !GlobalVars.musicOn);
+				prefs.flush();
 			}
 		});
-		if(!GlobalVars.musicOn) musicControl.setChecked(false);
+		if(!GlobalVars.musicOn) musicControl.setChecked(true);
 		
 		buttonFont = new BitmapFont();
 		buttonFont.scale(0.3f);
