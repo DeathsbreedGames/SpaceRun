@@ -1,7 +1,9 @@
 package io.github.deathsbreedgames.spacerun.screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -24,6 +26,10 @@ import io.github.deathsbreedgames.spacerun.GlobalVars;
  * 
  */
 public class OptionsScreen extends BaseScreen {
+	private OrthographicCamera camera;
+	private SpriteBatch batch;
+	private BitmapFont titleFont;
+	
 	private Stage mainStage;
 	private TextureAtlas buttonAtlas;
 	private Skin buttonSkin;
@@ -31,6 +37,13 @@ public class OptionsScreen extends BaseScreen {
 	
 	public OptionsScreen() {
 		super("MainMenu");
+		
+		camera = new OrthographicCamera(GlobalVars.width, GlobalVars.height);
+		camera.position.set(GlobalVars.width / 2, GlobalVars.height / 2, 0);
+		camera.update();
+		batch = new SpriteBatch();
+		titleFont = new BitmapFont();
+		titleFont.scale(0.75f);
 		
 		mainStage = new Stage(new StretchViewport(GlobalVars.width, GlobalVars.height));
 		buttonAtlas = new TextureAtlas("gfx/ui/buttons.pack");
@@ -61,12 +74,22 @@ public class OptionsScreen extends BaseScreen {
 	public void render(float delta) {
 		super.render(delta);
 		
+		camera.update();
+		batch.setProjectionMatrix(camera.combined);
+		batch.begin();
+		titleFont.setColor(1f, 0f, 0f, 1f);
+		titleFont.draw(batch, "OPTIONS", 10f, 450f);
+		batch.end();
+		
 		mainStage.act();
 		mainStage.draw();
 	}
 	
 	@Override
 	public void dispose() {
+		batch.dispose();
+		titleFont.dispose();
+		
 		mainStage.dispose();
 		buttonAtlas.dispose();
 		buttonSkin.dispose();
