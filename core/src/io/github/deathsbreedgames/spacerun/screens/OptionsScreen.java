@@ -105,7 +105,7 @@ public class OptionsScreen extends BaseScreen {
 		buttonStyle.font = buttonFont;
 		
 		TextButton clearButton = new TextButton("CLEAR DATA", buttonStyle);
-		clearButton.setPosition(10f, 240f);
+		clearButton.setPosition(10f, 160f);
 		mainStage.addActor(clearButton);
 		clearButton.addListener(new ChangeListener() {
 			public void changed(ChangeEvent e, Actor a) {
@@ -140,6 +140,7 @@ public class OptionsScreen extends BaseScreen {
 		titleFont.draw(batch, "OPTIONS", 10f, 450f);
 		textFont.draw(batch, "SOUND", 100f, 380f);
 		textFont.draw(batch, "MUSIC", 100f, 320f);
+		textFont.draw(batch, "HIGH SCORE: " + GlobalVars.highScore, 10f, 230f);
 		batch.end();
 		
 		mainStage.act();
