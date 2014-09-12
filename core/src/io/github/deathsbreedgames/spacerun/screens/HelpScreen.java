@@ -29,6 +29,7 @@ public class HelpScreen extends BaseScreen {
 	private OrthographicCamera camera;
 	private SpriteBatch batch;
 	private BitmapFont titleFont;
+	private BitmapFont textFont;
 	
 	private Stage mainStage;
 	private TextureAtlas buttonAtlas;
@@ -44,6 +45,8 @@ public class HelpScreen extends BaseScreen {
 		batch = new SpriteBatch();
 		titleFont = new BitmapFont();
 		titleFont.scale(0.75f);
+		textFont = new BitmapFont();
+		textFont.scale(0.1f);
 		
 		mainStage = new Stage(new StretchViewport(GlobalVars.width, GlobalVars.height));
 		buttonAtlas = new TextureAtlas("gfx/ui/buttons.pack");
@@ -79,6 +82,8 @@ public class HelpScreen extends BaseScreen {
 		batch.begin();
 		titleFont.setColor(1f, 0f, 0f, 1f);
 		titleFont.draw(batch, "HELP", 10f, 450f);
+		textFont.draw(batch, "Drag or touch your finger on the screen.", 10f, 400f);
+		textFont.drawMultiLine(batch, "Destroy enemy ships until you beat your\nhigh score!", 10f, 380f);
 		batch.end();
 		
 		mainStage.act();

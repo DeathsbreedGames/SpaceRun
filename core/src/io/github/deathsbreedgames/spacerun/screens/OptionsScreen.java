@@ -112,6 +112,7 @@ public class OptionsScreen extends BaseScreen {
 				prefs.putInteger("HighScore", 0);
 				prefs.putBoolean("SoundOff", false);
 				prefs.putBoolean("MusicOff", false);
+				prefs.flush();
 				setNextScreen("Splash");
 				setDone(true);
 			}
