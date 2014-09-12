@@ -2,8 +2,11 @@ package io.github.deathsbreedgames.spacerun.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
+import io.github.deathsbreedgames.spacerun.GlobalVars;
 
 /**
  * @author Nicolás A. Ortega
@@ -37,6 +40,11 @@ public class SplashScreen extends BaseScreen {
 		
 		a = 0f;
 		timer = 0f;
+		
+		Preferences prefs = Gdx.app.getPreferences("SpaceRun");
+		GlobalVars.highScore = prefs.getInteger("HighScore");
+		GlobalVars.soundOn = !prefs.getBoolean("SoundOff");
+		GlobalVars.musicOn = !prefs.getBoolean("MusicOff");
 	}
 	
 	// Update:

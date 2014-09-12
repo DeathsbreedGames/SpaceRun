@@ -2,7 +2,6 @@ package io.github.deathsbreedgames.spacerun;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Preferences;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
@@ -26,10 +25,6 @@ public class SpaceRun extends Game {
 	@Override
 	public void create () {
 		setScreen(new SplashScreen());
-		Preferences prefs = Gdx.app.getPreferences("SpaceRun");
-		GlobalVars.highScore = prefs.getInteger("HighScore");
-		GlobalVars.soundOn = !prefs.getBoolean("SoundOff");
-		GlobalVars.musicOn = !prefs.getBoolean("MusicOff");
 		
 		music = Gdx.audio.newMusic(Gdx.files.internal("sfx/Android128_-_Dreamtest.mp3"));
 		music.setLooping(true);

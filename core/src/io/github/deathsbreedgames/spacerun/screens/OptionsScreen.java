@@ -104,6 +104,17 @@ public class OptionsScreen extends BaseScreen {
 		buttonStyle.over = buttonSkin.getDrawable("MainMenu-hover");
 		buttonStyle.font = buttonFont;
 		
+		TextButton clearButton = new TextButton("CLEAR DATA", buttonStyle);
+		clearButton.setPosition(10f, 240f);
+		mainStage.addActor(clearButton);
+		clearButton.addListener(new ChangeListener() {
+			public void changed(ChangeEvent e, Actor a) {
+				//prefs.clear();
+				setNextScreen("Splash");
+				setDone(true);
+			}
+		});
+		
 		TextButton backButton = new TextButton("BACK", buttonStyle);
 		backButton.setPosition(GlobalVars.width / 2 - backButton.getWidth() / 2, 10f);
 		mainStage.addActor(backButton);
