@@ -15,12 +15,13 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 public class Pickup extends Entity {
 	/*
 	 * Types:
-	 * 		- Weapon upgrade
-	 * 		- Rapid Fire
-	 * 		- Double shot
-	 * 		- Repairs
-	 * 		- Invincibility
-	 * 		- Speed
+	 * 		- upgrade			|	Upgrade to a better bullet
+	 * 		- rapid				|	Fire bullets faster
+	 * 		- double			|	Shoot two bullets instead of one
+	 * 		- repair			|	Simple, it repairs the ship
+	 * 		- invincibility		|	What it sounds like
+	 * 		- speed				|	Change in position over time, not the drug :D
+	 * 
 	 */
 	private String type;
 	
