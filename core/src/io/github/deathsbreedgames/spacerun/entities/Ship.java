@@ -48,6 +48,8 @@ public class Ship extends Entity {
 		} else if(shoot) {
 			shoot = false;
 		}
+		
+		if(shields > maxShield) shields = maxShield;
 	}
 	
 	// Getter methods:
