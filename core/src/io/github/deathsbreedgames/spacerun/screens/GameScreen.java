@@ -233,7 +233,13 @@ public class GameScreen extends BaseScreen {
 			}
 		}
 		
-		if(pickup != null) pickup.render(batch, delta);
+		// Update pickups:
+		if(pickup != null) {
+			pickup.render(batch, delta);
+			if(pickup.getBoundingRectangle().overlaps(player.getBoundingRectangle())) {
+				if(pickup.getType().equals("repair")) player.incShields(50);
+			}
+		}
 		
 		font.draw(batch, "Shields: " + player.getShields(), 10, 470);
 		font.draw(batch, "Score: " + player.getScore(), 10, 450);
