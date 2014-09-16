@@ -49,6 +49,7 @@ public class GameScreen extends BaseScreen {
 	private Bullet[] bullets;
 	private final int NUM_BULLETS = 100;
 	private Pickup pickup;
+	private float pickupTimer;
 	
 	private Sound laserShot;
 	
@@ -101,6 +102,7 @@ public class GameScreen extends BaseScreen {
 		for(int i = 0; i < NUM_BULLETS; i++) { bullets[i] = null; }
 		
 		pickup = null;
+		pickupTimer = 0;
 		
 		laserShot = Gdx.audio.newSound(Gdx.files.internal("sfx/laser5.mp3"));
 	}
@@ -155,6 +157,16 @@ public class GameScreen extends BaseScreen {
 			}
 		}
 		
+		pickupTimer += delta;
+		if(pickupTimer >= 15 && pickup == null) {
+			RandomXS128 rand = new RandomXS128();
+			pickup = new Pickup(pickupAtlas.findRegion("shield"), rand.nextFloat() * GlobalVars.width, 480, "repair");
+			pickup.setVelY(-400f);
+			pickupTimer = 0;
+		} else if(pickup != null && pickup.getY() <= 0) {
+			pickup = null;
+		}
+		
 		camera.update();
 		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
@@ -207,6 +219,9 @@ public class GameScreen extends BaseScreen {
 				}
 			}
 		}
+		
+		if(pickup != null) pickup.render(batch, delta);
+		
 		font.draw(batch, "Shields: " + player.getShields(), 10, 470);
 		font.draw(batch, "Score: " + player.getScore(), 10, 450);
 		batch.end();

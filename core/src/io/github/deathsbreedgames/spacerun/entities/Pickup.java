@@ -26,7 +26,7 @@ public class Pickup extends Entity {
 	private String type;
 	
 	// Constructor:
-	public Pickup(TextureRegion img, float x, float y, type) {
+	public Pickup(TextureRegion img, float x, float y, String type) {
 		super(img, x, y);
 		this.type = type;
 	}
