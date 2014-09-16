@@ -38,6 +38,7 @@ public class GameScreen extends BaseScreen {
 	private SpriteBatch batch;
 	private TextureAtlas spaceshipAtlas;
 	private TextureAtlas bulletAtlas;
+	private TextureAtlas pickupAtlas;
 	private BitmapFont font;
 	
 	private Player player;
@@ -80,6 +81,7 @@ public class GameScreen extends BaseScreen {
 		batch = new SpriteBatch();
 		spaceshipAtlas = new TextureAtlas("gfx/sprites/spaceships.pack");
 		bulletAtlas = new TextureAtlas("gfx/sprites/bullets.pack");
+		pickupAtlas = new TextureAtlas("gfx/sprites/pickups.pack");
 		font = new BitmapFont();
 		font.scale(0.01f);
 		
