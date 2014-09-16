@@ -48,6 +48,7 @@ public class GameScreen extends BaseScreen {
 	private int currentEnemies;
 	private Bullet[] bullets;
 	private final int NUM_BULLETS = 100;
+	private Pickup pickup;
 	
 	private Sound laserShot;
 	
@@ -98,6 +99,8 @@ public class GameScreen extends BaseScreen {
 		currentEnemies = 0;
 		bullets = new Bullet[NUM_BULLETS];
 		for(int i = 0; i < NUM_BULLETS; i++) { bullets[i] = null; }
+		
+		pickup = null;
 		
 		laserShot = Gdx.audio.newSound(Gdx.files.internal("sfx/laser5.mp3"));
 	}
