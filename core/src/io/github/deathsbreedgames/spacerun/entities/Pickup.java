@@ -22,10 +22,12 @@ public class Pickup extends Entity {
 	 * 		- Invincibility
 	 * 		- Speed
 	 */
+	private String type;
 	
 	// Constructor:
-	public Pickup(TextureRegion img, float x, float y) {
+	public Pickup(TextureRegion img, float x, float y, type) {
 		super(img, x, y);
+		this.type = type;
 	}
 	
 	// Update:
@@ -33,4 +35,10 @@ public class Pickup extends Entity {
 	public void render(SpriteBatch batch, float delta) {
 		super.render(batch, delta);
 	}
+	
+	// Getter methods:
+	public String getType() { return type; }
+	
+	// Setter methods:
+	public void setType(String type) { this.type = type; }
 }
