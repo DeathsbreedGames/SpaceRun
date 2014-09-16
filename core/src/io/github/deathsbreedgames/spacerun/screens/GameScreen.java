@@ -174,7 +174,7 @@ public class GameScreen extends BaseScreen {
 			} else {
 				pickup = new Pickup(pickupAtlas.findRegion("full-shield"), rand.nextFloat() * GlobalVars.width, 480, "invincibility");
 			}
-			pickup.setVelY(-400f);
+			pickup.setVelY(-100f);
 			pickupTimer = 0;
 		} else if(pickup != null && pickup.getY() <= 0) {
 			pickup = null;
