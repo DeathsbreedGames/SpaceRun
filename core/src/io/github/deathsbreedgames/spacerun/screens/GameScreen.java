@@ -237,7 +237,19 @@ public class GameScreen extends BaseScreen {
 		if(pickup != null) {
 			pickup.render(batch, delta);
 			if(pickup.getBoundingRectangle().overlaps(player.getBoundingRectangle())) {
-				if(pickup.getType().equals("repair")) player.incShields(50);
+				if(pickup.getType().equals("repair")) {
+					player.incShields(50);
+				} else if(pickup.getType().equals("double")) {
+					// Double shot stuff here
+				} else if(pickup.getType().equals("speed")) {
+					// Speed stuff here
+				} else if(pickup.getType().equals("rapid")) {
+					// Rapid fire stuff here
+				} else if(pickup.getType().equals("upgrade")) {
+					// Upgrade weapon stuff here
+				} else if(pickup.getType().equals("invincibility")) {
+					// Invincibility stuff here
+				}
 			}
 		}
 		
