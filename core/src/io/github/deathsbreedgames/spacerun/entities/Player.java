@@ -19,10 +19,14 @@ import io.github.deathsbreedgames.spacerun.GlobalVars;
 public class Player extends Ship {
 	private int score;
 	
+	// Pickup upgrades
+	private boolean doubleShot;
+	
 	// Constructor:
 	public Player(TextureRegion img, float x, float y, String weapon, int maxShield, float maxVel, float shootTime) {
 		super(img, x, y, weapon, maxShield, maxVel, shootTime);
 		this.score = 0;
+		doubleShot = false;
 	}
 	
 	// Update:
@@ -44,8 +48,10 @@ public class Player extends Ship {
 	
 	// Getter methods:
 	public int getScore() { return score; }
+	public boolean getDoubleShot() { return doubleShot; }
 	
 	// Setter methods:
 	public void setScore(int score) { this.score = score; }
 	public void incScore(int iScore) { this.score += iScore; }
+	public void setDoubleShot(boolean doubleShot) { this.doubleShot = doubleShot; }
 }

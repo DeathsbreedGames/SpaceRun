@@ -114,14 +114,27 @@ public class GameScreen extends BaseScreen {
 		
 		// Player shoot
 		if(player.shoot) {
+			boolean twoBullets = false;
+			int bulletsMade = 0;
 			bulletLoop:
 			for(int i = 0; i < NUM_BULLETS; i++) {
 				if(bullets[i] == null) {
-					bullets[i] = new Bullet(getBulletImg((Ship)player), player.getPosX(),
-						player.getPosY() + 35, getDmg((Ship)player));
+					if(player.getDoubleShot()) {
+						if(bulletsMade == 0) {
+							bullets[i] = new Bullet(getBulletImg((Ship)player), player.getPosX() - 10, player.getPosY() + 35, getDmg((Ship)player));
+							bulletsMade = 1;
+						} else if(bulletsMade == 1) {
+							bullets[i] = new Bullet(getBulletImg((Ship)player), player.getPosX() + 10, player.getPosY() + 35, getDmg((Ship)player));
+							bulletsMade = 2;
+							twoBullets = true;
+						}
+					} else {
+						bullets[i] = new Bullet(getBulletImg((Ship)player), player.getPosX(), player.getPosY() + 35, getDmg((Ship)player));
+					}
 					bullets[i].setVelY(600f);
 					if(GlobalVars.soundOn) laserShot.play();
-					break bulletLoop;
+					
+					if(!player.getDoubleShot() || twoBullets) break bulletLoop;
 				}
 			}
 		}
@@ -203,6 +216,7 @@ public class GameScreen extends BaseScreen {
 					enemies[i] = null;
 				} else if(enemies[i].getBoundingRectangle().overlaps(player.getBoundingRectangle())) {
 					player.incShields(-100);
+					player.setDoubleShot(false);
 					enemies[i] = null;
 				}
 			}
@@ -217,6 +231,7 @@ public class GameScreen extends BaseScreen {
 					bullets[i] = null;
 				} else if(bullets[i].getBoundingRectangle().overlaps(player.getBoundingRectangle())) {
 					player.incShields(-bullets[i].getDmg());
+					player.setDoubleShot(false);
 					bullets[i] = null;
 				} else if(bullets[i].getVelY() > 0) {
 					enemyCollideLoop:
@@ -240,7 +255,7 @@ public class GameScreen extends BaseScreen {
 				if(pickup.getType().equals("repair")) {
 					player.incShields(50);
 				} else if(pickup.getType().equals("double")) {
-					// Double shot stuff here
+					player.setDoubleShot(true);
 				} else if(pickup.getType().equals("speed")) {
 					// Speed stuff here
 				} else if(pickup.getType().equals("rapid")) {
@@ -250,6 +265,7 @@ public class GameScreen extends BaseScreen {
 				} else if(pickup.getType().equals("invincibility")) {
 					// Invincibility stuff here
 				}
+				pickup = null;
 			}
 		}
 		
