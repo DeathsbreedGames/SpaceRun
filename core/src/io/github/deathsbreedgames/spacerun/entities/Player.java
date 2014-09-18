@@ -22,6 +22,7 @@ public class Player extends Ship {
 	// Pickup upgrades
 	private boolean doubleShot;
 	private boolean rapidFire;
+	private boolean invincible;
 	
 	// Constructor:
 	public Player(TextureRegion img, float x, float y, String weapon, int maxShield, float maxVel, float shootTime) {
@@ -29,6 +30,7 @@ public class Player extends Ship {
 		this.score = 0;
 		doubleShot = false;
 		rapidFire = false;
+		invincible = false;
 	}
 	
 	// Update:
@@ -56,10 +58,12 @@ public class Player extends Ship {
 	public int getScore() { return score; }
 	public boolean getDoubleShot() { return doubleShot; }
 	public boolean getRapidFire() { return rapidFire; }
+	public boolean isInvincible() { return invincible; }
 	
 	// Setter methods:
 	public void setScore(int score) { this.score = score; }
 	public void incScore(int iScore) { this.score += iScore; }
 	public void setDoubleShot(boolean doubleShot) { this.doubleShot = doubleShot; }
 	public void setRapidFire(boolean rapidFire) { this.rapidFire = rapidFire; }
+	public void setInvincible(boolean invincible) { this.invincible = invincible; }
 }

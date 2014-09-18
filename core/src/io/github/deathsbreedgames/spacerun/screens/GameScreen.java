@@ -54,6 +54,7 @@ public class GameScreen extends BaseScreen {
 	private float rapidTimer;
 	private boolean speed;
 	private float speedTimer;
+	private float invTimer;
 	
 	private Sound laserShot;
 	
@@ -111,6 +112,7 @@ public class GameScreen extends BaseScreen {
 		rapidTimer = 0;
 		speed = false;
 		speedTimer = 0;
+		invTimer = 0;
 		
 		laserShot = Gdx.audio.newSound(Gdx.files.internal("sfx/laser5.mp3"));
 	}
@@ -211,6 +213,14 @@ public class GameScreen extends BaseScreen {
 			speedTimer -= delta;
 		}
 		
+		if(invTimer <= 0 && player.isInvincible()) {
+			player.setInvincible(false);
+			if(GlobalVars.ship == 0) player.setRegion(spaceshipAtlas.findRegion("bluedestroyer"));
+			else if(GlobalVars.ship == 1) player.setRegion(spaceshipAtlas.findRegion("bluecarrier"));
+			else player.setRegion(spaceshipAtlas.findRegion("bluecruiser"));
+		}
+		else invTimer -= delta;
+		
 		camera.update();
 		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
@@ -233,8 +243,8 @@ public class GameScreen extends BaseScreen {
 					score(enemies[i]);
 					enemies[i] = null;
 				} else if(enemies[i].getBoundingRectangle().overlaps(player.getBoundingRectangle())) {
-					player.incShields(-100);
-					player.setDoubleShot(false);
+					if(!player.isInvincible()) player.incShields(-100);
+					if(!player.isInvincible()) player.setDoubleShot(false);
 					enemies[i] = null;
 				}
 			}
@@ -248,7 +258,7 @@ public class GameScreen extends BaseScreen {
 				if(bullets[i].getPosY() >= Gdx.graphics.getHeight() || bullets[i].getPosY() <= 0) {
 					bullets[i] = null;
 				} else if(bullets[i].getBoundingRectangle().overlaps(player.getBoundingRectangle())) {
-					player.incShields(-bullets[i].getDmg());
+					if(!player.isInvincible()) player.incShields(-bullets[i].getDmg());
 					player.setDoubleShot(false);
 					bullets[i] = null;
 				} else if(bullets[i].getVelY() > 0) {
@@ -284,7 +294,11 @@ public class GameScreen extends BaseScreen {
 				} else if(pickup.getType().equals("upgrade")) {
 					// Upgrade weapon stuff here
 				} else if(pickup.getType().equals("invincibility")) {
-					// Invincibility stuff here
+					player.setInvincible(true);
+					invTimer = 7.0f;
+					if(GlobalVars.ship == 0) player.setRegion(spaceshipAtlas.findRegion("bluedestroyer_normal"));
+					else if(GlobalVars.ship == 1) player.setRegion(spaceshipAtlas.findRegion("bluecarrier_normal"));
+					else player.setRegion(spaceshipAtlas.findRegion("bluecruiser_normal"));
 				}
 				pickup = null;
 			}
