@@ -217,6 +217,7 @@ public class GameScreen extends BaseScreen {
 				} else if(enemies[i].getBoundingRectangle().overlaps(player.getBoundingRectangle())) {
 					player.incShields(-100);
 					player.setDoubleShot(false);
+					player.setRapidFire(false);
 					enemies[i] = null;
 				}
 			}
@@ -232,6 +233,7 @@ public class GameScreen extends BaseScreen {
 				} else if(bullets[i].getBoundingRectangle().overlaps(player.getBoundingRectangle())) {
 					player.incShields(-bullets[i].getDmg());
 					player.setDoubleShot(false);
+					player.setRapidFire(false);
 					bullets[i] = null;
 				} else if(bullets[i].getVelY() > 0) {
 					enemyCollideLoop:
@@ -259,7 +261,7 @@ public class GameScreen extends BaseScreen {
 				} else if(pickup.getType().equals("speed")) {
 					// Speed stuff here
 				} else if(pickup.getType().equals("rapid")) {
-					// Rapid fire stuff here
+					player.setRapidFire(true);
 				} else if(pickup.getType().equals("upgrade")) {
 					// Upgrade weapon stuff here
 				} else if(pickup.getType().equals("invincibility")) {
