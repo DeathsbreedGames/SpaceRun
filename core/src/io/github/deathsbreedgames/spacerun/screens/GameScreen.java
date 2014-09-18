@@ -51,6 +51,8 @@ public class GameScreen extends BaseScreen {
 	private Pickup pickup;
 	private float pickupTimer;
 	
+	private float rapidTimer;
+	
 	private Sound laserShot;
 	
 	// Constructor:
@@ -103,6 +105,8 @@ public class GameScreen extends BaseScreen {
 		
 		pickup = null;
 		pickupTimer = 0;
+		
+		rapidTimer = 0;
 		
 		laserShot = Gdx.audio.newSound(Gdx.files.internal("sfx/laser5.mp3"));
 	}
@@ -193,6 +197,9 @@ public class GameScreen extends BaseScreen {
 			pickup = null;
 		}
 		
+		if(rapidTimer <= 0) player.setRapidFire(false);
+		else rapidTimer -= delta;
+		
 		camera.update();
 		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
@@ -217,7 +224,6 @@ public class GameScreen extends BaseScreen {
 				} else if(enemies[i].getBoundingRectangle().overlaps(player.getBoundingRectangle())) {
 					player.incShields(-100);
 					player.setDoubleShot(false);
-					player.setRapidFire(false);
 					enemies[i] = null;
 				}
 			}
@@ -233,7 +239,6 @@ public class GameScreen extends BaseScreen {
 				} else if(bullets[i].getBoundingRectangle().overlaps(player.getBoundingRectangle())) {
 					player.incShields(-bullets[i].getDmg());
 					player.setDoubleShot(false);
-					player.setRapidFire(false);
 					bullets[i] = null;
 				} else if(bullets[i].getVelY() > 0) {
 					enemyCollideLoop:
@@ -262,6 +267,7 @@ public class GameScreen extends BaseScreen {
 					// Speed stuff here
 				} else if(pickup.getType().equals("rapid")) {
 					player.setRapidFire(true);
+					rapidTimer = 5.0f;
 				} else if(pickup.getType().equals("upgrade")) {
 					// Upgrade weapon stuff here
 				} else if(pickup.getType().equals("invincibility")) {
