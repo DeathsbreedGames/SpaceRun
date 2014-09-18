@@ -52,6 +52,8 @@ public class GameScreen extends BaseScreen {
 	private float pickupTimer;
 	
 	private float rapidTimer;
+	private boolean speed;
+	private float speedTimer;
 	
 	private Sound laserShot;
 	
@@ -107,6 +109,8 @@ public class GameScreen extends BaseScreen {
 		pickupTimer = 0;
 		
 		rapidTimer = 0;
+		speed = false;
+		speedTimer = 0;
 		
 		laserShot = Gdx.audio.newSound(Gdx.files.internal("sfx/laser5.mp3"));
 	}
@@ -178,20 +182,20 @@ public class GameScreen extends BaseScreen {
 		if(pickupTimer >= 15 && pickup == null) {
 			RandomXS128 rand = new RandomXS128();
 			float probType = rand.nextFloat();
-			if(probType < 0.2f) {
+			if(probType < 0.25f) {
 				pickup = new Pickup(pickupAtlas.findRegion("shield"), rand.nextFloat() * GlobalVars.width, 480, "repair");
 			} else if(probType < 0.4f) {
 				pickup = new Pickup(pickupAtlas.findRegion("double-shot"), rand.nextFloat() * GlobalVars.width, 480, "double");
-			} else if(probType < 0.6f) {
+			} else if(probType < 0.55f) {
 				pickup = new Pickup(pickupAtlas.findRegion("speed"), rand.nextFloat() * GlobalVars.width, 480, "speed");
-			} else if(probType < 0.8f) {
+			} else if(probType < 0.65f) {
 				pickup = new Pickup(pickupAtlas.findRegion("rapid-fire"), rand.nextFloat() * GlobalVars.width, 480, "rapid");
-			} else if(probType < 0.9f) {
+			} else if(probType < 0.75f) {
 				pickup = new Pickup(pickupAtlas.findRegion("weapon-upgrade"), rand.nextFloat() * GlobalVars.width, 480, "upgrade");
-			} else {
+			} else if(probType < 0.85f) {
 				pickup = new Pickup(pickupAtlas.findRegion("full-shield"), rand.nextFloat() * GlobalVars.width, 480, "invincibility");
 			}
-			pickup.setVelY(-100f);
+			if(pickup != null) pickup.setVelY(-100f);
 			pickupTimer = 0;
 		} else if(pickup != null && pickup.getY() <= 0) {
 			pickup = null;
@@ -199,6 +203,13 @@ public class GameScreen extends BaseScreen {
 		
 		if(rapidTimer <= 0) player.setRapidFire(false);
 		else rapidTimer -= delta;
+		
+		if(speed && speedTimer <= 0) {
+			player.incMaxVel(-200);
+			speed = false;
+		} else if(speedTimer > 0) {
+			speedTimer -= delta;
+		}
 		
 		camera.update();
 		batch.setProjectionMatrix(camera.combined);
@@ -264,7 +275,9 @@ public class GameScreen extends BaseScreen {
 				} else if(pickup.getType().equals("double")) {
 					player.setDoubleShot(true);
 				} else if(pickup.getType().equals("speed")) {
-					// Speed stuff here
+					player.incMaxVel(200);
+					speed = true;
+					speedTimer = 10.0f;
 				} else if(pickup.getType().equals("rapid")) {
 					player.setRapidFire(true);
 					rapidTimer = 5.0f;

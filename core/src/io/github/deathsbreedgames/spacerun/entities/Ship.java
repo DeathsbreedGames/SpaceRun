@@ -66,6 +66,7 @@ public class Ship extends Entity {
 	public void setShields(int shields) { this.shields = shields; }
 	public void incShields(int iShields) { this.shields += iShields; }
 	public void setMaxVel(float maxVel) { this.maxVel = maxVel; }
+	public void incMaxVel(float iMaxVel) { this.maxVel += iMaxVel; }
 	public void setShootTime(float shootTime) { this.shootTime = shootTime; }
 	public void setShootTimer(float shootTimer) { this.shootTimer = shootTimer; }
 	public void setShoot(boolean shoot) { this.shoot = shoot; }
