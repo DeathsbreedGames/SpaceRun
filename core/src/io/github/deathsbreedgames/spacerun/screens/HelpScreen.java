@@ -82,8 +82,9 @@ public class HelpScreen extends BaseScreen {
 		batch.begin();
 		titleFont.setColor(1f, 0f, 0f, 1f);
 		titleFont.draw(batch, "HELP", 10f, 450f);
-		textFont.draw(batch, "Drag or touch your finger on the screen.", 10f, 400f);
-		textFont.drawMultiLine(batch, "Destroy enemy ships until you beat your\nhigh score!", 10f, 380f);
+		textFont.drawWrapped(batch, "Your objective is to get the highest score possible. You can " +
+			"see your shield health in the upper-left corner of the screen (along with your score)." +
+			"To quit the game, just click/touch the 'X' button in the upper-right corner of the screen.", 10f, 400f, 300);
 		batch.end();
 		
 		mainStage.act();
