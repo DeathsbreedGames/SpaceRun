@@ -137,7 +137,7 @@ public class CreditsMenuScreen extends BaseScreen {
 		textFont.draw(batch, "Fork me on Github!", 10f, 130f);
 		
 		textFont.setColor(1f, 1f, 1f, 1f);
-		textFont.draw(batch, "v0.2", 285f, 465f);
+		textFont.draw(batch, "v0.3", 285f, 465f);
 		batch.end();
 		
 		// Draw the button
