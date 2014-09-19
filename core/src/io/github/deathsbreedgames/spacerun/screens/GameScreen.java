@@ -292,7 +292,8 @@ public class GameScreen extends BaseScreen {
 					player.setRapidFire(true);
 					rapidTimer = 5.0f;
 				} else if(pickup.getType().equals("upgrade")) {
-					// Upgrade weapon stuff here
+					if(player.getWeapon().equals("greenlaser")) player.setWeapon("bluelaser");
+					else if(player.getWeapon().equals("bluelaser")) player.setWeapon("redlaser");
 				} else if(pickup.getType().equals("invincibility")) {
 					player.setInvincible(true);
 					invTimer = 7.0f;
