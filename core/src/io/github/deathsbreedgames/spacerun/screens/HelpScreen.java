@@ -30,6 +30,7 @@ public class HelpScreen extends BaseScreen {
 	private SpriteBatch batch;
 	private BitmapFont titleFont;
 	private BitmapFont textFont;
+	private TextureAtlas pickupAtlas;
 	
 	private Stage mainStage;
 	private TextureAtlas buttonAtlas;
@@ -47,6 +48,7 @@ public class HelpScreen extends BaseScreen {
 		titleFont.scale(0.75f);
 		textFont = new BitmapFont();
 		textFont.scale(0.1f);
+		pickupAtlas = new TextureAtlas("gfx/sprites/pickups.pack");
 		
 		mainStage = new Stage(new StretchViewport(GlobalVars.width, GlobalVars.height));
 		buttonAtlas = new TextureAtlas("gfx/ui/buttons.pack");
@@ -85,6 +87,8 @@ public class HelpScreen extends BaseScreen {
 		textFont.drawWrapped(batch, "Your objective is to get the highest score possible. You can " +
 			"see your shield health in the upper-left corner of the screen (along with your score)." +
 			"To quit the game, just click/touch the 'X' button in the upper-right corner of the screen.", 10f, 400f, 300);
+		
+		// Add pickups and their names here.
 		batch.end();
 		
 		mainStage.act();
