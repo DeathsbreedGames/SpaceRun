@@ -184,17 +184,17 @@ public class GameScreen extends BaseScreen {
 		if(pickupTimer >= 15 && pickup == null) {
 			RandomXS128 rand = new RandomXS128();
 			float probType = rand.nextFloat();
-			if(probType < 0.25f) {
+			if(probType < 0.30f) {
 				pickup = new Pickup(pickupAtlas.findRegion("shield"), rand.nextFloat() * GlobalVars.width, 480, "repair");
 			} else if(probType < 0.4f) {
 				pickup = new Pickup(pickupAtlas.findRegion("double-shot"), rand.nextFloat() * GlobalVars.width, 480, "double");
-			} else if(probType < 0.55f) {
+			} else if(probType < 0.5f) {
 				pickup = new Pickup(pickupAtlas.findRegion("speed"), rand.nextFloat() * GlobalVars.width, 480, "speed");
 			} else if(probType < 0.65f) {
 				pickup = new Pickup(pickupAtlas.findRegion("rapid-fire"), rand.nextFloat() * GlobalVars.width, 480, "rapid");
 			} else if(probType < 0.75f) {
 				pickup = new Pickup(pickupAtlas.findRegion("weapon-upgrade"), rand.nextFloat() * GlobalVars.width, 480, "upgrade");
-			} else if(probType < 0.85f) {
+			} else if(probType < 0.80f) {
 				pickup = new Pickup(pickupAtlas.findRegion("full-shield"), rand.nextFloat() * GlobalVars.width, 480, "invincibility");
 			}
 			if(pickup != null) pickup.setVelY(-100f);
