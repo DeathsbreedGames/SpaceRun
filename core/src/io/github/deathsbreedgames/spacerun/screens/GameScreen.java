@@ -93,11 +93,11 @@ public class GameScreen extends BaseScreen {
 		font.scale(0.01f);
 		
 		if(GlobalVars.ship == 0) {
-			player = new Player(spaceshipAtlas.findRegion("bluedestroyer"), 160, 50, "bluelaser", 200, 250, 0.5f);
+			player = new Player(spaceshipAtlas.findRegion("bluedestroyer"), 160, 50, 1, 200, 250, 0.5f);
 		} else if(GlobalVars.ship == 1) {
-			player = new Player(spaceshipAtlas.findRegion("bluecarrier"), 160, 50, "greenlaser", 400, 250, 0.5f);
+			player = new Player(spaceshipAtlas.findRegion("bluecarrier"), 160, 50, 0, 400, 250, 0.5f);
 		} else {
-			player = new Player(spaceshipAtlas.findRegion("bluecruiser"), 160, 50, "greenlaser", 200, 500, 0.5f);
+			player = new Player(spaceshipAtlas.findRegion("bluecruiser"), 160, 50, 0, 200, 500, 0.5f);
 		}
 		enemies = new Enemy[NUM_ENEMIES];
 		for(int i = 0; i < NUM_ENEMIES; i++) { enemies[i] = null; }
@@ -292,8 +292,7 @@ public class GameScreen extends BaseScreen {
 					player.setRapidFire(true);
 					rapidTimer = 5.0f;
 				} else if(pickup.getType().equals("upgrade")) {
-					if(player.getWeapon().equals("greenlaser")) player.setWeapon("bluelaser");
-					else if(player.getWeapon().equals("bluelaser")) player.setWeapon("redlaser");
+					player.upgradeWeapon();
 				} else if(pickup.getType().equals("invincibility")) {
 					player.setInvincible(true);
 					invTimer = 7.0f;
@@ -314,11 +313,11 @@ public class GameScreen extends BaseScreen {
 	}
 	
 	private TextureRegion getBulletImg(Ship ship) {
-		if(ship.getWeapon().equals("greenlaser")) {
+		if(ship.getWeapon() == 0) {
 			return bulletAtlas.findRegion("NormalBullet-green");
-		} else if(ship.getWeapon().equals("bluelaser")) {
+		} else if(ship.getWeapon() == 1) {
 			return bulletAtlas.findRegion("NormalBullet-blue");
-		} else if(ship.getWeapon().equals("redlaser")) {
+		} else if(ship.getWeapon() == 2) {
 			return bulletAtlas.findRegion("NormalBullet-red");
 		} else {
 			return bulletAtlas.findRegion("NormalBullet-green");
@@ -326,9 +325,9 @@ public class GameScreen extends BaseScreen {
 	}
 	
 	private int getDmg(Ship ship) {
-		if(ship.getWeapon().equals("greenlaser")) return 25;
-		else if(ship.getWeapon().equals("bluelaser")) return 50;
-		else if(ship.getWeapon().equals("redlaser")) return 100;
+		if(ship.getWeapon() == 0) return 25;
+		else if(ship.getWeapon() == 1) return 50;
+		else if(ship.getWeapon() == 2) return 100;
 		else return 25;
 	}
 	
@@ -339,39 +338,39 @@ public class GameScreen extends BaseScreen {
 		
 		if(player.getScore() < 200) {
 			enemies[n] = new Enemy(spaceshipAtlas.findRegion("F5S1"),
-				xPos, 480, "greenlaser", 50, 175, 1.5f, "F51");
+				xPos, 480, 0, 50, 175, 1.5f, "F51");
 		} else if(player.getScore() < 400) {
 			if(type < 0.8f) {
 				enemies[n] = new Enemy(spaceshipAtlas.findRegion("F5S1"),
-					xPos, 480, "greenlaser", 50, 175, 1.5f, "F51");
+					xPos, 480, 0, 50, 175, 1.5f, "F51");
 			} else {
 				enemies[n] = new Enemy(spaceshipAtlas.findRegion("F5S2"),
-					xPos, 480, "greenlaser", 75, 175, 1.0f, "F52");
+					xPos, 480, 0, 75, 175, 1.0f, "F52");
 			}
 		} else if(player.getScore() < 1000) {
 			if(type < 0.5f) {
 				enemies[n] = new Enemy(spaceshipAtlas.findRegion("F5S1"),
-					xPos, 480, "greenlaser", 50, 175, 1.5f, "F51");
+					xPos, 480, 0, 50, 175, 1.5f, "F51");
 			} else if(type < 0.75f) {
 				enemies[n] = new Enemy(spaceshipAtlas.findRegion("F5S2"),
-					xPos, 480, "greenlaser", 75, 175, 1.0f, "F52");
+					xPos, 480, 0, 75, 175, 1.0f, "F52");
 			} else {
 				enemies[n] = new Enemy(spaceshipAtlas.findRegion("F5S3"),
-					xPos, 480, "bluelaser", 75, 200, 1.0f, "F53");
+					xPos, 480, 1, 75, 200, 1.0f, "F53");
 			}
 		} else {
 			if(type < 0.5f) {
 				enemies[n] = new Enemy(spaceshipAtlas.findRegion("F5S1"),
-					xPos, 480, "greenlaser", 50, 175, 1.5f, "F51");
+					xPos, 480, 0, 50, 175, 1.5f, "F51");
 			} else if(type < 0.7f) {
 				enemies[n] = new Enemy(spaceshipAtlas.findRegion("F5S2"),
-					xPos, 480, "greenlaser", 75, 175, 1.0f, "F52");
+					xPos, 480, 0, 75, 175, 1.0f, "F52");
 			} else if(type < 0.9f) {
 				enemies[n] = new Enemy(spaceshipAtlas.findRegion("F5S3"),
-					xPos, 480, "bluelaser", 75, 200, 1.0f, "F53");
+					xPos, 480, 1, 75, 200, 1.0f, "F53");
 			} else {
 				enemies[n] = new Enemy(spaceshipAtlas.findRegion("F5S4"),
-					xPos, 480, "bluelaser", 100, 200, 0.75f, "F54");
+					xPos, 480, 1, 100, 200, 0.75f, "F54");
 			}
 		}
 		

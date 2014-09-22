@@ -14,7 +14,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
  * 
  */
 public class Ship extends Entity {
-	private String weapon;
+	private int weapon;
 	private int maxShield;
 	private int shields;
 	private float maxVel;
@@ -24,7 +24,7 @@ public class Ship extends Entity {
 	public boolean shoot;
 	
 	// Constructor:
-	public Ship(TextureRegion img, float x, float y, String weapon, int maxShield, float maxVel, float shootTime) {
+	public Ship(TextureRegion img, float x, float y, int weapon, int maxShield, float maxVel, float shootTime) {
 		super(img, x, y);
 		this.weapon = weapon;
 		this.maxShield = maxShield;
@@ -53,7 +53,7 @@ public class Ship extends Entity {
 	}
 	
 	// Getter methods:
-	public String getWeapon() { return weapon; }
+	public int getWeapon() { return weapon; }
 	public int getMaxShield() { return maxShield; }
 	public int getShields() { return shields; }
 	public float getMaxVel() { return maxVel; }
@@ -61,7 +61,9 @@ public class Ship extends Entity {
 	public float getShootTimer() { return shootTimer; }
 	
 	// Setter methods:
-	public void setWeapon(String weapon) { this.weapon = weapon; }
+	public void setWeapon(int weapon) { this.weapon = weapon; }
+	public void upgradeWeapon() { this.weapon++; }
+	public void degradeWeapon() { this.weapon--; }
 	public void setMaxShield(int maxShield) { this.maxShield = maxShield; }
 	public void setShields(int shields) { this.shields = shields; }
 	public void incShields(int iShields) { this.shields += iShields; }

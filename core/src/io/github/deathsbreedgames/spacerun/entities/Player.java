@@ -25,7 +25,7 @@ public class Player extends Ship {
 	private boolean invincible;
 	
 	// Constructor:
-	public Player(TextureRegion img, float x, float y, String weapon, int maxShield, float maxVel, float shootTime) {
+	public Player(TextureRegion img, float x, float y, int weapon, int maxShield, float maxVel, float shootTime) {
 		super(img, x, y, weapon, maxShield, maxVel, shootTime);
 		this.score = 0;
 		doubleShot = false;

@@ -17,7 +17,7 @@ public class Enemy extends Ship {
 	private String type;
 	
 	// Constructor:
-	public Enemy(TextureRegion img, float x, float y, String weapon, int maxShield, float maxVel, float shootTime, String type) {
+	public Enemy(TextureRegion img, float x, float y, int weapon, int maxShield, float maxVel, float shootTime, String type) {
 		super(img, x, y, weapon, maxShield, maxVel, shootTime);
 		this.type = type;
 	}
