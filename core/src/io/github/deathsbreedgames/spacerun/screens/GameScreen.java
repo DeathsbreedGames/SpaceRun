@@ -30,10 +30,12 @@ import io.github.deathsbreedgames.spacerun.entities.*;
  * 
  */
 public class GameScreen extends BaseScreen {
+	// Button variables
 	private Stage mainStage;
 	private TextureAtlas buttonAtlas;
 	private Skin buttonSkin;
 	
+	// Draw variables
 	private OrthographicCamera camera;
 	private SpriteBatch batch;
 	private TextureAtlas spaceshipAtlas;
@@ -41,6 +43,7 @@ public class GameScreen extends BaseScreen {
 	private TextureAtlas pickupAtlas;
 	private BitmapFont font;
 	
+	// Entity variables
 	private Player player;
 	private Enemy[] enemies;
 	private final int NUM_ENEMIES = 30;
@@ -51,17 +54,20 @@ public class GameScreen extends BaseScreen {
 	private Pickup pickup;
 	private float pickupTimer;
 	
+	// Pickup variables
 	private float rapidTimer;
 	private boolean speed;
 	private float speedTimer;
 	private float invTimer;
 	
+	// Audio variables
 	private Sound laserShot;
 	
 	// Constructor:
 	public GameScreen() {
 		super("Splash");
 		
+		// Create buttons
 		mainStage = new Stage(new StretchViewport(GlobalVars.width, GlobalVars.height));
 		buttonAtlas = new TextureAtlas("gfx/ui/buttons.pack");
 		buttonSkin = new Skin(buttonAtlas);
@@ -312,6 +318,7 @@ public class GameScreen extends BaseScreen {
 		mainStage.draw();
 	}
 	
+	// Gets TextureRegion for bullet
 	private TextureRegion getBulletImg(Ship ship) {
 		if(ship.getWeapon() == 0) {
 			return bulletAtlas.findRegion("NormalBullet-green");
@@ -324,6 +331,7 @@ public class GameScreen extends BaseScreen {
 		}
 	}
 	
+	// Gets the damage depending on weapon
 	private int getDmg(Ship ship) {
 		if(ship.getWeapon() == 0) return 25;
 		else if(ship.getWeapon() == 1) return 50;
@@ -331,6 +339,7 @@ public class GameScreen extends BaseScreen {
 		else return 25;
 	}
 	
+	// Creates an enemy
 	private void createEnemy(int n) {
 		RandomXS128 rand = new RandomXS128();
 		float xPos = rand.nextFloat() * GlobalVars.width;
@@ -390,6 +399,7 @@ public class GameScreen extends BaseScreen {
 		}
 	}
 	
+	// Add to the score of the player
 	private void score(Enemy enemy) {
 		if(enemy.getType().equals("F51")) player.incScore(10);
 		else if(enemy.getType().equals("F52")) player.incScore(25);

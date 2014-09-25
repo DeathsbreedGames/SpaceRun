@@ -26,20 +26,24 @@ import io.github.deathsbreedgames.spacerun.GlobalVars;
  * 
  */
 public class HelpScreen extends BaseScreen {
+	// Help variables
 	private OrthographicCamera camera;
 	private SpriteBatch batch;
 	private BitmapFont titleFont;
 	private BitmapFont textFont;
 	private TextureAtlas pickupAtlas;
 	
+	// Button variables
 	private Stage mainStage;
 	private TextureAtlas buttonAtlas;
 	private Skin buttonSkin;
 	private BitmapFont buttonFont;
 	
+	// Constructor:
 	public HelpScreen() {
 		super("MainMenu");
 		
+		// Help stuff
 		camera = new OrthographicCamera(GlobalVars.width, GlobalVars.height);
 		camera.position.set(GlobalVars.width / 2, GlobalVars.height / 2, 0);
 		camera.update();
@@ -50,6 +54,7 @@ public class HelpScreen extends BaseScreen {
 		textFont.scale(0.1f);
 		pickupAtlas = new TextureAtlas("gfx/sprites/pickups.pack");
 		
+		// Button stuff
 		mainStage = new Stage(new StretchViewport(GlobalVars.width, GlobalVars.height));
 		buttonAtlas = new TextureAtlas("gfx/ui/buttons.pack");
 		buttonSkin = new Skin(buttonAtlas);
@@ -75,10 +80,12 @@ public class HelpScreen extends BaseScreen {
 		});
 	}
 	
+	// Update:
 	@Override
 	public void render(float delta) {
 		super.render(delta);
 		
+		// Draw help stuff
 		camera.update();
 		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
@@ -102,10 +109,12 @@ public class HelpScreen extends BaseScreen {
 		textFont.draw(batch, "Speed Boost", 179f, 187f);
 		batch.end();
 		
+		// Draw buttons
 		mainStage.act();
 		mainStage.draw();
 	}
 	
+	// Dispose:
 	@Override
 	public void dispose() {
 		batch.dispose();

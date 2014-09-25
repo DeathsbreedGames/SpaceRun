@@ -15,23 +15,27 @@ import io.github.deathsbreedgames.spacerun.GlobalVars;
  * 
  */
 public class GlobalVars {
+	// Viewport dimensions
 	public static final int width = 320;
 	public static final int height = 480;
 	
+	// Audio variables
 	public static boolean soundOn = true;
 	public static boolean musicOn = true;
 	
+	// Game variables
 	public static int ship = 0;
 	public static int score = 0;
 	public static int highScore = 0;
 	
+	// Adjust location of mouse/touch to viewport
 	public static float getTouchX() {
-		float tX = (float)GlobalVars.width / (float)Gdx.graphics.getWidth() * (float)Gdx.input.getX();
+		float tX = (float)this.width / (float)Gdx.graphics.getWidth() * (float)Gdx.input.getX();
 		return tX;
 	}
 	
 	public static float getTouchY() {
-		float tY = (float)GlobalVars.height / (float)Gdx.graphics.getHeight() * (float)Gdx.input.getY();
+		float tY = (float)this.height / (float)Gdx.graphics.getHeight() * (float)Gdx.input.getY();
 		return tY;
 	}
 }

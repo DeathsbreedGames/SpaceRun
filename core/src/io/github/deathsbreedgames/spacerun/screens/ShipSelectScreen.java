@@ -135,6 +135,7 @@ public class ShipSelectScreen extends BaseScreen {
 		TextureRegion carrier = (TextureRegion)shipAtlas.findRegion("bluecarrier");
 		TextureRegion cruiser = (TextureRegion)shipAtlas.findRegion("bluecruiser");
 		
+		// Draw
 		camera.update();
 		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
@@ -151,6 +152,7 @@ public class ShipSelectScreen extends BaseScreen {
 			else chooseShip[i].setChecked(true);
 		}
 		
+		// Draw buttons
 		mainStage.act();
 		mainStage.draw();
 	}

@@ -107,6 +107,7 @@ public class MainMenuScreen extends BaseScreen {
 			}
 		});
 		
+		// Exit button cannot be used for WebGL
 		if(Gdx.app.getType() != ApplicationType.WebGL) {
 			TextButton quitButton = new TextButton("EXIT", buttonStyle);
 			quitButton.setPosition(GlobalVars.width / 2 - quitButton.getWidth() / 2, 90f);

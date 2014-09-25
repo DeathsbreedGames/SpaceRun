@@ -26,6 +26,7 @@ public class SpaceRun extends Game {
 	public void create () {
 		setScreen(new SplashScreen());
 		
+		// Create the music
 		music = Gdx.audio.newMusic(Gdx.files.internal("sfx/Android128_-_Dreamtest.mp3"));
 		music.setLooping(true);
 	}
@@ -35,8 +36,10 @@ public class SpaceRun extends Game {
 	public void render () {
 		BaseScreen currentScreen = (BaseScreen)super.getScreen();
 		
+		// Update the screen
 		currentScreen.render(Gdx.graphics.getDeltaTime());
 		
+		// Switch screens if necessary
 		if(currentScreen.isDone()) {
 			currentScreen.dispose();
 			if(currentScreen.getNextScreen().equals("Splash")) {
@@ -60,6 +63,7 @@ public class SpaceRun extends Game {
 			}
 		}
 		
+		// Play music if music should be played
 		if(currentScreen instanceof SplashScreen) {
 			if(music.isPlaying()) music.stop();
 		} else {

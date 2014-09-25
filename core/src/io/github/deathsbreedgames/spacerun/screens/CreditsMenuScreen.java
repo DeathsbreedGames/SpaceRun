@@ -149,6 +149,7 @@ public class CreditsMenuScreen extends BaseScreen {
 		oldMousePressed = mousePressed;
 	}
 	
+	// Check if the mouse collides with a certain text
 	private boolean mouseCollides(BitmapFont font, String text, float posX, float posY) {
 		float mouseX = GlobalVars.getTouchX();
 		float mouseY = (float)GlobalVars.height - GlobalVars.getTouchY();

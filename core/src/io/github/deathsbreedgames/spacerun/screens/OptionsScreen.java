@@ -29,24 +29,30 @@ import io.github.deathsbreedgames.spacerun.GlobalVars;
  * 
  */
 public class OptionsScreen extends BaseScreen {
+	// Variable to access preferences
 	private Preferences prefs;
 	
+	// Camera and drawing stuff
 	private OrthographicCamera camera;
 	private SpriteBatch batch;
 	private BitmapFont titleFont;
 	private BitmapFont textFont;
 	
+	// Buttons
 	private Stage mainStage;
 	private TextureAtlas buttonAtlas;
 	private Skin buttonSkin;
 	private BitmapFont buttonFont;
 	private ImageButton soundControl, musicControl;
 	
+	// Constructor:
 	public OptionsScreen() {
 		super("MainMenu");
 		
+		// Get the preferences from file
 		prefs = Gdx.app.getPreferences("SpaceRun");
 		
+		// Drawing stuff
 		camera = new OrthographicCamera(GlobalVars.width, GlobalVars.height);
 		camera.position.set(GlobalVars.width / 2, GlobalVars.height / 2, 0);
 		camera.update();
@@ -56,6 +62,7 @@ public class OptionsScreen extends BaseScreen {
 		textFont = new BitmapFont();
 		textFont.scale(0.5f);
 		
+		// Button stuff
 		mainStage = new Stage(new StretchViewport(GlobalVars.width, GlobalVars.height));
 		buttonAtlas = new TextureAtlas("gfx/ui/buttons.pack");
 		buttonSkin = new Skin(buttonAtlas);
@@ -129,10 +136,12 @@ public class OptionsScreen extends BaseScreen {
 		});
 	}
 	
+	// Update:
 	@Override
 	public void render(float delta) {
 		super.render(delta);
 		
+		// Draw
 		camera.update();
 		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
@@ -143,10 +152,12 @@ public class OptionsScreen extends BaseScreen {
 		textFont.draw(batch, "HIGH SCORE: " + GlobalVars.highScore, 10f, 230f);
 		batch.end();
 		
+		// Draw buttons
 		mainStage.act();
 		mainStage.draw();
 	}
 	
+	// Dispose:
 	@Override
 	public void dispose() {
 		batch.dispose();

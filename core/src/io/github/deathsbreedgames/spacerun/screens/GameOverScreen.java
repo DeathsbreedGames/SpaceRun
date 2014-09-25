@@ -26,10 +26,12 @@ import io.github.deathsbreedgames.spacerun.GlobalVars;
  * 
  */
 public class GameOverScreen extends BaseScreen {
+	// Drawing variables
 	private OrthographicCamera camera;
 	private SpriteBatch batch;
 	private BitmapFont font;
 	
+	// Button variables
 	private Stage mainStage;
 	private TextureAtlas buttonAtlas;
 	private Skin buttonSkin;
@@ -39,6 +41,7 @@ public class GameOverScreen extends BaseScreen {
 	public GameOverScreen() {
 		super("MainMenu");
 		
+		// Set high score
 		if(GlobalVars.score > GlobalVars.highScore) {
 			GlobalVars.highScore = GlobalVars.score;
 			Preferences prefs = Gdx.app.getPreferences("SpaceRun");
@@ -46,6 +49,7 @@ public class GameOverScreen extends BaseScreen {
 			prefs.flush();
 		}
 		
+		// Setup draw
 		camera = new OrthographicCamera(GlobalVars.width, GlobalVars.height);
 		camera.position.set(GlobalVars.width / 2, GlobalVars.height / 2, 0f);
 		camera.update();
@@ -53,6 +57,7 @@ public class GameOverScreen extends BaseScreen {
 		font = new BitmapFont();
 		font.scale(0.5f);
 		
+		// Setup buttons
 		mainStage = new Stage(new StretchViewport(GlobalVars.width, GlobalVars.height));
 		buttonAtlas = new TextureAtlas("gfx/ui/buttons.pack");
 		buttonSkin = new Skin(buttonAtlas);
@@ -83,6 +88,7 @@ public class GameOverScreen extends BaseScreen {
 	public void render(float delta) {
 		super.render(delta);
 		
+		// Draw stuff
 		camera.update();
 		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
@@ -93,6 +99,7 @@ public class GameOverScreen extends BaseScreen {
 		font.draw(batch, "HIGH SCORE: " + GlobalVars.highScore, textXPos, 300);
 		batch.end();
 		
+		// Draw buttons
 		mainStage.act();
 		mainStage.draw();
 	}
