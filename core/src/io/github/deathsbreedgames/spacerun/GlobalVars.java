@@ -30,12 +30,12 @@ public class GlobalVars {
 	
 	// Adjust location of mouse/touch to viewport
 	public static float getTouchX() {
-		float tX = (float)this.width / (float)Gdx.graphics.getWidth() * (float)Gdx.input.getX();
+		float tX = (float)width / (float)Gdx.graphics.getWidth() * (float)Gdx.input.getX();
 		return tX;
 	}
 	
 	public static float getTouchY() {
-		float tY = (float)this.height / (float)Gdx.graphics.getHeight() * (float)Gdx.input.getY();
+		float tY = (float)height / (float)Gdx.graphics.getHeight() * (float)Gdx.input.getY();
 		return tY;
 	}
 }
