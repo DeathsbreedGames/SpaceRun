@@ -374,8 +374,20 @@ public class GameScreen extends BaseScreen {
 			}
 		}
 		
-		enemies[n].setVelY(-enemies[n].getMaxVel());
-		enemies[n].setShootTimer(rand.nextFloat() * enemies[n].getShootTime());
+		overlapLoop:
+		for(int i = 0; i < NUM_ENEMIES; i++) {
+			if(i != n && enemies[i] != null) {
+				if(enemies[n].getBoundingRectangle().overlaps(enemies[i].getBoundingRectangle())) {
+					enemies[n] = null;
+					break overlapLoop;
+				}
+			}
+		}
+		
+		if(enemies[n] != null) {
+			enemies[n].setVelY(-enemies[n].getMaxVel());
+			enemies[n].setShootTimer(rand.nextFloat() * enemies[n].getShootTime());
+		}
 	}
 	
 	private void score(Enemy enemy) {
