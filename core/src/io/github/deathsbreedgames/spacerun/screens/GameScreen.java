@@ -375,6 +375,7 @@ public class GameScreen extends BaseScreen {
 		}
 		
 		enemies[n].setVelY(-enemies[n].getMaxVel());
+		enemies[n].setShootTimer(rand.nextFloat() * enemies[n].getShootTime());
 	}
 	
 	private void score(Enemy enemy) {
