@@ -267,7 +267,6 @@ public class GameScreen extends BaseScreen {
 					score(enemies[i]);
 					PooledEffect effect = explosionEffectPool.obtain();
 					effect.setPosition(enemies[i].getPosX(), enemies[i].getPosY());
-					effect.scaleEffect(0.3f);
 					effects.add(effect);
 					enemies[i] = null;
 				} else if(enemies[i].getBoundingRectangle().overlaps(player.getBoundingRectangle())) {
