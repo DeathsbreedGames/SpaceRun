@@ -134,7 +134,7 @@ public class GameScreen extends BaseScreen {
 		
 		// Setup Particle Effects
 		ParticleEffect explosionEffect = new ParticleEffect();
-		explosionEffect.loadEmitters(Gdx.files.internal("gfx/particles/Explosion.p"));
+		explosionEffect.load(Gdx.files.internal("gfx/particles/Explosion.p"), Gdx.files.internal("gfx/particles/"));
 		explosionEffectPool = new ParticleEffectPool(explosionEffect, 1, 2);
 		
 		laserShot = Gdx.audio.newSound(Gdx.files.internal("sfx/laser5.mp3"));
@@ -267,6 +267,7 @@ public class GameScreen extends BaseScreen {
 					score(enemies[i]);
 					PooledEffect effect = explosionEffectPool.obtain();
 					effect.setPosition(enemies[i].getPosX(), enemies[i].getPosY());
+					effect.scaleEffect(0.3f);
 					effects.add(effect);
 					enemies[i] = null;
 				} else if(enemies[i].getBoundingRectangle().overlaps(player.getBoundingRectangle())) {
@@ -331,6 +332,7 @@ public class GameScreen extends BaseScreen {
 			}
 		}
 		
+		// Update particles
 		for(int i = 0; i < effects.size; i++) {
 			PooledEffect effect = effects.get(i);
 			effect.draw(batch, delta);
