@@ -4,6 +4,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.ParticleEffect;
+import com.badlogic.gdx.graphics.g2d.ParticleEffectPool;
+import com.badlogic.gdx.graphics.g2d.ParticleEffectPool.PooledEffect;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -15,6 +18,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton.ImageButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 
 import io.github.deathsbreedgames.spacerun.GlobalVars;
@@ -60,6 +64,10 @@ public class GameScreen extends BaseScreen {
 	private float speedTimer;
 	private float invTimer;
 	
+	// Effect pools
+	private ParticleEffectPool explosionEffectPool;
+	private Array<PooledEffect> effects = new Array();
+	
 	// Audio variables
 	private Sound laserShot;
 	
@@ -86,7 +94,7 @@ public class GameScreen extends BaseScreen {
 			}
 		});
 		
-		// Setup entities
+		// Setup draw stuff
 		camera = new OrthographicCamera(GlobalVars.width, GlobalVars.height);
 		camera.position.set(GlobalVars.width / 2, GlobalVars.height / 2, 0f);
 		camera.update();
@@ -98,6 +106,7 @@ public class GameScreen extends BaseScreen {
 		font = new BitmapFont();
 		font.scale(0.01f);
 		
+		// Create ship
 		if(GlobalVars.ship == 0) {
 			player = new Player(spaceshipAtlas.findRegion("bluedestroyer"), 160, 50, 1, 200, 250, 0.5f);
 		} else if(GlobalVars.ship == 1) {
@@ -105,13 +114,16 @@ public class GameScreen extends BaseScreen {
 		} else {
 			player = new Player(spaceshipAtlas.findRegion("bluecruiser"), 160, 50, 0, 200, 500, 0.5f);
 		}
+		// Setup enemies
 		enemies = new Enemy[NUM_ENEMIES];
 		for(int i = 0; i < NUM_ENEMIES; i++) { enemies[i] = null; }
 		currentMaxEnemies = 1;
 		currentEnemies = 0;
+		// Setup bullets
 		bullets = new Bullet[NUM_BULLETS];
 		for(int i = 0; i < NUM_BULLETS; i++) { bullets[i] = null; }
 		
+		// Setup pickups
 		pickup = null;
 		pickupTimer = 0;
 		
@@ -119,6 +131,11 @@ public class GameScreen extends BaseScreen {
 		speed = false;
 		speedTimer = 0;
 		invTimer = 0;
+		
+		// Setup Particle Effects
+		ParticleEffect explosionEffect = new ParticleEffect();
+		explosionEffect.loadEmitters(Gdx.files.internal("gfx/particles/Explosion.p"));
+		explosionEffectPool = new ParticleEffectPool(explosionEffect, 1, 2);
 		
 		laserShot = Gdx.audio.newSound(Gdx.files.internal("sfx/laser5.mp3"));
 	}
@@ -186,6 +203,7 @@ public class GameScreen extends BaseScreen {
 			}
 		}
 		
+		// Pickup creation
 		pickupTimer += delta;
 		if(pickupTimer >= 15 && pickup == null) {
 			RandomXS128 rand = new RandomXS128();
@@ -247,6 +265,9 @@ public class GameScreen extends BaseScreen {
 					enemies[i] = null;
 				} else if(enemies[i].getShields() <= 0) {
 					score(enemies[i]);
+					PooledEffect effect = explosionEffectPool.obtain();
+					effect.setPosition(enemies[i].getPosX(), enemies[i].getPosY());
+					effects.add(effect);
 					enemies[i] = null;
 				} else if(enemies[i].getBoundingRectangle().overlaps(player.getBoundingRectangle())) {
 					if(!player.isInvincible()) player.incShields(-100);
@@ -307,6 +328,15 @@ public class GameScreen extends BaseScreen {
 					else player.setRegion(spaceshipAtlas.findRegion("bluecruiser_normal"));
 				}
 				pickup = null;
+			}
+		}
+		
+		for(int i = 0; i < effects.size; i++) {
+			PooledEffect effect = effects.get(i);
+			effect.draw(batch, delta);
+			if(effect.isComplete()) {
+				effect.free();
+				effects.removeIndex(i);
 			}
 		}
 		
@@ -418,6 +448,12 @@ public class GameScreen extends BaseScreen {
 		spaceshipAtlas.dispose();
 		bulletAtlas.dispose();
 		pickupAtlas.dispose();
+		
+		for(int i = 0; i < effects.size; i++) {
+			effects.get(i).free();
+			effects.get(i).dispose();
+		}
+		effects.clear();
 		
 		laserShot.dispose();
 	}
