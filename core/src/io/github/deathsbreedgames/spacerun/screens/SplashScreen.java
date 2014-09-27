@@ -1,10 +1,13 @@
 package io.github.deathsbreedgames.spacerun.screens;
 
+import java.util.Locale;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.I18NBundle;
 
 import io.github.deathsbreedgames.spacerun.GlobalVars;
 
@@ -48,6 +51,7 @@ public class SplashScreen extends BaseScreen {
 		
 		// Set the preferences
 		Preferences prefs = Gdx.app.getPreferences("SpaceRun");
+		GlobalVars.gameBundle = I18NBundle.createBundle(Gdx.files.internal("i18n/GameBundle"), Locale.getDefault());
 		GlobalVars.highScore = prefs.getInteger("HighScore");
 		GlobalVars.soundOn = !prefs.getBoolean("SoundOff");
 		GlobalVars.musicOn = !prefs.getBoolean("MusicOff");

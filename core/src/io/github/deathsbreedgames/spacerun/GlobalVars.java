@@ -1,6 +1,7 @@
 package io.github.deathsbreedgames.spacerun;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.utils.I18NBundle;
 
 import io.github.deathsbreedgames.spacerun.GlobalVars;
 
@@ -18,6 +19,9 @@ public class GlobalVars {
 	// Viewport dimensions
 	public static final int width = 320;
 	public static final int height = 480;
+	
+	// Locale information
+	public static I18NBundle gameBundle;
 	
 	// Audio variables
 	public static boolean soundOn = true;

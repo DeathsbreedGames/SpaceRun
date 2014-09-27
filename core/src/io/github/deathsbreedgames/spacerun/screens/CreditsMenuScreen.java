@@ -94,7 +94,7 @@ public class CreditsMenuScreen extends BaseScreen {
 		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
 		titleFont.setColor(1f, 0f, 0f, 1f);
-		titleFont.draw(batch, "Credits", 10f, 450f);
+		titleFont.draw(batch, "CREDITS", 10f, 450f);
 		
 		textFont.setColor(1f, 1f, 1f, 1f);
 		textFont.draw(batch, "Programming:", 10f, 400f);
