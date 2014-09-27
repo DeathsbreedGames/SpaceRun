@@ -65,7 +65,7 @@ public class MainMenuScreen extends BaseScreen {
 		buttonStyle.font = buttonFont;
 		
 		// Create the TextButtons
-		TextButton playButton = new TextButton("PLAY", buttonStyle);
+		TextButton playButton = new TextButton(GlobalVars.gameBundle.get("play"), buttonStyle);
 		playButton.setPosition(GlobalVars.width / 2 - playButton.getWidth() / 2, 250f);
 		mainStage.addActor(playButton);
 		playButton.addListener(new ChangeListener() {
@@ -76,7 +76,7 @@ public class MainMenuScreen extends BaseScreen {
 			}
 		});
 		
-		TextButton helpButton = new TextButton("HELP", buttonStyle);
+		TextButton helpButton = new TextButton(GlobalVars.gameBundle.get("help"), buttonStyle);
 		helpButton.setPosition(GlobalVars.width / 2 - helpButton.getWidth() / 2, 210f);
 		mainStage.addActor(helpButton);
 		helpButton.addListener(new ChangeListener() {
@@ -86,7 +86,7 @@ public class MainMenuScreen extends BaseScreen {
 			}
 		});
 		
-		TextButton optionsButton = new TextButton("OPTIONS", buttonStyle);
+		TextButton optionsButton = new TextButton(GlobalVars.gameBundle.get("options"), buttonStyle);
 		optionsButton.setPosition(GlobalVars.width / 2 - optionsButton.getWidth() / 2, 170f);
 		mainStage.addActor(optionsButton);
 		optionsButton.addListener(new ChangeListener() {
@@ -96,7 +96,7 @@ public class MainMenuScreen extends BaseScreen {
 			}
 		});
 		
-		TextButton creditsButton = new TextButton("CREDITS", buttonStyle);
+		TextButton creditsButton = new TextButton(GlobalVars.gameBundle.get("credits"), buttonStyle);
 		creditsButton.setPosition(GlobalVars.width / 2 - creditsButton.getWidth() / 2, 130f);
 		mainStage.addActor(creditsButton);
 		creditsButton.addListener(new ChangeListener() {
@@ -109,7 +109,7 @@ public class MainMenuScreen extends BaseScreen {
 		
 		// Exit button cannot be used for WebGL
 		if(Gdx.app.getType() != ApplicationType.WebGL) {
-			TextButton quitButton = new TextButton("EXIT", buttonStyle);
+			TextButton quitButton = new TextButton(GlobalVars.gameBundle.get("exit"), buttonStyle);
 			quitButton.setPosition(GlobalVars.width / 2 - quitButton.getWidth() / 2, 90f);
 			mainStage.addActor(quitButton);
 			quitButton.addListener(new ChangeListener() {
