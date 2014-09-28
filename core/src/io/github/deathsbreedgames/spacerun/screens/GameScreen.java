@@ -341,8 +341,8 @@ public class GameScreen extends BaseScreen {
 			}
 		}
 		
-		font.draw(batch, "Shields: " + player.getShields(), 10, 470);
-		font.draw(batch, "Score: " + player.getScore(), 10, 450);
+		font.draw(batch, GlobalVars.gameBundle.format("shields", player.getShields()), 10, 470);
+		font.draw(batch, GlobalVars.gameBundle.format("score", player.getScore()), 10, 450);
 		batch.end();
 		
 		mainStage.act();

@@ -69,7 +69,7 @@ public class HelpScreen extends BaseScreen {
 		buttonStyle.over = buttonSkin.getDrawable("MainMenu-hover");
 		buttonStyle.font = buttonFont;
 		
-		TextButton backButton = new TextButton("BACK", buttonStyle);
+		TextButton backButton = new TextButton(GlobalVars.gameBundle.get("back"), buttonStyle);
 		backButton.setPosition(GlobalVars.width / 2 - backButton.getWidth() / 2, 10f);
 		mainStage.addActor(backButton);
 		backButton.addListener(new ChangeListener() {
@@ -90,23 +90,20 @@ public class HelpScreen extends BaseScreen {
 		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
 		titleFont.setColor(1f, 0f, 0f, 1f);
-		titleFont.draw(batch, "HELP", 10f, 450f);
-		textFont.drawWrapped(batch, "Your objective is to get the highest score possible. You can " +
-			"see your shield health in the upper-left corner of the screen (along with your score)." +
-			"To quit the game, just click/touch the 'X' button in the upper-right corner of the screen.", 10f, 400f, 300f);
-		
+		titleFont.draw(batch, GlobalVars.gameBundle.get("help"), 10f, 450f);
+		textFont.drawWrapped(batch, GlobalVars.gameBundle.get("instructions"), 10f, 400f, 300f);
 		batch.draw(pickupAtlas.findRegion("shield"), 10f, 235f);
-		textFont.draw(batch, "Repairs", 45f, 257f);
+		textFont.draw(batch, GlobalVars.gameBundle.get("repairs"), 45f, 257f);
 		batch.draw(pickupAtlas.findRegion("full-shield"), 10f, 200f);
-		textFont.draw(batch, "Invincibility", 45f, 222f);
+		textFont.draw(batch, GlobalVars.gameBundle.get("invincibility"), 45f, 222f);
 		batch.draw(pickupAtlas.findRegion("double-shot"), 10f, 165f);
-		textFont.draw(batch, "Double-Shot", 45f, 187f);
+		textFont.draw(batch, GlobalVars.gameBundle.get("doubleshot"), 45f, 187f);
 		batch.draw(pickupAtlas.findRegion("rapid-fire"), 144f, 235f);
-		textFont.draw(batch, "Rapid Fire", 179f, 257f);
+		textFont.draw(batch, GlobalVars.gameBundle.get("rapidfire"), 179f, 257f);
 		batch.draw(pickupAtlas.findRegion("weapon-upgrade"), 144, 200f);
-		textFont.draw(batch, "Upgrade Weapon", 179f, 222f);
+		textFont.draw(batch, GlobalVars.gameBundle.get("upgradeweapon"), 179f, 222f);
 		batch.draw(pickupAtlas.findRegion("speed"), 144f, 165f);
-		textFont.draw(batch, "Speed Boost", 179f, 187f);
+		textFont.draw(batch, GlobalVars.gameBundle.get("speedboost"), 179f, 187f);
 		batch.end();
 		
 		// Draw buttons

@@ -103,7 +103,7 @@ public class ShipSelectScreen extends BaseScreen {
 		for(int i = 0; i < chooseShip.length; i++) mainStage.addActor(chooseShip[i]);
 		chooseShip[0].setChecked(true);
 		
-		TextButton playButton = new TextButton("PLAY", buttonStyle);
+		TextButton playButton = new TextButton(GlobalVars.gameBundle.get("play"), buttonStyle);
 		playButton.setPosition(GlobalVars.width / 2 - playButton.getWidth() / 2, 60f);
 		mainStage.addActor(playButton);
 		playButton.addListener(new ChangeListener() {
@@ -114,7 +114,7 @@ public class ShipSelectScreen extends BaseScreen {
 			}
 		});
 		
-		TextButton backButton = new TextButton("BACK", buttonStyle);
+		TextButton backButton = new TextButton(GlobalVars.gameBundle.get("back"), buttonStyle);
 		backButton.setPosition(GlobalVars.width / 2 - backButton.getWidth() / 2,
 			playButton.getY() - (backButton.getHeight() + 5f));
 		mainStage.addActor(backButton);

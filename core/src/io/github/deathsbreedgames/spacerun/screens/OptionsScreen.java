@@ -111,7 +111,7 @@ public class OptionsScreen extends BaseScreen {
 		buttonStyle.over = buttonSkin.getDrawable("MainMenu-hover");
 		buttonStyle.font = buttonFont;
 		
-		TextButton clearButton = new TextButton("CLEAR DATA", buttonStyle);
+		TextButton clearButton = new TextButton(GlobalVars.gameBundle.get("cleardata"), buttonStyle);
 		clearButton.setPosition(10f, 160f);
 		mainStage.addActor(clearButton);
 		clearButton.addListener(new ChangeListener() {
@@ -125,7 +125,7 @@ public class OptionsScreen extends BaseScreen {
 			}
 		});
 		
-		TextButton backButton = new TextButton("BACK", buttonStyle);
+		TextButton backButton = new TextButton(GlobalVars.gameBundle.get("back"), buttonStyle);
 		backButton.setPosition(GlobalVars.width / 2 - backButton.getWidth() / 2, 10f);
 		mainStage.addActor(backButton);
 		backButton.addListener(new ChangeListener() {
@@ -146,10 +146,10 @@ public class OptionsScreen extends BaseScreen {
 		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
 		titleFont.setColor(1f, 0f, 0f, 1f);
-		titleFont.draw(batch, "OPTIONS", 10f, 450f);
-		textFont.draw(batch, "SOUND", 100f, 380f);
-		textFont.draw(batch, "MUSIC", 100f, 320f);
-		textFont.draw(batch, "HIGH SCORE: " + GlobalVars.highScore, 10f, 230f);
+		titleFont.draw(batch, GlobalVars.gameBundle.get("options"), 10f, 450f);
+		textFont.draw(batch, GlobalVars.gameBundle.get("sound"), 100f, 380f);
+		textFont.draw(batch, GlobalVars.gameBundle.get("music"), 100f, 320f);
+		textFont.draw(batch, GlobalVars.gameBundle.format("highscore", GlobalVars.highScore), 10f, 230f);
 		batch.end();
 		
 		// Draw buttons

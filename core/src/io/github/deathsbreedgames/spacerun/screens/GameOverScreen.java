@@ -72,7 +72,7 @@ public class GameOverScreen extends BaseScreen {
 		buttonStyle.over = buttonSkin.getDrawable("MainMenu-hover");
 		buttonStyle.font = buttonFont;
 		
-		TextButton menuButton = new TextButton("MAIN MENU", buttonStyle);
+		TextButton menuButton = new TextButton(GlobalVars.gameBundle.get("mainmenu"), buttonStyle);
 		menuButton.setPosition(GlobalVars.width / 2 - menuButton.getWidth() / 2, 10f);
 		mainStage.addActor(menuButton);
 		menuButton.addListener(new ChangeListener() {
@@ -93,10 +93,10 @@ public class GameOverScreen extends BaseScreen {
 		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
 		float textXPos;
-		textXPos = GlobalVars.width / 2 - font.getBounds("SCORE: " + GlobalVars.score).width / 2;
-		font.draw(batch, "SCORE: " + GlobalVars.score, textXPos, 350);
-		textXPos = GlobalVars.width / 2 - font.getBounds("HIGH SCORE: " + GlobalVars.highScore).width / 2;
-		font.draw(batch, "HIGH SCORE: " + GlobalVars.highScore, textXPos, 300);
+		textXPos = GlobalVars.width / 2 - font.getBounds(GlobalVars.gameBundle.format("score", GlobalVars.score)).width / 2;
+		font.draw(batch, GlobalVars.gameBundle.format("score", GlobalVars.score), textXPos, 350);
+		textXPos = GlobalVars.width / 2 - font.getBounds(GlobalVars.gameBundle.format("highscore", GlobalVars.highScore)).width / 2;
+		font.draw(batch, GlobalVars.gameBundle.format("highscore", GlobalVars.highScore), textXPos, 300);
 		batch.end();
 		
 		// Draw buttons
