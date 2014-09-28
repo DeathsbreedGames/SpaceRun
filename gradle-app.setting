@@ -14,7 +14,7 @@
     </setting> 
   </setting>  
   <setting name="SinglePaneUIInstance_splitter-id"> 
-    <setting name="divider_location" value="408"/> 
+    <setting name="divider_location" value="412"/> 
   </setting>  
   <setting name="main_panel"> 
     <setting name="current-tab" value="Task Tree"/> 
