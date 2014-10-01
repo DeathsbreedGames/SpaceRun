@@ -272,6 +272,9 @@ public class GameScreen extends BaseScreen {
 				} else if(enemies[i].getBoundingRectangle().overlaps(player.getBoundingRectangle())) {
 					if(!player.isInvincible()) player.incShields(-100);
 					if(!player.isInvincible()) player.setDoubleShot(false);
+					PooledEffect effect = explosionEffectPool.obtain();
+					effect.setPosition(enemies[i].getPosX(), enemies[i].getPosY());
+					effects.add(effect);
 					enemies[i] = null;
 				}
 			}
