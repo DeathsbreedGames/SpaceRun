@@ -119,22 +119,27 @@ public class CreditsMenuScreen extends BaseScreen {
 			if(mousePressed && !oldMousePressed) Gdx.net.openURI("http://opengameart.org/users/dklon");
 		} else { textFont.setColor(0f, 0f, 1f, 1f); }
 		textFont.draw(batch, "dklon", 20f, 280f);
+		if(mouseCollides(textFont, "Luke.RUSTLTD", 20f, 260f)) {
+			textFont.setColor(1f, 1f, 0f, 1f);
+			if(mousePressed && !oldMousePressed) Gdx.net.openURI("http://opengameart.org/users/lukerustltd");
+		} else { textFont.setColor(0f, 0f, 1f, 1f); }
+		textFont.draw(batch, "Luke.RUSTLTD", 20f, 260f);
 		
 		textFont.setColor(1f, 1f, 1f, 1f);
-		textFont.draw(batch, GlobalVars.gameBundle.get("musiccredits"), 10f, 250f);
-		if(mouseCollides(textFont, "Android128", 20f, 230f)) {
+		textFont.draw(batch, GlobalVars.gameBundle.get("musiccredits"), 10f, 230f);
+		if(mouseCollides(textFont, "Android128", 20f, 210f)) {
 			textFont.setColor(1f, 1f, 0f, 1f);
 			if(mousePressed && !oldMousePressed) Gdx.net.openURI("http://opengameart.org/users/android128");
 		} else { textFont.setColor(0f, 0f, 1f, 1f); }
-		textFont.draw(batch, "Android128", 20f, 230f);
+		textFont.draw(batch, "Android128", 20f, 210f);
 		
 		textFont.setColor(1f, 1f, 1f, 1f);
-		textFont.draw(batch, GlobalVars.gameBundle.get("freesoftware"), 10f, 150f);
-		if(mouseCollides(textFont, "Fork me on Github!", 10f, 130f)) {
+		textFont.draw(batch, GlobalVars.gameBundle.get("freesoftware"), 10f, 130f);
+		if(mouseCollides(textFont, "Fork me on Github!", 10f, 110f)) {
 			textFont.setColor(1f, 1f, 0f, 1f);
 			if(mousePressed && !oldMousePressed) Gdx.net.openURI("https://github.com/DeathsbreedGames/SpaceRun");
 		} else { textFont.setColor(0f, 0f, 1f, 1f); }
-		textFont.draw(batch, "Fork me on Github!", 10f, 130f);
+		textFont.draw(batch, "Fork me on Github!", 10f, 110f);
 		
 		textFont.setColor(1f, 1f, 1f, 1f);
 		String version = "v0.7";
