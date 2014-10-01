@@ -70,6 +70,7 @@ public class GameScreen extends BaseScreen {
 	
 	// Audio variables
 	private Sound laserShot;
+	private Sound explode;
 	
 	// Constructor:
 	public GameScreen() {
@@ -137,7 +138,9 @@ public class GameScreen extends BaseScreen {
 		explosionEffect.load(Gdx.files.internal("gfx/particles/Explosion.p"), Gdx.files.internal("gfx/particles/"));
 		explosionEffectPool = new ParticleEffectPool(explosionEffect, 1, 2);
 		
+		// Setup sound
 		laserShot = Gdx.audio.newSound(Gdx.files.internal("sfx/laser5.mp3"));
+		explode = Gdx.audio.newSound(Gdx.files.internal("sfx/explosion.mp3"));
 	}
 	
 	// Update:
