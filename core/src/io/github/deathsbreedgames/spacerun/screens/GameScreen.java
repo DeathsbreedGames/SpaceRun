@@ -358,7 +358,7 @@ public class GameScreen extends BaseScreen {
 			return bulletAtlas.findRegion("NormalBullet-green");
 		} else if(ship.getWeapon() == 1) {
 			return bulletAtlas.findRegion("NormalBullet-blue");
-		} else if(ship.getWeapon() == 2) {
+		} else if(ship.getWeapon() >= 2) {
 			return bulletAtlas.findRegion("NormalBullet-red");
 		} else {
 			return bulletAtlas.findRegion("NormalBullet-green");
