@@ -316,7 +316,7 @@ public class GameScreen extends BaseScreen {
 			pickup.render(batch, delta);
 			if(pickup.getBoundingRectangle().overlaps(player.getBoundingRectangle())) {
 				if(pickup.getType().equals("repair")) {
-					player.incShields(50);
+					player.incShields(100);
 				} else if(pickup.getType().equals("double")) {
 					player.setDoubleShot(true);
 				} else if(pickup.getType().equals("speed")) {
