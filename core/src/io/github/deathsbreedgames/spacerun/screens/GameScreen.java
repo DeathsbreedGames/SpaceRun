@@ -217,7 +217,7 @@ public class GameScreen extends BaseScreen {
 				pickup = new Pickup(pickupAtlas.findRegion("double-shot"), rand.nextFloat() * GlobalVars.width, 480, "double");
 			} else if(probType < 0.5f) {
 				pickup = new Pickup(pickupAtlas.findRegion("speed"), rand.nextFloat() * GlobalVars.width, 480, "speed");
-			} else if(probType < 0.65f) {
+			} else if(probType < 0.7f) {
 				pickup = new Pickup(pickupAtlas.findRegion("rapid-fire"), rand.nextFloat() * GlobalVars.width, 480, "rapid");
 			} else if(probType < 0.75f) {
 				pickup = new Pickup(pickupAtlas.findRegion("weapon-upgrade"), rand.nextFloat() * GlobalVars.width, 480, "upgrade");
