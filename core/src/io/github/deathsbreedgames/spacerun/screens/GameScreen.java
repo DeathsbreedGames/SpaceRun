@@ -271,6 +271,7 @@ public class GameScreen extends BaseScreen {
 					PooledEffect effect = explosionEffectPool.obtain();
 					effect.setPosition(enemies[i].getPosX(), enemies[i].getPosY());
 					effects.add(effect);
+					if(GlobalVars.soundOn) explode.play();
 					enemies[i] = null;
 				} else if(enemies[i].getBoundingRectangle().overlaps(player.getBoundingRectangle())) {
 					if(!player.isInvincible()) player.incShields(-100);
@@ -278,6 +279,7 @@ public class GameScreen extends BaseScreen {
 					PooledEffect effect = explosionEffectPool.obtain();
 					effect.setPosition(enemies[i].getPosX(), enemies[i].getPosY());
 					effects.add(effect);
+					if(GlobalVars.soundOn) explode.play();
 					enemies[i] = null;
 				}
 			}
