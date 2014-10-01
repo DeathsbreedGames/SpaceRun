@@ -109,11 +109,11 @@ public class GameScreen extends BaseScreen {
 		
 		// Create ship
 		if(GlobalVars.ship == 0) {
-			player = new Player(spaceshipAtlas.findRegion("bluedestroyer"), 160, 50, 1, 200, 250, 0.5f);
+			player = new Player(spaceshipAtlas.findRegion("bluedestroyer"), 160, 50, 1, 500, 250, 0.5f);
 		} else if(GlobalVars.ship == 1) {
-			player = new Player(spaceshipAtlas.findRegion("bluecarrier"), 160, 50, 0, 400, 250, 0.5f);
+			player = new Player(spaceshipAtlas.findRegion("bluecarrier"), 160, 50, 0, 1000, 250, 0.5f);
 		} else {
-			player = new Player(spaceshipAtlas.findRegion("bluecruiser"), 160, 50, 0, 200, 500, 0.5f);
+			player = new Player(spaceshipAtlas.findRegion("bluecruiser"), 160, 50, 0, 500, 500, 0.5f);
 		}
 		// Setup enemies
 		enemies = new Enemy[NUM_ENEMIES];
@@ -393,7 +393,7 @@ public class GameScreen extends BaseScreen {
 					xPos, 480, 0, 50, 175, 1.5f, "F51");
 			} else {
 				enemies[n] = new Enemy(spaceshipAtlas.findRegion("F5S2"),
-					xPos, 480, 0, 75, 175, 1.0f, "F52");
+					xPos, 480, 0, 100, 175, 1.0f, "F52");
 			}
 		} else if(player.getScore() < 1000) {
 			if(type < 0.5f) {
@@ -401,7 +401,7 @@ public class GameScreen extends BaseScreen {
 					xPos, 480, 0, 50, 175, 1.5f, "F51");
 			} else if(type < 0.75f) {
 				enemies[n] = new Enemy(spaceshipAtlas.findRegion("F5S2"),
-					xPos, 480, 0, 75, 175, 1.0f, "F52");
+					xPos, 480, 0, 100, 175, 1.0f, "F52");
 			} else {
 				enemies[n] = new Enemy(spaceshipAtlas.findRegion("F5S3"),
 					xPos, 480, 1, 75, 200, 1.0f, "F53");
@@ -412,13 +412,13 @@ public class GameScreen extends BaseScreen {
 					xPos, 480, 0, 50, 175, 1.5f, "F51");
 			} else if(type < 0.7f) {
 				enemies[n] = new Enemy(spaceshipAtlas.findRegion("F5S2"),
-					xPos, 480, 0, 75, 175, 1.0f, "F52");
+					xPos, 480, 0, 100, 175, 1.0f, "F52");
 			} else if(type < 0.9f) {
 				enemies[n] = new Enemy(spaceshipAtlas.findRegion("F5S3"),
-					xPos, 480, 1, 75, 200, 1.0f, "F53");
+					xPos, 480, 1, 100, 200, 1.0f, "F53");
 			} else {
 				enemies[n] = new Enemy(spaceshipAtlas.findRegion("F5S4"),
-					xPos, 480, 1, 100, 200, 0.75f, "F54");
+					xPos, 480, 1, 300, 200, 0.75f, "F54");
 			}
 		}
 		
