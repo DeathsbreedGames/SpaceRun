@@ -364,10 +364,10 @@ public class GameScreen extends BaseScreen {
 	
 	// Gets the damage depending on weapon
 	private int getDmg(Ship ship) {
-		if(ship.getWeapon() == 0) return 25;
-		else if(ship.getWeapon() == 1) return 50;
-		else if(ship.getWeapon() == 2) return 100;
-		else return 25;
+		if(ship.getWeapon() == 0) return 50;
+		else if(ship.getWeapon() == 1) return 100;
+		else if(ship.getWeapon() >= 2) return 150;
+		else return 100;
 	}
 	
 	// Creates an enemy
