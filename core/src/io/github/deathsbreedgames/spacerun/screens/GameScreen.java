@@ -3,6 +3,7 @@ package io.github.deathsbreedgames.spacerun.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.ParticleEffectPool;
@@ -67,6 +68,10 @@ public class GameScreen extends BaseScreen {
 	// Effect pools
 	private ParticleEffectPool explosionEffectPool;
 	private Array<PooledEffect> effects = new Array();
+	
+	// Stars
+	private Entity[] stars;
+	private final int NUM_STARS = 100;
 	
 	// Audio variables
 	private Sound laserShot;
@@ -137,6 +142,15 @@ public class GameScreen extends BaseScreen {
 		ParticleEffect explosionEffect = new ParticleEffect();
 		explosionEffect.load(Gdx.files.internal("gfx/particles/Explosion.p"), Gdx.files.internal("gfx/particles/"));
 		explosionEffectPool = new ParticleEffectPool(explosionEffect, 1, 2);
+		
+		// Setup stars
+		stars = new Entity[NUM_STARS];
+		Texture star = new Texture("gfx/sprites/star.png");
+		for(int i = 0; i < NUM_STARS; i++) {
+			RandomXS128 rand = new RandomXS128();
+			stars[i] = new Entity(star, rand.nextFloat() * GlobalVars.width, rand.nextFloat() * GlobalVars.height);
+			stars[i].setVelY(-200f);
+		}
 		
 		// Setup sound
 		laserShot = Gdx.audio.newSound(Gdx.files.internal("sfx/laser5.mp3"));
@@ -251,6 +265,17 @@ public class GameScreen extends BaseScreen {
 		camera.update();
 		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
+		
+		// Update stars
+		for(int i = 0; i < NUM_STARS; i++) {
+			stars[i].render(batch, delta);
+			if(stars[i].getPosY() <= 0) {
+				RandomXS128 rand = new RandomXS128();
+				stars[i].setPosY(GlobalVars.height);
+				stars[i].setPosX(rand.nextFloat() * GlobalVars.width);
+			}
+		}
+		
 		// Update player
 		player.render(batch, delta);
 		if(player.getShields() <= 0) {

@@ -1,6 +1,7 @@
 package io.github.deathsbreedgames.spacerun.entities;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -22,6 +23,14 @@ public class Entity extends Sprite {
 	
 	// Constructor:
 	public Entity(TextureRegion img, float x, float y) {
+		super(img);
+		position = new Vector2(x, y);
+		velocity = new Vector2(0f, 0f);
+		setCenter(position.x, position.y);
+		setBounds(this.getX(), this.getY(), this.getWidth(), this.getHeight());
+	}
+	
+	public Entity(Texture img, float x, float y) {
 		super(img);
 		position = new Vector2(x, y);
 		velocity = new Vector2(0f, 0f);
