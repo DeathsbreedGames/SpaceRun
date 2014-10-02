@@ -116,9 +116,7 @@ public class OptionsScreen extends BaseScreen {
 		mainStage.addActor(clearButton);
 		clearButton.addListener(new ChangeListener() {
 			public void changed(ChangeEvent e, Actor a) {
-				prefs.putInteger("HighScore", 0);
-				prefs.putBoolean("SoundOff", false);
-				prefs.putBoolean("MusicOff", false);
+				prefs.clear();
 				prefs.flush();
 				setNextScreen("Splash");
 				setDone(true);
