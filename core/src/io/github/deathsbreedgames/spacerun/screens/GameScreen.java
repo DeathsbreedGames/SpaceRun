@@ -114,11 +114,11 @@ public class GameScreen extends BaseScreen {
 		
 		// Create ship
 		if(GlobalVars.ship == 0) {
-			player = new Player(spaceshipAtlas.findRegion("bluedestroyer"), 160, 50, 1, 500, 250, 0.5f);
+			player = new Player(spaceshipAtlas.findRegion("bluedestroyer"), 160, 50, 1, 1000, 250, 0.5f);
 		} else if(GlobalVars.ship == 1) {
-			player = new Player(spaceshipAtlas.findRegion("bluecarrier"), 160, 50, 0, 1000, 250, 0.5f);
+			player = new Player(spaceshipAtlas.findRegion("bluecarrier"), 160, 50, 0, 2000, 250, 0.5f);
 		} else {
-			player = new Player(spaceshipAtlas.findRegion("bluecruiser"), 160, 50, 0, 500, 500, 0.5f);
+			player = new Player(spaceshipAtlas.findRegion("bluecruiser"), 160, 50, 0, 1000, 500, 0.5f);
 		}
 		// Setup enemies
 		enemies = new Enemy[NUM_ENEMIES];

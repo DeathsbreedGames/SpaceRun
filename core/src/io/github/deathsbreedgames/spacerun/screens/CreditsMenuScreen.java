@@ -142,7 +142,7 @@ public class CreditsMenuScreen extends BaseScreen {
 		textFont.draw(batch, "Fork me on Github!", 10f, 110f);
 		
 		textFont.setColor(1f, 1f, 1f, 1f);
-		String version = "v0.7";
+		String version = "v1.0";
 		float versionX = GlobalVars.width - (textFont.getBounds(version).width + 5);
 		textFont.draw(batch, version, versionX, 465f);
 		batch.end();
