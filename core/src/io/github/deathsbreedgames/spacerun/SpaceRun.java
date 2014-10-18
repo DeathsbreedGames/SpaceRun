@@ -27,7 +27,7 @@ public class SpaceRun extends Game {
 		setScreen(new SplashScreen());
 		
 		// Create the music
-		music = Gdx.audio.newMusic(Gdx.files.internal("sfx/Android128_-_Dreamtest.mp3"));
+		music = Gdx.audio.newMusic(Gdx.files.internal("sfx/Android128_-_At_Last.mp3"));
 		music.setLooping(true);
 	}
 	
