@@ -41,13 +41,15 @@ public class GameOverScreen extends BaseScreen {
 	public GameOverScreen() {
 		super("MainMenu");
 		
+		Preferences prefs = Gdx.app.getPreferences("SpaceRun");
+		
 		// Set high score
 		if(GlobalVars.score > GlobalVars.highScore) {
 			GlobalVars.highScore = GlobalVars.score;
-			Preferences prefs = Gdx.app.getPreferences("SpaceRun");
 			prefs.putInteger("HighScore", GlobalVars.highScore);
-			prefs.flush();
 		}
+		prefs.putInteger("KillCount", GlobalVars.killCount);
+		prefs.flush();
 		
 		// Setup draw
 		camera = new OrthographicCamera(GlobalVars.width, GlobalVars.height);

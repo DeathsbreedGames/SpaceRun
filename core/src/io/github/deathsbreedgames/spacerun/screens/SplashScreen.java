@@ -53,6 +53,7 @@ public class SplashScreen extends BaseScreen {
 		Preferences prefs = Gdx.app.getPreferences("SpaceRun");
 		GlobalVars.gameBundle = I18NBundle.createBundle(Gdx.files.internal("i18n/GameBundle"), Locale.getDefault());
 		GlobalVars.highScore = prefs.getInteger("HighScore");
+		GlobalVars.killCount = prefs.getInteger("KillCount");
 		GlobalVars.soundOn = !prefs.getBoolean("SoundOff");
 		GlobalVars.musicOn = !prefs.getBoolean("MusicOff");
 	}

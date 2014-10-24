@@ -298,6 +298,7 @@ public class GameScreen extends BaseScreen {
 					effects.add(effect);
 					if(GlobalVars.soundOn) explode.play();
 					enemies[i] = null;
+					GlobalVars.killCount++;
 				} else if(enemies[i].getBoundingRectangle().overlaps(player.getBoundingRectangle())) {
 					if(!player.isInvincible()) player.incShields(-100);
 					if(!player.isInvincible()) player.setDoubleShot(false);
@@ -306,6 +307,7 @@ public class GameScreen extends BaseScreen {
 					effects.add(effect);
 					if(GlobalVars.soundOn) explode.play();
 					enemies[i] = null;
+					GlobalVars.killCount++;
 				}
 			}
 		}

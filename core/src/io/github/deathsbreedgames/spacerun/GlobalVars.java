@@ -31,6 +31,7 @@ public class GlobalVars {
 	public static int ship = 0;
 	public static int score = 0;
 	public static int highScore = 0;
+	public static int killCount = 0;
 	
 	// Adjust location of mouse/touch to viewport
 	public static float getTouchX() {
