@@ -92,12 +92,12 @@ public class HelpScreen extends BaseScreen {
 		titleFont.setColor(1f, 0f, 0f, 1f);
 		titleFont.draw(batch, GlobalVars.gameBundle.get("help"), 10f, 450f);
 		textFont.drawWrapped(batch, GlobalVars.gameBundle.get("instructions"), 10f, 400f, 300f);
-		batch.draw(pickupAtlas.findRegion("shield"), 10f, 235f);
-		textFont.draw(batch, GlobalVars.gameBundle.get("repairs"), 45f, 257f);
-		batch.draw(pickupAtlas.findRegion("full-shield"), 10f, 200f);
-		textFont.draw(batch, GlobalVars.gameBundle.get("invincibility"), 45f, 222f);
-		batch.draw(pickupAtlas.findRegion("double-shot"), 10f, 165f);
-		textFont.draw(batch, GlobalVars.gameBundle.get("doubleshot"), 45f, 187f);
+		batch.draw(pickupAtlas.findRegion("shield"), 5f, 235f);
+		textFont.draw(batch, GlobalVars.gameBundle.get("repairs"), 40f, 257f);
+		batch.draw(pickupAtlas.findRegion("full-shield"), 5f, 200f);
+		textFont.draw(batch, GlobalVars.gameBundle.get("invincibility"), 40f, 222f);
+		batch.draw(pickupAtlas.findRegion("double-shot"), 5f, 165f);
+		textFont.draw(batch, GlobalVars.gameBundle.get("doubleshot"), 40f, 187f);
 		batch.draw(pickupAtlas.findRegion("rapid-fire"), 144f, 235f);
 		textFont.draw(batch, GlobalVars.gameBundle.get("rapidfire"), 179f, 257f);
 		batch.draw(pickupAtlas.findRegion("weapon-upgrade"), 144, 200f);
