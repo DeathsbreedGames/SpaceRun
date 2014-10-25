@@ -112,7 +112,7 @@ public class OptionsScreen extends BaseScreen {
 		buttonStyle.font = buttonFont;
 		
 		TextButton clearButton = new TextButton(GlobalVars.gameBundle.get("cleardata"), buttonStyle);
-		clearButton.setPosition(10f, 160f);
+		clearButton.setPosition(10f, 145f);
 		mainStage.addActor(clearButton);
 		clearButton.addListener(new ChangeListener() {
 			public void changed(ChangeEvent e, Actor a) {
@@ -148,6 +148,7 @@ public class OptionsScreen extends BaseScreen {
 		textFont.draw(batch, GlobalVars.gameBundle.get("sound"), 100f, 380f);
 		textFont.draw(batch, GlobalVars.gameBundle.get("music"), 100f, 320f);
 		textFont.draw(batch, GlobalVars.gameBundle.format("highscore", GlobalVars.highScore), 10f, 230f);
+		textFont.draw(batch, GlobalVars.gameBundle.format("kills", GlobalVars.killCount), 10, 205f);
 		batch.end();
 		
 		// Draw buttons
