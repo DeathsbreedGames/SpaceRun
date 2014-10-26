@@ -33,6 +33,8 @@ public class GlobalVars {
 	public static int highScore = 0;
 	public static int killCount = 0;
 	
+	public static ActionResolver actionResolver;
+	
 	// Adjust location of mouse/touch to viewport
 	public static float getTouchX() {
 		float tX = (float)width / (float)Gdx.graphics.getWidth() * (float)Gdx.input.getX();

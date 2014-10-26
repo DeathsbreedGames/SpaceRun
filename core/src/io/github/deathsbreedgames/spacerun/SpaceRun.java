@@ -21,6 +21,11 @@ import io.github.deathsbreedgames.spacerun.screens.*;
 public class SpaceRun extends Game {
 	private Music music;
 	
+	public SpaceRun(ActionResolver actionResolver) {
+		GlobalVars.actionResolver = actionResolver;
+	}
+	public SpaceRun() { }
+	
 	// Create:
 	@Override
 	public void create () {
