@@ -75,6 +75,7 @@ public class SpaceRun extends Game {
 	// Dispose:
 	@Override
 	public void dispose() {
+		music.dispose();
 		super.getScreen().dispose();
 		super.dispose();
 	}

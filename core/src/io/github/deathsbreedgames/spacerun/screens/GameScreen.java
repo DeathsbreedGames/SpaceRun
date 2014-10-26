@@ -11,6 +11,8 @@ import com.badlogic.gdx.graphics.g2d.ParticleEffectPool.PooledEffect;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.RandomXS128;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -70,8 +72,9 @@ public class GameScreen extends BaseScreen {
 	private Array<PooledEffect> effects = new Array();
 	
 	// Stars
-	private Entity[] stars;
+	private Star[] stars;
 	private final int NUM_STARS = 100;
+	private ShapeRenderer shapeRenderer;
 	
 	// Audio variables
 	private Sound laserShot;
@@ -144,13 +147,12 @@ public class GameScreen extends BaseScreen {
 		explosionEffectPool = new ParticleEffectPool(explosionEffect, 1, 2);
 		
 		// Setup stars
-		stars = new Entity[NUM_STARS];
-		Texture star = new Texture("gfx/sprites/star.png");
+		stars = new Star[NUM_STARS];
 		for(int i = 0; i < NUM_STARS; i++) {
 			RandomXS128 rand = new RandomXS128();
-			stars[i] = new Entity(star, rand.nextFloat() * GlobalVars.width, rand.nextFloat() * GlobalVars.height);
-			stars[i].setVelY(-200f);
+			stars[i] = new Star(rand.nextFloat() * GlobalVars.width, rand.nextFloat() * GlobalVars.height);
 		}
+		shapeRenderer = new ShapeRenderer();
 		
 		// Setup sound
 		laserShot = Gdx.audio.newSound(Gdx.files.internal("sfx/laser5.mp3"));
@@ -263,19 +265,14 @@ public class GameScreen extends BaseScreen {
 		else invTimer -= delta;
 		
 		camera.update();
+		// Update stars
+		shapeRenderer.setProjectionMatrix(camera.combined);
+		shapeRenderer.begin(ShapeType.Filled);
+		for(int i = 0; i < NUM_STARS; i++) stars[i].update(shapeRenderer, delta);
+		shapeRenderer.end();
+		
 		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
-		
-		// Update stars
-		for(int i = 0; i < NUM_STARS; i++) {
-			stars[i].render(batch, delta);
-			if(stars[i].getPosY() <= 0) {
-				RandomXS128 rand = new RandomXS128();
-				stars[i].setPosY(GlobalVars.height);
-				stars[i].setPosX(rand.nextFloat() * GlobalVars.width);
-			}
-		}
-		
 		// Update player
 		player.render(batch, delta);
 		if(player.getShields() <= 0) {
@@ -473,6 +470,40 @@ public class GameScreen extends BaseScreen {
 		else if(enemy.getType().equals("F54")) player.incScore(100);
 	}
 	
+	// The star class used earlier
+	public class Star {
+		// Position variables
+		private float x;
+		private float y;
+		
+		// Constructor:
+		public Star(float x, float y) {
+			this.x = x;
+			this.y = y;
+		}
+		
+		// Update:
+		public void update(ShapeRenderer renderer, float delta) {
+			y -= 200f * delta;
+			if(getY() <= 0) {
+				RandomXS128 rand = new RandomXS128();
+				setY(GlobalVars.height);
+				setX(rand.nextFloat() * GlobalVars.width);
+			}
+			
+			renderer.setColor(1f, 1f, 1f, 1f);
+			renderer.rect(x, y, 1, 1);
+		}
+		
+		// Getter methods:
+		public float getX() { return x; }
+		public float getY() { return y; }
+		
+		// Setter methods:
+		public void setX(float x) { this.x = x; }
+		public void setY(float y) { this.y = y; }
+	}
+	
 	// Dispose:
 	@Override
 	public void dispose() {
@@ -484,6 +515,8 @@ public class GameScreen extends BaseScreen {
 		spaceshipAtlas.dispose();
 		bulletAtlas.dispose();
 		pickupAtlas.dispose();
+		
+		shapeRenderer.dispose();
 		
 		for(int i = 0; i < effects.size; i++) {
 			effects.get(i).free();
