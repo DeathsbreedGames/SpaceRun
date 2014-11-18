@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
+import com.google.android.gms.games.Games;
 import com.google.example.games.basegameutils.GameHelper;
 import com.google.example.games.basegameutils.GameHelper.GameHelperListener;
 
@@ -15,7 +16,7 @@ public class AndroidLauncher extends AndroidApplication implements GameHelperLis
 	private GameHelper gameHelper;
 	
 	public AndroidLauncher() {
-		gameHelper = new GameHelper(this);
+		gameHelper = new GameHelper(this, GameHelper.CLIENT_GAMES);
 		gameHelper.enableDebugLog(true, "GPGS");
 	}
 	
@@ -42,7 +43,7 @@ public class AndroidLauncher extends AndroidApplication implements GameHelperLis
 	}
 	
 	@Override
-	public void onActivityResult(int request, int respose, Intent data) {
+	public void onActivityResult(int request, int response, Intent data) {
 		super.onActivityResult(request, response, data);
 		gameHelper.onActivityResult(request, response, data);
 	}
@@ -65,7 +66,7 @@ public class AndroidLauncher extends AndroidApplication implements GameHelperLis
 	
 	@Override
 	public void submitScoreGPGS(String type, int score) {
-		if(type.equals("highscore") {
+		if(type.equals("highscore")) {
 			Games.Leaderboards.submitScore(gameHelper.getApiClient(), "CgkI74GFyZkUEAIQAQ", score);
 		} else if(type.equals("kills")) {
 			Games.Leaderboards.submitScore(gameHelper.getApiClient(), "CgkI74GFyZkUEAIQAg", score);
@@ -81,9 +82,9 @@ public class AndroidLauncher extends AndroidApplication implements GameHelperLis
 	public void getLeaderboardGPGS(String type) {
 		if(gameHelper.isSignedIn()) {
 			if(type.equals("highscore")) {
-				startActivityForResult(Games.Leaderboards.getLeadboardIntent(gameHelper.getApiClient(), "CgkI74GFyZkUEAIQAQ"), 100);
+				startActivityForResult(Games.Leaderboards.getLeaderboardIntent(gameHelper.getApiClient(), "CgkI74GFyZkUEAIQAQ"), 100);
 			} else if(type.equals("kills")) {
-				startActivityForResult(Games.Leaderboards.getLeadboardIntent(gameHelper.getApiClient(), "CgkI74GFyZkUEAIQAg"), 100);
+				startActivityForResult(Games.Leaderboards.getLeaderboardIntent(gameHelper.getApiClient(), "CgkI74GFyZkUEAIQAg"), 100);
 			}
 		} else if(!gameHelper.isConnecting()) {
 			loginGPGS();
