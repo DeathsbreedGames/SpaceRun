@@ -119,6 +119,8 @@ public class MainMenuScreen extends BaseScreen {
 				}
 			});
 		}
+
+		if(!GlobalVars.actionResolver.getSignedInGPGS()) GlobalVars.actionResolver.loginGPGS();
 	}
 	
 	// Update:
