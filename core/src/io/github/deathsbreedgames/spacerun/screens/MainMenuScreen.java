@@ -119,10 +119,6 @@ public class MainMenuScreen extends BaseScreen {
 				}
 			});
 		}
-
-		/*if(Gdx.app.getType() == ApplicationType.Android) {
-			if(!GlobalVars.actionResolver.getSignedInGPGS()) GlobalVars.actionResolver.loginGPGS();
-		}*/
 	}
 	
 	// Update:

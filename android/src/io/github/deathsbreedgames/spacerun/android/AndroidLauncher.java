@@ -15,18 +15,17 @@ import io.github.deathsbreedgames.spacerun.ActionResolver;
 public class AndroidLauncher extends AndroidApplication implements GameHelperListener, ActionResolver {
 	private GameHelper gameHelper;
 	
-	public AndroidLauncher() {
-		gameHelper = new GameHelper(this, GameHelper.CLIENT_GAMES);
-		gameHelper.enableDebugLog(true, "GPGS");
-	}
-	
 	@Override
-	protected void onCreate (Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
 		config.hideStatusBar = true;
 		config.useWakelock = true;
 		initialize(new SpaceRun(this), config);
+		if(gameHelper == null) {
+			gameHelper = new GameHelper(this, GameHelper.CLIENT_GAMES);
+			gameHelper.enableDebugLog(true);
+		}
 		gameHelper.setup(this);
 	}
 	
