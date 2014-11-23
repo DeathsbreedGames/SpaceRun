@@ -69,7 +69,7 @@ public class GameScreen extends BaseScreen {
 	
 	// Effect pools
 	private ParticleEffectPool explosionEffectPool;
-	private Array<PooledEffect> effects = new Array();
+	private Array<PooledEffect> effects = new Array<PooledEffect>();
 	
 	// Stars
 	private Star[] stars;

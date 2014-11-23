@@ -77,7 +77,7 @@ public class ShipSelectScreen extends BaseScreen {
 		chooseShip = new ImageButton[3];
 		
 		chooseShip[0] = new ImageButton(imageButtonStyle);
-		chooseShip[0].setCenterPosition((float)GlobalVars.width * 0.25f, 200f);
+		chooseShip[0].setPosition((float)GlobalVars.width * 0.25f - (chooseShip[0].getWidth() / 2), 200f - chooseShip[0].getHeight() / 2);
 		chooseShip[0].addListener(new ChangeListener() {
 			public void changed(ChangeEvent e, Actor a) {
 				GlobalVars.ship = 0;
@@ -85,7 +85,7 @@ public class ShipSelectScreen extends BaseScreen {
 		});
 		
 		chooseShip[1] = new ImageButton(imageButtonStyle);
-		chooseShip[1].setCenterPosition((float)GlobalVars.width * 0.5f, 200f);
+		chooseShip[1].setPosition((float)GlobalVars.width * 0.5f - (chooseShip[1].getWidth() / 2), 200f - chooseShip[1].getHeight() / 2);
 		chooseShip[1].addListener(new ChangeListener() {
 			public void changed(ChangeEvent e, Actor a) {
 				GlobalVars.ship = 1;
@@ -93,7 +93,7 @@ public class ShipSelectScreen extends BaseScreen {
 		});
 		
 		chooseShip[2] = new ImageButton(imageButtonStyle);
-		chooseShip[2].setCenterPosition((float)GlobalVars.width * 0.75f, 200f);
+		chooseShip[2].setPosition((float)GlobalVars.width * 0.75f - (chooseShip[2].getWidth() / 2), 200f - chooseShip[2].getHeight() / 2);
 		chooseShip[2].addListener(new ChangeListener() {
 			public void changed(ChangeEvent e, Actor a) {
 				GlobalVars.ship = 2;
