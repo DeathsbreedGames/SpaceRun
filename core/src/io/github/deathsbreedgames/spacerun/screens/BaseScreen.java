@@ -2,6 +2,7 @@ package io.github.deathsbreedgames.spacerun.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL20;
 
 /**
@@ -18,11 +19,19 @@ public class BaseScreen implements Screen {
 	// Common screen variables for this game
 	private boolean done;
 	private String nextScreen;
+
+	protected AssetManager manager;
 	
 	// Constructor:
 	public BaseScreen(String nextScreen) {
 		this.nextScreen = nextScreen;
 		done = false;
+	}
+
+	public BaseScreen(String nextScreen, AssetManager manager) {
+		this.nextScreen = nextScreen;
+		done = false;
+		this.manager = manager;
 	}
 	
 	// Implemented methods:

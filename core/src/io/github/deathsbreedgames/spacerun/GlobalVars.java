@@ -3,8 +3,6 @@ package io.github.deathsbreedgames.spacerun;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.I18NBundle;
 
-import io.github.deathsbreedgames.spacerun.GlobalVars;
-
 /**
  * @author Nicolás A. Ortega
  * @copyright DeathsbreedGames
@@ -22,7 +20,7 @@ public class GlobalVars {
 	
 	// Locale information
 	public static I18NBundle gameBundle;
-	
+
 	// Audio variables
 	public static boolean soundOn = true;
 	public static boolean musicOn = true;

@@ -2,8 +2,7 @@ package io.github.deathsbreedgames.spacerun;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-
-import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
 
 import io.github.deathsbreedgames.spacerun.GlobalVars;
@@ -19,6 +18,7 @@ import io.github.deathsbreedgames.spacerun.screens.*;
  * 
  */
 public class SpaceRun extends Game {
+	private AssetManager manager;
 	private Music music;
 	
 	public SpaceRun(ActionResolver actionResolver) {
@@ -28,8 +28,9 @@ public class SpaceRun extends Game {
 	
 	// Create:
 	@Override
-	public void create () {
-		setScreen(new SplashScreen());
+	public void create() {
+		manager = new AssetManager();
+		setScreen(new LoadingScreen(manager));
 		
 		// Create the music
 		music = Gdx.audio.newMusic(Gdx.files.internal("sfx/Android128_-_At_Last.mp3"));
@@ -47,7 +48,9 @@ public class SpaceRun extends Game {
 		// Switch screens if necessary
 		if(currentScreen.isDone()) {
 			currentScreen.dispose();
-			if(currentScreen.getNextScreen().equals("Splash")) {
+			if(currentScreen.getNextScreen().equals("Loading")) {
+				setScreen(new LoadingScreen(manager));
+			}else if(currentScreen.getNextScreen().equals("Splash")) {
 				setScreen(new SplashScreen());
 			} else if(currentScreen.getNextScreen().equals("MainMenu")) {
 				setScreen(new MainMenuScreen());
