@@ -1,6 +1,7 @@
 package io.github.deathsbreedgames.spacerun.screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -40,8 +41,8 @@ public class HelpScreen extends BaseScreen {
 	private BitmapFont buttonFont;
 	
 	// Constructor:
-	public HelpScreen() {
-		super("MainMenu");
+	public HelpScreen(AssetManager manager) {
+		super("MainMenu", manager);
 		
 		// Help stuff
 		camera = new OrthographicCamera(GlobalVars.width, GlobalVars.height);
@@ -52,11 +53,11 @@ public class HelpScreen extends BaseScreen {
 		titleFont.scale(0.75f);
 		textFont = new BitmapFont();
 		textFont.scale(0.1f);
-		pickupAtlas = new TextureAtlas("gfx/sprites/pickups.pack");
+		pickupAtlas = manager.get("gfx/sprites/pickups.pack", TextureAtlas.class);
 		
 		// Button stuff
 		mainStage = new Stage(new StretchViewport(GlobalVars.width, GlobalVars.height));
-		buttonAtlas = new TextureAtlas("gfx/ui/buttons.pack");
+		buttonAtlas = manager.get("gfx/ui/buttons.pack", TextureAtlas.class);
 		buttonSkin = new Skin(buttonAtlas);
 		Gdx.input.setInputProcessor(mainStage);
 		
@@ -117,11 +118,8 @@ public class HelpScreen extends BaseScreen {
 		batch.dispose();
 		titleFont.dispose();
 		textFont.dispose();
-		pickupAtlas.dispose();
 		
 		mainStage.dispose();
-		buttonAtlas.dispose();
-		buttonSkin.dispose();
 		buttonFont.dispose();
 	}
 }
