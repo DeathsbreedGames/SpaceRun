@@ -5,6 +5,7 @@ import java.util.Locale;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Preferences;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.I18NBundle;
@@ -36,12 +37,12 @@ public class SplashScreen extends BaseScreen {
 	private boolean oldMousePressed = false;
 	
 	// Constructor:
-	public SplashScreen() {
-		super("MainMenu");
+	public SplashScreen(AssetManager manager) {
+		super("MainMenu", manager);
 		
 		// Splash
 		batch = new SpriteBatch();
-		splash = new Texture("gfx/deathsbreedgames/logo.png");
+		splash = manager.get("gfx/deathsbreedgames/logo.png", Texture.class);
 		splashWidth = (float)Gdx.graphics.getWidth();
 		splashHeight = splashWidth * 2f / 9.5f;
 		
@@ -96,6 +97,5 @@ public class SplashScreen extends BaseScreen {
 	@Override
 	public void dispose() {
 		batch.dispose();
-		splash.dispose();
 	}
 }

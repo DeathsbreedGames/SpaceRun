@@ -2,6 +2,7 @@ package io.github.deathsbreedgames.spacerun.screens;
 
 import com.badlogic.gdx.Application.ApplicationType;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -39,19 +40,19 @@ public class MainMenuScreen extends BaseScreen {
 	private BitmapFont buttonFont;
 	
 	// Constructor:
-	public MainMenuScreen() {
-		super("Splash");
+	public MainMenuScreen(AssetManager manager) {
+		super("Splash", manager);
 		
 		// Setup logo
 		camera = new OrthographicCamera(GlobalVars.width, GlobalVars.height);
 		camera.position.set(GlobalVars.width / 2, GlobalVars.height / 2, 0f);
 		camera.update();
 		batch = new SpriteBatch();
-		logo = new Texture("gfx/space-run.png");
+		logo = manager.get("gfx/space-run.png", Texture.class);
 		
 		// Setup TextButtonStyle
 		mainStage = new Stage(new StretchViewport(GlobalVars.width, GlobalVars.height));
-		buttonAtlas = new TextureAtlas("gfx/ui/buttons.pack");
+		buttonAtlas = manager.get("gfx/ui/buttons.pack", TextureAtlas.class);
 		buttonSkin = new Skin(buttonAtlas);
 		Gdx.input.setInputProcessor(mainStage);
 		
@@ -142,11 +143,8 @@ public class MainMenuScreen extends BaseScreen {
 	@Override
 	public void dispose() {
 		batch.dispose();
-		logo.dispose();
 		
 		mainStage.dispose();
-		buttonAtlas.dispose();
-		buttonSkin.dispose();
 		buttonFont.dispose();
 	}
 }

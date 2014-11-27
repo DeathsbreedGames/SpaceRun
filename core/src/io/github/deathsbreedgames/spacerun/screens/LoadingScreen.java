@@ -3,8 +3,7 @@ package io.github.deathsbreedgames.spacerun.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.Animation.PlayMode;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -60,11 +59,6 @@ public class LoadingScreen extends BaseScreen {
 		screenBg = new Image(atlas.findRegion("screen-bg"));
 		loadingBg = new Image(atlas.findRegion("loading-frame-bg"));
 
-		// Add the loading bar animation
-		//Animation anim = new Animation(0.05f, atlas.findRegions("loading-bar-anim") );
-		//anim.setPlayMode(PlayMode.LOOP_REVERSED);
-		//loadingBar = new LoadingBar(anim);
-
 		// Or if you only need a static bar, you can do
 		loadingBar = new Image(atlas.findRegion("loading-bar1"));
 
@@ -77,9 +71,9 @@ public class LoadingScreen extends BaseScreen {
 		stage.addActor(logo);
 
 		// Add everything to be loaded, for instance:
-		// GlobalVars.manager.load("data/assets1.pack", TextureAtlas.class);
-		// GlobalVars.manager.load("data/assets2.pack", TextureAtlas.class);
-		// GlobalVars.manager.load("data/assets3.pack", TextureAtlas.class);
+		manager.load("gfx/deathsbreedgames/logo.png", Texture.class);
+		manager.load("gfx/space-run.png", Texture.class);
+		manager.load("gfx/ui/buttons.pack", TextureAtlas.class);
 	}
 
 	@Override

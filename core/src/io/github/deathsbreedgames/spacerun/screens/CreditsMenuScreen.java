@@ -2,6 +2,7 @@ package io.github.deathsbreedgames.spacerun.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -41,8 +42,8 @@ public class CreditsMenuScreen extends BaseScreen {
 	private boolean oldMousePressed = false;
 	
 	// Constructor:
-	public CreditsMenuScreen() {
-		super("MainMenu");
+	public CreditsMenuScreen(AssetManager manager) {
+		super("MainMenu", manager);
 		
 		// Setup the credits variables
 		camera = new OrthographicCamera(GlobalVars.width, GlobalVars.height);
@@ -56,7 +57,7 @@ public class CreditsMenuScreen extends BaseScreen {
 		
 		// Setup the button variables
 		mainStage = new Stage(new StretchViewport(GlobalVars.width, GlobalVars.height));
-		buttonAtlas = new TextureAtlas("gfx/ui/buttons.pack");
+		buttonAtlas = manager.get("gfx/ui/buttons.pack", TextureAtlas.class);
 		buttonSkin = new Skin(buttonAtlas);
 		Gdx.input.setInputProcessor(mainStage);
 		
@@ -174,10 +175,8 @@ public class CreditsMenuScreen extends BaseScreen {
 		batch.dispose();
 		titleFont.dispose();
 		textFont.dispose();
-		
+
 		mainStage.dispose();
-		buttonAtlas.dispose();
-		buttonSkin.dispose();
 		buttonFont.dispose();
 	}
 }

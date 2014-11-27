@@ -50,16 +50,16 @@ public class SpaceRun extends Game {
 			currentScreen.dispose();
 			if(currentScreen.getNextScreen().equals("Loading")) {
 				setScreen(new LoadingScreen(manager));
-			}else if(currentScreen.getNextScreen().equals("Splash")) {
-				setScreen(new SplashScreen());
+			} else if(currentScreen.getNextScreen().equals("Splash")) {
+				setScreen(new SplashScreen(manager));
 			} else if(currentScreen.getNextScreen().equals("MainMenu")) {
-				setScreen(new MainMenuScreen());
+				setScreen(new MainMenuScreen(manager));
 			} else if(currentScreen.getNextScreen().equals("Help")) {
 				setScreen(new HelpScreen());
 			} else if(currentScreen.getNextScreen().equals("Options")) {
 				setScreen(new OptionsScreen());
 			} else if(currentScreen.getNextScreen().equals("CreditsMenu")) {
-				setScreen(new CreditsMenuScreen());
+				setScreen(new CreditsMenuScreen(manager));
 			} else if(currentScreen.getNextScreen().equals("ShipSelect")) {
 				setScreen(new ShipSelectScreen());
 			} else if(currentScreen.getNextScreen().equals("Game")) {
@@ -67,7 +67,7 @@ public class SpaceRun extends Game {
 			} else if(currentScreen.getNextScreen().equals("GameOver")) {
 				setScreen(new GameOverScreen());
 			} else {
-				setScreen(new SplashScreen());
+				setScreen(new SplashScreen(manager));
 			}
 		}
 		
@@ -84,6 +84,7 @@ public class SpaceRun extends Game {
 	@Override
 	public void dispose() {
 		music.dispose();
+		manager.dispose();
 		super.getScreen().dispose();
 		super.dispose();
 	}
