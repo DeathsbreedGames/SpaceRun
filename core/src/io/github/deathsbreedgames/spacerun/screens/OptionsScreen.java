@@ -2,6 +2,7 @@ package io.github.deathsbreedgames.spacerun.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -46,8 +47,8 @@ public class OptionsScreen extends BaseScreen {
 	private ImageButton soundControl, musicControl;
 	
 	// Constructor:
-	public OptionsScreen() {
-		super("MainMenu");
+	public OptionsScreen(AssetManager manager) {
+		super("MainMenu", manager);
 		
 		// Get the preferences from file
 		prefs = Gdx.app.getPreferences("SpaceRun");
@@ -64,7 +65,7 @@ public class OptionsScreen extends BaseScreen {
 		
 		// Button stuff
 		mainStage = new Stage(new StretchViewport(GlobalVars.width, GlobalVars.height));
-		buttonAtlas = new TextureAtlas("gfx/ui/buttons.pack");
+		buttonAtlas = manager.get("gfx/ui/buttons.pack", TextureAtlas.class);
 		buttonSkin = new Skin(buttonAtlas);
 		Gdx.input.setInputProcessor(mainStage);
 		
@@ -164,8 +165,6 @@ public class OptionsScreen extends BaseScreen {
 		textFont.dispose();
 		
 		mainStage.dispose();
-		buttonAtlas.dispose();
-		buttonSkin.dispose();
 		buttonFont.dispose();
 	}
 }

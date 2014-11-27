@@ -57,7 +57,7 @@ public class SpaceRun extends Game {
 			} else if(currentScreen.getNextScreen().equals("Help")) {
 				setScreen(new HelpScreen());
 			} else if(currentScreen.getNextScreen().equals("Options")) {
-				setScreen(new OptionsScreen());
+				setScreen(new OptionsScreen(manager));
 			} else if(currentScreen.getNextScreen().equals("CreditsMenu")) {
 				setScreen(new CreditsMenuScreen(manager));
 			} else if(currentScreen.getNextScreen().equals("ShipSelect")) {
@@ -72,7 +72,7 @@ public class SpaceRun extends Game {
 		}
 		
 		// Play music if music should be played
-		if(currentScreen instanceof SplashScreen) {
+		if(currentScreen instanceof SplashScreen || currentScreen instanceof LoadingScreen) {
 			if(music.isPlaying()) music.stop();
 		} else {
 			if(!music.isPlaying() && GlobalVars.musicOn) music.play();
