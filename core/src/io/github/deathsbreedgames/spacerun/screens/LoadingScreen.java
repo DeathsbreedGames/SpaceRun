@@ -75,6 +75,7 @@ public class LoadingScreen extends BaseScreen {
 		manager.load("gfx/space-run.png", Texture.class);
 		manager.load("gfx/ui/buttons.pack", TextureAtlas.class);
 		manager.load("gfx/sprites/pickups.pack", TextureAtlas.class);
+		manager.load("gfx/sprites/spaceships.pack", TextureAtlas.class);
 	}
 
 	@Override

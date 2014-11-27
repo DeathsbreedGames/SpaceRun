@@ -1,6 +1,7 @@
 package io.github.deathsbreedgames.spacerun.screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -43,20 +44,20 @@ public class ShipSelectScreen extends BaseScreen {
 	private ImageButton chooseShip[];
 	
 	// Constructor:
-	public ShipSelectScreen() {
-		super("Splash");
+	public ShipSelectScreen(AssetManager manager) {
+		super("Splash", manager);
 		
 		camera = new OrthographicCamera(GlobalVars.width, GlobalVars.height);
 		camera.position.set(GlobalVars.width / 2, GlobalVars.height / 2, 0f);
 		camera.update();
 		batch = new SpriteBatch();
-		shipAtlas = new TextureAtlas("gfx/sprites/spaceships.pack");
+		shipAtlas = manager.get("gfx/sprites/spaceships.pack", TextureAtlas.class);
 		statFont = new BitmapFont();
 		statFont.scale(0.05f);
 		
 		// Setup the button variables
 		mainStage = new Stage(new StretchViewport(GlobalVars.width, GlobalVars.height));
-		buttonAtlas = new TextureAtlas("gfx/ui/buttons.pack");
+		buttonAtlas = manager.get("gfx/ui/buttons.pack", TextureAtlas.class);
 		buttonSkin = new Skin(buttonAtlas);
 		Gdx.input.setInputProcessor(mainStage);
 		
@@ -161,12 +162,9 @@ public class ShipSelectScreen extends BaseScreen {
 	@Override
 	public void dispose() {
 		batch.dispose();
-		shipAtlas.dispose();
 		statFont.dispose();
 		
 		mainStage.dispose();
-		buttonAtlas.dispose();
-		buttonSkin.dispose();
 		buttonFont.dispose();
 	}
 }
