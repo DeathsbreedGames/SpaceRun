@@ -65,7 +65,7 @@ public class SpaceRun extends Game {
 			} else if(currentScreen.getNextScreen().equals("Game")) {
 				setScreen(new GameScreen());
 			} else if(currentScreen.getNextScreen().equals("GameOver")) {
-				setScreen(new GameOverScreen());
+				setScreen(new GameOverScreen(manager));
 			} else {
 				setScreen(new SplashScreen(manager));
 			}

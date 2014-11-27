@@ -2,6 +2,7 @@ package io.github.deathsbreedgames.spacerun.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -38,8 +39,8 @@ public class GameOverScreen extends BaseScreen {
 	private BitmapFont buttonFont;
 	
 	// Constructor:
-	public GameOverScreen() {
-		super("MainMenu");
+	public GameOverScreen(AssetManager manager) {
+		super("MainMenu", manager);
 		
 		Preferences prefs = Gdx.app.getPreferences("SpaceRun");
 		
@@ -61,7 +62,7 @@ public class GameOverScreen extends BaseScreen {
 		
 		// Setup buttons
 		mainStage = new Stage(new StretchViewport(GlobalVars.width, GlobalVars.height));
-		buttonAtlas = new TextureAtlas("gfx/ui/buttons.pack");
+		buttonAtlas = manager.get("gfx/ui/buttons.pack", TextureAtlas.class);
 		buttonSkin = new Skin(buttonAtlas);
 		Gdx.input.setInputProcessor(mainStage);
 		
@@ -113,8 +114,6 @@ public class GameOverScreen extends BaseScreen {
 		font.dispose();
 		
 		mainStage.dispose();
-		buttonAtlas.dispose();
-		buttonSkin.dispose();
 		buttonFont.dispose();
 	}
 }
