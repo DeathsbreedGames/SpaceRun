@@ -6,6 +6,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.I18NBundle;
@@ -24,6 +25,7 @@ import io.github.deathsbreedgames.spacerun.GlobalVars;
  */
 public class SplashScreen extends BaseScreen {
 	// Splash variables
+	private OrthographicCamera camera;
 	private SpriteBatch batch;
 	private Texture splash;
 	private float splashWidth;
@@ -41,9 +43,12 @@ public class SplashScreen extends BaseScreen {
 		super("MainMenu", manager);
 		
 		// Splash
+		camera = new OrthographicCamera(GlobalVars.width, GlobalVars.height);
+		camera.position.set(GlobalVars.width / 2, GlobalVars.height / 2, 0f);
+		camera.update();
 		batch = new SpriteBatch();
 		splash = manager.get("gfx/deathsbreedgames/logo.png", Texture.class);
-		splashWidth = (float)Gdx.graphics.getWidth();
+		splashWidth = (float)GlobalVars.width;
 		splashHeight = splashWidth * 2f / 9.5f;
 		
 		// Alpha
@@ -82,9 +87,11 @@ public class SplashScreen extends BaseScreen {
 		}
 		
 		// Draw splash
+		camera.update();
+		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
 		batch.setColor(1f, 1f, 1f, a);
-		batch.draw(splash, 0f, Gdx.graphics.getHeight() / 2 - splashHeight / 2, splashWidth, splashHeight);
+		batch.draw(splash, 0f, GlobalVars.height / 2 - splashHeight / 2, splashWidth, splashHeight);
 		batch.end();
 		
 		// Open DeathsbreedGames website
