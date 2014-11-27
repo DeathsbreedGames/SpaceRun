@@ -76,6 +76,7 @@ public class LoadingScreen extends BaseScreen {
 		manager.load("gfx/ui/buttons.pack", TextureAtlas.class);
 		manager.load("gfx/sprites/pickups.pack", TextureAtlas.class);
 		manager.load("gfx/sprites/spaceships.pack", TextureAtlas.class);
+		manager.load("gfx/sprites/bullets.pack", TextureAtlas.class);
 	}
 
 	@Override

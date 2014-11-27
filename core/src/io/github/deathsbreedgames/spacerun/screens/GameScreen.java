@@ -1,6 +1,7 @@
 package io.github.deathsbreedgames.spacerun.screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -81,12 +82,12 @@ public class GameScreen extends BaseScreen {
 	private Sound explode;
 	
 	// Constructor:
-	public GameScreen() {
-		super("Splash");
+	public GameScreen(AssetManager manager) {
+		super("Splash", manager);
 		
 		// Create buttons
 		mainStage = new Stage(new StretchViewport(GlobalVars.width, GlobalVars.height));
-		buttonAtlas = new TextureAtlas("gfx/ui/buttons.pack");
+		buttonAtlas = manager.get("gfx/ui/buttons.pack", TextureAtlas.class);
 		buttonSkin = new Skin(buttonAtlas);
 		Gdx.input.setInputProcessor(mainStage);
 		
@@ -109,9 +110,9 @@ public class GameScreen extends BaseScreen {
 		camera.update();
 		
 		batch = new SpriteBatch();
-		spaceshipAtlas = new TextureAtlas("gfx/sprites/spaceships.pack");
-		bulletAtlas = new TextureAtlas("gfx/sprites/bullets.pack");
-		pickupAtlas = new TextureAtlas("gfx/sprites/pickups.pack");
+		spaceshipAtlas = manager.get("gfx/sprites/spaceships.pack", TextureAtlas.class);
+		bulletAtlas = manager.get("gfx/sprites/bullets.pack", TextureAtlas.class);
+		pickupAtlas = manager.get("gfx/sprites/pickups.pack", TextureAtlas.class);
 		font = new BitmapFont();
 		font.scale(0.01f);
 		
@@ -508,13 +509,8 @@ public class GameScreen extends BaseScreen {
 	@Override
 	public void dispose() {
 		mainStage.dispose();
-		buttonAtlas.dispose();
-		buttonSkin.dispose();
 		
 		batch.dispose();
-		spaceshipAtlas.dispose();
-		bulletAtlas.dispose();
-		pickupAtlas.dispose();
 		
 		shapeRenderer.dispose();
 		
