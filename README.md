@@ -6,7 +6,7 @@ This is DeathsbreedGame's first attempt at creating a casual mobile game. It wil
 ### Compiling
 To compile the source-code please refer to the [libGDX build documentation](https://github.com/libgdx/libgdx/wiki/Gradle-on-the-Commandline).
 
-**NOTICE:** If you do not specify your Android SDK path then the program will not compile. The reason this is not included in the source-code is because the SDK path will depend on the OS. To specify the Android SDK path create a file called _local.properties_ and insert the following:
+**NOTICE:** If you do not specify your Android SDK path in the _local.properties_ file then the program will not compile. This file is not included in the source-code is because the SDK path will depend on the OS. To specify the Android SDK path create a file called `local.properties` in the root directory of the project and insert the following:
 ```
 sdk.dir=/path/to/android/sdk
 ```
