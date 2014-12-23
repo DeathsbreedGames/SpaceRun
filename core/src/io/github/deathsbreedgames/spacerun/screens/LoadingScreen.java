@@ -7,13 +7,14 @@ package io.github.deathsbreedgames.spacerun.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.utils.viewport.Viewport;
+import com.badlogic.gdx.utils.viewport.StretchViewport;
 
 import io.github.deathsbreedgames.spacerun.GlobalVars;
 
@@ -25,8 +26,9 @@ import io.github.deathsbreedgames.spacerun.GlobalVars;
  * @version 14.12.22
  */
 public class LoadingScreen extends BaseScreen {
-
 	private Stage stage;
+
+	private OrthographicCamera camera;
 
 	private Image logo;
 	private Image loadingFrame;
@@ -47,8 +49,14 @@ public class LoadingScreen extends BaseScreen {
 		// Wait until they are finished loading
 		manager.finishLoading();
 
+		// Setup the camera
+		camera = new OrthographicCamera(GlobalVars.width, GlobalVars.height);
+		camera.position.set(GlobalVars.width / 2, GlobalVars.height / 2, 0);
+		camera.update();
+
 		// Initialize the stage where we will place everything
-		stage = new Stage();
+		//stage = new Stage();
+		stage = new Stage(new StretchViewport(GlobalVars.width, GlobalVars.height));
 
 		// Get our textureatlas from the manager
 		TextureAtlas atlas = manager.get("gfx/loading/loading.pack", TextureAtlas.class);
@@ -71,6 +79,21 @@ public class LoadingScreen extends BaseScreen {
 		stage.addActor(loadingFrame);
 		stage.addActor(logo);
 
+		screenBg.setSize(GlobalVars.width, GlobalVars.height);
+		logo.setX((GlobalVars.width - logo.getWidth()) / 2);
+		logo.setY((GlobalVars.height - logo.getHeight()) / 2 + 100);
+		loadingFrame.setX((GlobalVars.width - loadingFrame.getWidth()) / 2);
+		loadingFrame.setY((GlobalVars.height - loadingFrame.getHeight()) / 2);
+		loadingBar.setX(loadingFrame.getX() + 15);
+		loadingBar.setY(loadingFrame.getY() + 5);
+		loadingBarHidden.setX(loadingBar.getX() + 35);
+		loadingBarHidden.setY(loadingBar.getY() - 3);
+		startX = loadingBarHidden.getX();
+		endX = 440;
+		loadingBg.setSize(450, 50);
+		loadingBg.setX(loadingBarHidden.getX() + 30);
+		loadingBg.setY(loadingBarHidden.getY() + 3);
+
 		// Add everything to be loaded, for instance:
 		manager.load("gfx/deathsbreedgames/logo.png", Texture.class);
 		manager.load("gfx/space-run.png", Texture.class);
@@ -80,7 +103,7 @@ public class LoadingScreen extends BaseScreen {
 		manager.load("gfx/sprites/bullets.pack", TextureAtlas.class);
 	}
 
-	@Override
+	/*@Override
 	public void resize(int width, int height) {
 		// Set our screen to always be XXX x 480 in size
 		//width = 480 * width / height;
@@ -114,7 +137,7 @@ public class LoadingScreen extends BaseScreen {
 		loadingBg.setSize(450, 50);
 		loadingBg.setX(loadingBarHidden.getX() + 30);
 		loadingBg.setY(loadingBarHidden.getY() + 3);
-	}
+	}*/
 
 	@Override
 	public void render(float delta) {
