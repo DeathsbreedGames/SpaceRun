@@ -26,7 +26,7 @@ import io.github.deathsbreedgames.spacerun.GlobalVars;
  * Screen used when the player dies.
  * 
  * @author Nicolás A. Ortega
- * @version 14.12.22
+ * @version 14.12.23
  */
 public class GameOverScreen extends BaseScreen {
 	// Drawing variables
