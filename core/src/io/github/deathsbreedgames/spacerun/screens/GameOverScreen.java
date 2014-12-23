@@ -4,6 +4,7 @@
  */
 package io.github.deathsbreedgames.spacerun.screens;
 
+import com.badlogic.gdx.Application.ApplicationType;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.assets.AssetManager;
@@ -49,6 +50,9 @@ public class GameOverScreen extends BaseScreen {
 		if(GlobalVars.score > GlobalVars.highScore) {
 			GlobalVars.highScore = GlobalVars.score;
 			prefs.putInteger("HighScore", GlobalVars.highScore);
+			if(Gdx.app.getType() == ApplicationType.Android) {
+				GlobalVars.actionResolver.submitScoreGPGS(GlobalVars.highScore);
+			}
 		}
 		prefs.putInteger("KillCount", GlobalVars.killCount);
 		prefs.flush();

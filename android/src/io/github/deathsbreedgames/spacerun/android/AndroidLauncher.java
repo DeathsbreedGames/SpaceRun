@@ -64,12 +64,8 @@ public class AndroidLauncher extends AndroidApplication implements GameHelperLis
 	}
 	
 	@Override
-	public void submitScoreGPGS(String type, int score) {
-		if(type.equals("highscore")) {
-			Games.Leaderboards.submitScore(gameHelper.getApiClient(), "CgkI74GFyZkUEAIQAQ", score);
-		} else if(type.equals("kills")) {
-			Games.Leaderboards.submitScore(gameHelper.getApiClient(), "CgkI74GFyZkUEAIQAg", score);
-		}
+	public void submitScoreGPGS(int score) {
+		Games.Leaderboards.submitScore(gameHelper.getApiClient(), "CgkI74GFyZkUEAIQAQ", score);
 	}
 	
 	@Override
