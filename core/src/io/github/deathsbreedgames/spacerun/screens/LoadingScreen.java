@@ -79,17 +79,30 @@ public class LoadingScreen extends BaseScreen {
 		stage.addActor(loadingFrame);
 		stage.addActor(logo);
 
+		// Make the background fill the screen
 		screenBg.setSize(GlobalVars.width, GlobalVars.height);
+
+		// Place the "logo" in the middle of the screen and 100px up
 		logo.setX((GlobalVars.width - logo.getWidth()) / 2);
 		logo.setY((GlobalVars.height - logo.getHeight()) / 2 + 100);
+
+		// Place the loading frame in the middle of the screen
 		loadingFrame.setX((GlobalVars.width - loadingFrame.getWidth()) / 2);
 		loadingFrame.setY((GlobalVars.height - loadingFrame.getHeight()) / 2);
+
+		// Place the loading bar at the same spot as the frame (with a few adjustments)
 		loadingBar.setX(loadingFrame.getX() + 15);
 		loadingBar.setY(loadingFrame.getY() + 5);
+
+		// Place the image that will hide the bar on top of the bar (with a few adjustments)
 		loadingBarHidden.setX(loadingBar.getX() + 35);
 		loadingBarHidden.setY(loadingBar.getY() - 3);
+		
+		// The start position of how far to move the hidden loading bar
 		startX = loadingBarHidden.getX();
 		endX = 440;
+		
+		// The rest of the hiddent bar
 		loadingBg.setSize(450, 50);
 		loadingBg.setX(loadingBarHidden.getX() + 30);
 		loadingBg.setY(loadingBarHidden.getY() + 3);
@@ -102,42 +115,6 @@ public class LoadingScreen extends BaseScreen {
 		manager.load("gfx/sprites/spaceships.pack", TextureAtlas.class);
 		manager.load("gfx/sprites/bullets.pack", TextureAtlas.class);
 	}
-
-	/*@Override
-	public void resize(int width, int height) {
-		// Set our screen to always be XXX x 480 in size
-		//width = 480 * width / height;
-		width = 320;
-		height = 480;
-		stage.getViewport().update(width , height, false);
-
-		// Make the background fill the screen
-		screenBg.setSize(width, height);
-
-		// Place the logo in the middle of the screen and 100 px up
-		logo.setX((width - logo.getWidth()) / 2);
-		logo.setY((height - logo.getHeight()) / 2 + 100);
-
-		// Place the loading frame in the middle of the screen
-		loadingFrame.setX((stage.getWidth() - loadingFrame.getWidth()) / 2);
-		loadingFrame.setY((stage.getHeight() - loadingFrame.getHeight()) / 2);
-
-		// Place the loading bar at the same spot as the frame, adjusted a few px
-		loadingBar.setX(loadingFrame.getX() + 15);
-		loadingBar.setY(loadingFrame.getY() + 5);
-
-		// Place the image that will hide the bar on top of the bar, adjusted a few px
-		loadingBarHidden.setX(loadingBar.getX() + 35);
-		loadingBarHidden.setY(loadingBar.getY() - 3);
-		// The start position and how far to move the hidden loading bar
-		startX = loadingBarHidden.getX();
-		endX = 440;
-
-		// The rest of the hidden bar
-		loadingBg.setSize(450, 50);
-		loadingBg.setX(loadingBarHidden.getX() + 30);
-		loadingBg.setY(loadingBarHidden.getY() + 3);
-	}*/
 
 	@Override
 	public void render(float delta) {
