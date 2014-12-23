@@ -1,3 +1,7 @@
+/**
+ * Copyright (C) 2015 DeathsbreedGames
+ * License: GNU Affero GPLv3
+ */
 package io.github.deathsbreedgames.spacerun;
 
 import com.badlogic.gdx.Game;
@@ -9,13 +13,10 @@ import io.github.deathsbreedgames.spacerun.GlobalVars;
 import io.github.deathsbreedgames.spacerun.screens.*;
 
 /**
+ * The main class of the game.
+ * 
  * @author Nicolás A. Ortega
- * @copyright DeathsbreedGames
- * @license GNU Affero GPLv3
- * @year 2014
- * 
- * Description: This is the starting game class.
- * 
+ * @version 14.12.22
  */
 public class SpaceRun extends Game {
 	private AssetManager manager;

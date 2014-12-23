@@ -1,3 +1,7 @@
+/**
+ * Copyright (C) 2015 DeathsbreedGames
+ * License: GNU Affero GPLv3
+ */
 package io.github.deathsbreedgames.spacerun.entities;
 
 import com.badlogic.gdx.Gdx;
@@ -8,14 +12,10 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 
 /**
+ * A template for all other classes in this package.
+ * 
  * @author Nicolás A. Ortega
- * @copyright DeathsbreedGames
- * @license GNU Affero GPLv3
- * @year 2014
- * 
- * Description: This is the template for all the Entities. It makes 
- * entity creation much less redundant.
- * 
+ * @version 14.12.22
  */
 public class Entity extends Sprite {
 	private Vector2 position;

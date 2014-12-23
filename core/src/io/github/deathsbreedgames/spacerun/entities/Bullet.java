@@ -1,17 +1,17 @@
+/**
+ * Copyright (C) 2015 DeathsbreedGames
+ * License: GNU Affero GPLv3
+ */
 package io.github.deathsbreedgames.spacerun.entities;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 /**
+ * The bullet object in the game (for both sides).
+ * 
  * @author Nicolás A. Ortega
- * @copyright DeathsbreedGames
- * @license GNU Affero GPLv3
- * @year 2014
- * 
- * Description: This class contains the variables and methods used for
- * the Bullets in the game.
- * 
+ * @version 14.12.22
  */
 public class Bullet extends Entity {
 	private int dmg;

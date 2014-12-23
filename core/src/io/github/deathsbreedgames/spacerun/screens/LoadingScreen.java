@@ -1,3 +1,7 @@
+/**
+ * Copyright (C) 2015 DeathsbreedGames
+ * License: GNU Affero GPLv3
+ */
 package io.github.deathsbreedgames.spacerun.screens;
 
 import com.badlogic.gdx.Gdx;
@@ -14,14 +18,11 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import io.github.deathsbreedgames.spacerun.GlobalVars;
 
 /**
+ * A loading screen at the beginning which loads all necessary
+ * assets for the game at the start.
+ * 
  * @author Nicolás A. Ortega, Mats Svensson (original code under Unlicense)
- * @copyright DeathsbreedGames
- * @license GNU Affero GPLv3
- * @year 2014
- * 
- * Description: This is the loading screen used at the beginning of the
- * game to load the necessary assets for a smoother performance.
- * 
+ * @version 14.12.22
  */
 public class LoadingScreen extends BaseScreen {
 
@@ -82,7 +83,8 @@ public class LoadingScreen extends BaseScreen {
 	@Override
 	public void resize(int width, int height) {
 		// Set our screen to always be XXX x 480 in size
-		width = 480 * width / height;
+		//width = 480 * width / height;
+		width = 320;
 		height = 480;
 		stage.getViewport().update(width , height, false);
 

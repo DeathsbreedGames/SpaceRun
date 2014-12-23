@@ -1,3 +1,7 @@
+/**
+ * Copyright (C) 2015 DeathsbreedGames
+ * License: GNU Affero GPLv3
+ */
 package io.github.deathsbreedgames.spacerun.screens;
 
 import java.util.Locale;
@@ -14,14 +18,11 @@ import com.badlogic.gdx.utils.I18NBundle;
 import io.github.deathsbreedgames.spacerun.GlobalVars;
 
 /**
+ * Screen used to display DeathsbreedGames logo and provide a
+ * quick link to the DeathsbreedGames website.
+ * 
  * @author Nicolás A. Ortega
- * @copyright DeathsbreedGames
- * @license GNU Affero GPLv3
- * @year 2014
- * 
- * Description: This class handles the splash at the beginning of the
- * game.
- * 
+ * @version 14.12.22
  */
 public class SplashScreen extends BaseScreen {
 	// Splash variables

@@ -1,3 +1,7 @@
+/**
+ * Copyright (C) 2015 DeathsbreedGames
+ * License: GNU Affero GPLv3
+ */
 package io.github.deathsbreedgames.spacerun.screens;
 
 import com.badlogic.gdx.Application.ApplicationType;
@@ -19,13 +23,11 @@ import com.badlogic.gdx.utils.viewport.StretchViewport;
 import io.github.deathsbreedgames.spacerun.GlobalVars;
 
 /**
+ * The main menu for the game, used for navigation to other
+ * screens.
+ * 
  * @author Nicolás A. Ortega
- * @copyright DeathsbreedGames
- * @license GNU Affero GPLv3
- * @year 2014
- * 
- * Description: This class takes care of the Main Menu.
- * 
+ * @version 12.14.22
  */
 public class MainMenuScreen extends BaseScreen {
 	// SpaceRun logo variables:

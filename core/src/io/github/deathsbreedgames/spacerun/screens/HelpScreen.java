@@ -1,3 +1,7 @@
+/**
+ * Copyright (C) 2015 DeathsbreedGames
+ * License: GNU Affero GPLv3
+ */
 package io.github.deathsbreedgames.spacerun.screens;
 
 import com.badlogic.gdx.Gdx;
@@ -17,14 +21,10 @@ import com.badlogic.gdx.utils.viewport.StretchViewport;
 import io.github.deathsbreedgames.spacerun.GlobalVars;
 
 /**
+ * One of the menu screens used to display useful instructions.
+ * 
  * @author Nicolás A. Ortega
- * @copyright DeathsbreedGames
- * @license GNU Affero GPLv3
- * @year 2014
- * 
- * Description: This class shows how to play the game. Just some simple
- * useful information.
- * 
+ * @version 14.12.22
  */
 public class HelpScreen extends BaseScreen {
 	// Help variables

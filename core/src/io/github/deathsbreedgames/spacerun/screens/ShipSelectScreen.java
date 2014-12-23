@@ -1,3 +1,7 @@
+/**
+ * Copyright (C) 2015 DeathsbreedGames
+ * License: GNU Affero GPLv3
+ */
 package io.github.deathsbreedgames.spacerun.screens;
 
 import com.badlogic.gdx.Gdx;
@@ -20,14 +24,11 @@ import com.badlogic.gdx.utils.viewport.StretchViewport;
 import io.github.deathsbreedgames.spacerun.GlobalVars;
 
 /**
+ * Screen used to select which class ship the user would like
+ * to use/play as.
+ * 
  * @author Nicolás A. Ortega
- * @copyright DeathsbreedGames
- * @license GNU Affero GPLv3
- * @year 2014
- * 
- * Description: This class is where the player chooses which ship s/he
- * wants to use.
- * 
+ * @version 12.14.22
  */
 public class ShipSelectScreen extends BaseScreen {
 	// Image variables

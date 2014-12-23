@@ -1,3 +1,7 @@
+/**
+ * Copyright (C) 2015 DeathsbreedGames
+ * License: GNU Affero GPLv3
+ */
 package io.github.deathsbreedgames.spacerun.entities;
 
 import com.badlogic.gdx.Gdx;
@@ -7,14 +11,11 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import io.github.deathsbreedgames.spacerun.GlobalVars;
 
 /**
+ * Object containing the variables and functions for the
+ * player.
+ * 
  * @author Nicolás A. Ortega
- * @copyright DeathsbreedGames
- * @license GNU Affero GPLv3
- * @year 2014
- * 
- * Description: This is the player class where all the variables and
- * methods regarding the player specifically go.
- * 
+ * @version 14.12.22
  */
 public class Player extends Ship {
 	private int score;

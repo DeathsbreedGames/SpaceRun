@@ -1,3 +1,7 @@
+/**
+ * Copyright (C) 2015 DeathsbreedGames
+ * License: GNU Affero GPLv3
+ */
 package io.github.deathsbreedgames.spacerun.screens;
 
 import com.badlogic.gdx.Gdx;
@@ -29,13 +33,10 @@ import io.github.deathsbreedgames.spacerun.GlobalVars;
 import io.github.deathsbreedgames.spacerun.entities.*;
 
 /**
+ * Screen used for the actual game.
+ * 
  * @author Nicolás A. Ortega
- * @copyright DeathsbreedGames
- * @license GNU Affero GPLv3
- * @year 2014
- * 
- * Description: This class takes care of the Game.
- * 
+ * @version 14.12.22
  */
 public class GameScreen extends BaseScreen {
 	// Button variables

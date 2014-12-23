@@ -1,17 +1,17 @@
+/**
+ * Copyright (C) 2015 DeathsbreedGames
+ * License: GNU Affero GPLv3
+ */
 package io.github.deathsbreedgames.spacerun;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.I18NBundle;
 
 /**
+ * Global variables used throughout the game
+ * 
  * @author Nicolás A. Ortega
- * @copyright DeathsbreedGames
- * @license GNU Affero GPLv3
- * @year 2014
- * 
- * Description: This class contains variables that are global and apply
- * to multiple classes in multiple game instances.
- * 
+ * @version 14.12.22
  */
 public class GlobalVars {
 	// Viewport dimensions

@@ -1,3 +1,7 @@
+/**
+ * Copyright (C) 2015 DeathsbreedGames
+ * License: GNU Affero GPLv3
+ */
 package io.github.deathsbreedgames.spacerun.screens;
 
 import com.badlogic.gdx.Gdx;
@@ -6,14 +10,11 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL20;
 
 /**
+ * A template for all the screens (so as not to repeat the same
+ * thing over and over again.
+ * 
  * @author Nicolás A. Ortega
- * @copyright DeathsbreedGames
- * @license GNU Affero GPLv3
- * @year 2014
- * 
- * Description: This is the template of the screen class used in this
- * game.
- * 
+ * @version 14.12.22
  */
 public class BaseScreen implements Screen {
 	// Common screen variables for this game
