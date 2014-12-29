@@ -23,7 +23,7 @@ import io.github.deathsbreedgames.spacerun.GlobalVars;
  * assets for the game at the start.
  * 
  * @author Nicolás A. Ortega, Mats Svensson (original code under Unlicense)
- * @version 14.12.22
+ * @version 14.12.29
  */
 public class LoadingScreen extends BaseScreen {
 	private Stage stage;
@@ -55,7 +55,6 @@ public class LoadingScreen extends BaseScreen {
 		camera.update();
 
 		// Initialize the stage where we will place everything
-		//stage = new Stage();
 		stage = new Stage(new StretchViewport(GlobalVars.width, GlobalVars.height));
 
 		// Get our textureatlas from the manager
@@ -83,7 +82,8 @@ public class LoadingScreen extends BaseScreen {
 		screenBg.setSize(GlobalVars.width, GlobalVars.height);
 
 		// Place the "logo" in the middle of the screen and 100px up
-		logo.setX((GlobalVars.width - logo.getWidth()) / 2);
+		logo.setScale(0.5f);
+		logo.setX((GlobalVars.width - logo.getWidth() * logo.getScaleX()) / 2);
 		logo.setY((GlobalVars.height - logo.getHeight()) / 2 + 100);
 
 		// Place the loading frame in the middle of the screen
