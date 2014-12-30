@@ -4,6 +4,7 @@
  */
 package io.github.deathsbreedgames.spacerun.screens;
 
+import com.badlogic.gdx.Application.ApplicationType;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.assets.AssetManager;
@@ -124,6 +125,17 @@ public class OptionsScreen extends BaseScreen {
 				setDone(true);
 			}
 		});
+
+		//if(Gdx.app.getType() == ApplicationType.Android && !GlobalVars.actionResolver.getSignedInGPGS()) {
+			TextButton loginButton = new TextButton(GlobalVars.gameBundle.get("login"), buttonStyle);
+			loginButton.setPosition(10f, 85f);
+			mainStage.addActor(loginButton);
+			loginButton.addListener(new ChangeListener() {
+				public void changed(ChangeEvent e, Actor a) {
+					GlobalVars.actionResolver.loginGPGS();
+				}
+			});
+		//}
 		
 		TextButton backButton = new TextButton(GlobalVars.gameBundle.get("back"), buttonStyle);
 		backButton.setPosition(GlobalVars.width / 2 - backButton.getWidth() / 2, 10f);
