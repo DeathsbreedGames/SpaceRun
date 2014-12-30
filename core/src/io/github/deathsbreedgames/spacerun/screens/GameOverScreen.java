@@ -26,7 +26,7 @@ import io.github.deathsbreedgames.spacerun.GlobalVars;
  * Screen used when the player dies.
  * 
  * @author Nicolás A. Ortega
- * @version 14.12.23
+ * @version 14.12.30
  */
 public class GameOverScreen extends BaseScreen {
 	// Drawing variables
@@ -50,7 +50,7 @@ public class GameOverScreen extends BaseScreen {
 		if(GlobalVars.score > GlobalVars.highScore) {
 			GlobalVars.highScore = GlobalVars.score;
 			prefs.putInteger("HighScore", GlobalVars.highScore);
-			if(Gdx.app.getType() == ApplicationType.Android) {
+			if(Gdx.app.getType() == ApplicationType.Android && GlobalVars.actionResolver.getSignedInGPGS()) {
 				GlobalVars.actionResolver.submitScoreGPGS(GlobalVars.highScore);
 			}
 		}
