@@ -126,7 +126,7 @@ public class OptionsScreen extends BaseScreen {
 			}
 		});
 
-		//if(Gdx.app.getType() == ApplicationType.Android && !GlobalVars.actionResolver.getSignedInGPGS()) {
+		if(Gdx.app.getType() == ApplicationType.Android && !GlobalVars.actionResolver.getSignedInGPGS()) {
 			TextButton loginButton = new TextButton(GlobalVars.gameBundle.get("login"), buttonStyle);
 			loginButton.setPosition(10f, 85f);
 			mainStage.addActor(loginButton);
@@ -135,7 +135,7 @@ public class OptionsScreen extends BaseScreen {
 					GlobalVars.actionResolver.loginGPGS();
 				}
 			});
-		//}
+		}
 		
 		TextButton backButton = new TextButton(GlobalVars.gameBundle.get("back"), buttonStyle);
 		backButton.setPosition(GlobalVars.width / 2 - backButton.getWidth() / 2, 10f);
