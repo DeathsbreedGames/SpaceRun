@@ -27,7 +27,7 @@ import io.github.deathsbreedgames.spacerun.GlobalVars;
  * screens.
  * 
  * @author Nicolás A. Ortega
- * @version 12.14.22
+ * @version 12.14.31
  */
 public class MainMenuScreen extends BaseScreen {
 	// SpaceRun logo variables:
@@ -109,19 +109,16 @@ public class MainMenuScreen extends BaseScreen {
 				setDone(true);
 			}
 		});
-		
-		// Exit button cannot be used for WebGL
-		if(Gdx.app.getType() != ApplicationType.WebGL) {
-			TextButton quitButton = new TextButton(GlobalVars.gameBundle.get("exit"), buttonStyle);
-			quitButton.setPosition(GlobalVars.width / 2 - quitButton.getWidth() / 2, 90f);
-			mainStage.addActor(quitButton);
-			quitButton.addListener(new ChangeListener() {
-				public void changed(ChangeEvent e, Actor a) {
-					// Quit
-					Gdx.app.exit();
-				}
-			});
-		}
+
+		TextButton quitButton = new TextButton(GlobalVars.gameBundle.get("exit"), buttonStyle);
+		quitButton.setPosition(GlobalVars.width / 2 - quitButton.getWidth() / 2, 90f);
+		mainStage.addActor(quitButton);
+		quitButton.addListener(new ChangeListener() {
+			public void changed(ChangeEvent e, Actor a) {
+				// Quit
+				Gdx.app.exit();
+			}
+		});
 	}
 	
 	// Update:
