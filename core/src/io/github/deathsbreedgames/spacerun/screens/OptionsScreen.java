@@ -29,7 +29,7 @@ import io.github.deathsbreedgames.spacerun.GlobalVars;
  * data storage, etc.
  * 
  * @author Nicolás A. Ortega
- * @version 14.12.22
+ * @version 14.12.30
  */
 public class OptionsScreen extends BaseScreen {
 	// Variable to access preferences
