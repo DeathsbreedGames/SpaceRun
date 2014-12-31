@@ -1,7 +1,7 @@
 SpaceRun
 ========
 
-This is DeathsbreedGame's first attempt at creating a casual mobile game. It will take the form of a _classic space shoot'em up_ game, and will be available on Linux, Windows, Mac, Android, and Web (iOS may be added later).
+This is DeathsbreedGame's first attempt at creating a casual mobile game. It will take the form of a _classic space shoot'em up_ game, and will be available on Linux, Windows, Mac, and Android, (iOS may be added later).
 
 ### Compiling
 To compile the source-code please refer to the [libGDX build documentation](https://github.com/libgdx/libgdx/wiki/Gradle-on-the-Commandline).
