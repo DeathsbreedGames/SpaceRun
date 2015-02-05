@@ -11,7 +11,7 @@ import com.badlogic.gdx.graphics.GL20;
 
 /**
  * A template for all the screens (so as not to repeat the same
- * thing over and over again.
+ * thing over and over again).
  * 
  * @author Nicolás A. Ortega
  * @version 14.12.22
